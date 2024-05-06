@@ -1,0 +1,2 @@
+interviewermerkmale <- haven::read_dta(paste0("orig-data/infas_7130_AuxCo Usability Test_Interviewermerkmale_20191017_2.dta"))
+# setdiff(interviewermerkmale$INTERNR, infas_completed_interviews$INTERNR_neu) # 22 Interviewnummern liegen nicht im neuen Datensatz vor

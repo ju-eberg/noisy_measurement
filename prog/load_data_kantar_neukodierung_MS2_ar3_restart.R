@@ -1,0 +1,1 @@
+kantar_auxco_kodierung <-  suppressWarnings(read_excel(paste0("orig-data/kantar_neukodierung_MS2_ar3_restart.xlsx"), sheet = 2))
