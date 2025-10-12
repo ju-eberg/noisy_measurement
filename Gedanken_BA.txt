@@ -1,0 +1,101 @@
+Fragen Meeting Malte 18.09.
+
+- Was ist die Productivity
+
+- Links 3.122 funktionieren nicht - Wichtig?
+
+- Wofür die RData - Wofür das Behavior Coding for Students?
+
+- Wo Code für das ML Modell?
+
+- Noisy measurement Modell ausprobieren klingt sehr spannend, aber wie?
+
+
+Mögliche Themen:
+
+Preferrably:
+1) Können Gründe identifiziert werden, warum oft keine Übereinstimmung zwischen manueller
+Kodierung und dem neuen Instrument erzielt werden kann? Damit zusammenhängend: Auf
+welche Weise lässt sich die Übereinstimmung überzeugend berechnen?
+
+ Fragestellung: Wie groß ist die Übereinstimmung zwischen Interview-Instrument und manueller Kodierung (ISCO/KldB), und was erklärt Abweichungen?
+Lieferbar: tabellarische κ/α je Hierarchiestufe; Prädiktoren der Abweichung (ORs, CIs); Shap-ähnliche Effektplots.
+
+2) Noisy measurement modell
+
+-- Abstimmen:
+
+
+
+Andere aus Praxisprojekt:
+
+- Welche Schwierigkeiten treten bei der Kommunikation zum Beruf auf, also beim Verhalten
+von Interviewern und Befragten – und welche Fehler machen Interviewer dabei? Inwieweit
+unterscheidet sich das Verhalten zwischen den drei Gruppen Interviewern, die verschieden
+geschult wurden? Wie häufig nutzen Conversational Interviewer die zusätzlich
+--- Vmtl. schwierig statistisch
+bereitgestellten Informationen?
+- Ausreißer: Gibt es einzelne Interviewer/Befragte/Interviews, deren Nutzungsverhalten des
+Instruments von der üblichen (empfohlenen) Nutzung abweicht? Welche Inhalte müssten in
+Interviewer-Schulungen vermittelt werden, damit dies nicht erneut auftritt?
+
+
+- Möglich?
+- Frequentistisch/Bayesianisch
+- Expose
+
+
+
+
+
+
+
+-----------------
+
+
+Maximum Likelihood Estimation of Observer
+Error-rates uing the EM Algorithm (1979): Frequentistisch
+
+Noisy measurement model: Bayesianisch
+
+- Vorweg: Deskriptive Analysen
+- Erstmal: Methodik, Erklärung und Anwendung des Problems bekannt aus Medizin auf dieses
+- Limitations und Annahmen
+--> Grösstes Problem: Sehr viele mögliche Klassen, wenige Daten pro Klasse
+
+
+- 2 Teile: Vor Noisy measurement: Schätzung Parameter mit EM Algorithmus frequentistisch - darauf aufbauend
+
+---- Anwendung: Was kann das Noisy measureemnt modell? ---
+- Probabilistische Wahrheit je Item (statt hartes Mehrheitslabel).
+- "Triage-Strategien": Items mit hoher Unsicherheit markieren → effiziente manuelle Nachkodierung.
+- Raterdiagnose: Welche Stärken/Schwächen zeigen Mensch A, Mensch B, Auto? (klassenweise Trefferquoten, Verwechslungen).
+- Unsicherheitsquantifizierung: Credible Intervals und Posterior-Entropie → transparentes Qualitätsmonitoring.
+---- diese ganzen "features" alle natürlich kritisch einordnen
+
+
+- Mögliche Erweiterungsfrage: Nicht zwei gegeneinander testen, sondern mehrere gleichzeitig? - Generalisierung
+
+
+- Literatur
+- Gliederung!
+- Modell zum Laufen bringen!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
