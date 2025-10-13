@@ -1,5 +1,5 @@
 library(dplyr)
-sourcw("load_data_main.R")
+source("load_data_main.R")
 
 # neue Datenbasis mit den rot markierten Spalten
 data_basis <- resultOverviewCompact %>%
@@ -44,7 +44,7 @@ data_basis[, c("isco_tool_1st", "res1_isco_1st", "res2_isco_1st") :=
            .SDcols = c("isco_tool_mit_anfniveau", "res1_isco", "res2_isco")]
 
 # TODO: NAs
-# TODO: Anforderungsniveaus nicht mögliche
+# TODO: Anforderungsniveaus nicht möglich
 # TODO: Doppelte Werte
 
 
@@ -200,3 +200,11 @@ ggplot(tri_counts_isco, aes(x = Status, y = Anzahl, fill = Status)) +
        x = NULL, y = "Anzahl Fälle", fill = NULL) +
   theme_minimal(base_size = 13)
 
+head(data_basis)
+
+# Add column item_id
+data_basis$item_id <- seq_len(nrow(data_basis))
+
+# Save to CSV
+
+write.csv(data_basis, "data_basis_mit_1st_stelle.csv", row.names = FALSE)
