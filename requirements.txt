@@ -1,0 +1,4 @@
+pymc
+arviz
+numpy
+pandas

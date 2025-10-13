@@ -1,0 +1,1286 @@
+"laufindexFolge";"id";"questionNumber";"typ";"fragetextAktuellerBeruf";"fragetextVergangenerBeruf";"antwort.pos";"antwort.text";"antwort.kldb";"antwort.isco";"followUp"
+1;"1004";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine abgeschlossene Berufsausbildung erforderlich?";"War für diese Tätigkeit in der Regel eine abgeschlossene Berufsausbildung erforderlich?";"";"";"";"";""
+2;"1004";1;"";"";"";"1";"Ja";"51322";"4412";NA
+3;"1004";1;"";"";"";"2";"Nein";"51321";"9621";NA
+4;"1005";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+5;"1005";1;"";"";"";"1";"Ja";"51394";"1324";NA
+6;"1005";1;"";"";"";"2";"Nein";"51393";"4321";NA
+7;"1012";1;"sonstige";"Schließt Ihre Arbeit auch die Haltung und Zucht von Tieren mit ein?";"Hat Ihre Arbeit auch die Haltung und Zucht von Tieren mit eingeschlossen?";"";"";"";"";""
+8;"1012";1;"";"";"";"1";"Ja";"11102";"6130";NA
+9;"1012";1;"";"";"";"2";"Nein";"11102";"6111";NA
+10;"1014";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+11;"1014";1;"";"";"";"1";"Ja";"11104";"2132";NA
+12;"1014";1;"";"";"";"2";"Nein";"11103";"2132";NA
+13;"1015";1;"anforderungsniveau";"Ist für Ihre Tätigkeit ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+14;"1015";1;"";"";"";"1";"Ja";"11104";"2132";NA
+15;"1015";1;"";"";"";"2";"Nein";"11103";"2132";NA
+16;"1024";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+17;"1024";1;"";"";"";"1";"Nein";"11132";"3142";NA
+18;"1024";1;"";"";"";"2";"Ja";"11133";"3142";NA
+19;"1038";1;"sonstige";"Beinhaltet ihre Tätigkeit die Ausbildung von Reitern?";"Hat ihre Tätigkeit die Ausbildung von Reitern beinhaltet?";"";"";"";"";""
+20;"1038";1;"";"";"";"1";"Nein";"11322";"5164";NA
+21;"1038";1;"";"";"";"2";"Ja";"11322";"3423";NA
+22;"1047";1;"sonstige";"Mit welchen Tieren arbeiten Sie?";"Mit welchen Tieren haben Sie gearbeitet?";"";"";"";"";""
+23;"1047";1;"";"";"";"1";"Nutztieren";"11512";"5164";NA
+24;"1047";1;"";"";"";"2";"Haus- oder Zootieren";"11522";"5164";NA
+25;"1047";1;"";"";"";"3";"Keine der obigen Antworten trifft zu";"11502";"5164";NA
+26;"1054";1;"sonstige";"Mit welchen Pflanzen arbeiten Sie?";"Mit welchen Pflanzen haben Sie gearbeitet?";"";"";"";"";""
+27;"1054";1;"";"";"";"1";"Bäumen und Sträuchern";"12102";"6112";NA
+28;"1054";1;"";"";"";"2";"Nutzpflanzen";"12102";"6111";NA
+29;"1054";1;"";"";"";"3";"allgemein mit Pflanzen und Saatgut";"12102";"6113";NA
+30;"1066";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+31;"1066";1;"";"";"";"1";"Ja";"12143";"6113";NA
+32;"1066";1;"";"";"";"2";"Nein";"12142";"6113";NA
+33;"1100";1;"sonstige";"Mit welchem Sprachraum beschäftigen Sie sich in Ihrer Arbeit?";"Mit welchem Sprachraum haben Sie sich in Ihrer Arbeit beschäftigt?";"";"";"";"";""
+34;"1100";1;"";"";"";"1";"Germanistik";"91114";"2643";NA
+35;"1100";1;"";"";"";"2";"Anglistik/Amerikanistik";"91124";"2643";NA
+36;"1100";1;"";"";"";"3";"Romanistik";"91134";"2643";NA
+37;"1100";1;"";"";"";"4";"Slawistik";"91144";"2643";NA
+38;"1100";1;"";"";"";"5";"Arabistik und Orientalistik";"91154";"2643";NA
+39;"1100";1;"";"";"";"6";"Mit dem asiatischen Raum";"91164";"2643";NA
+40;"1100";1;"";"";"";"7";"Altphilologie und/oder Neogriechisch";"91174";"2643";NA
+41;"1100";1;"";"";"";"8";"Es handelt sich um einen anderen spezifischen Sprachraum (z.B. Skandinavistik)";"91184";"2643";NA
+42;"1100";1;"";"";"";"9";"Mehr als eine Antwort trifft zu";"91104";"2643";NA
+43;"1206";1;"sonstige";"Wen begleiten Sie mit dem Klavier?";"Wen haben Sie mit dem Klavier begleitet?";"";"";"";"";""
+44;"1206";1;"";"";"";"1";"Tänzer/innen";"94184";"2653";NA
+45;"1206";1;"";"";"";"2";"Sänger/innen oder ähnliches";"94184";"2652";NA
+46;"1227";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+47;"1227";1;"";"";"";"1";"Ja";"94404";"2654";NA
+48;"1227";1;"";"";"";"2";"Nein";"94403";"3435";NA
+49;"1235";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+50;"1235";1;"";"";"";"1";"Ja";"94514";"2149";NA
+51;"1235";1;"";"";"";"2";"Nein";"94513";"2149";NA
+52;"1240";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+53;"1240";1;"";"";"";"1";"Ja";"94494";"1431";NA
+54;"1240";1;"";"";"";"2";"Nein";"94493";"2654";NA
+55;"1246";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+56;"1246";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"94532";"3521";NA
+57;"1246";1;"";"";"";"2";"eine vertiefende berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"94533";"3521";NA
+58;"1246";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium im Bereich Film- und Fernsehproduktion oder einem verwandten Fach";"94533";"3521";NA
+59;"1246";1;"";"";"";"4";"ein abgeschlossenes Masterstudium im Bereich Film- und Fernsehproduktion oder einem verwandten Fach";"94534";"3521";NA
+60;"1249";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+61;"1249";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"94612";"3435";NA
+62;"1249";1;"";"";"";"2";"eine vertiefende berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"94613";"3435";NA
+63;"1249";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium im Bereich Bühnen- und Kostümbild oder einem verwandten Fach";"94613";"3435";NA
+64;"1249";1;"";"";"";"4";"ein abgeschlossenes Masterstudium im Bereich Bühnen- und Kostümbild oder einem verwandten Fach";"94614";"3435";NA
+65;"1518";1;"sonstige";"Wo fischen Sie?";"Wo haben Sie gefischt?";"";"";"";"";""
+66;"1518";1;"";"";"";"1";"In der Hochsee";"11422";"6223";NA
+67;"1518";1;"";"";"";"2";"In Binnengewässern oder an der Küste";"11422";"6222";NA
+68;"1519";1;"aufsicht";"Ist ein wesentlicher Bestandteil ihrer Arbeit, andere Arbeitnehmer zu beaufsichtigen oder als Führungskraft strategische Entscheidungen für das Unternehmen zu treffen?";"War ein wesentlicher Bestandteil ihrer Arbeit, andere Arbeitnehmer zu beaufsichtigen oder als Führungskraft strategische Entscheidungen für das Unternehmen zu treffen?";"";"";"";"";""
+69;"1519";1;"";"";"";"1";"weder Führungs- noch Ausichtstätigkeit";"11412";"6221";NA
+70;"1519";1;"";"";"";"2";"Aufsichtstätigkeit mit Verantwortung für untergeordnetes Personal";"11493";"6221";NA
+71;"1519";1;"";"";"";"3";"Führungstätigkeit mit strategischer Entscheidungsbefugnis (z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen, oder zur Einstellung und Entlassung von Personal)";"11494";"1312";NA
+72;"1520";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Ingenieurwissenschaften erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Ingenieurwissenschaften erforderlich?";"";"";"";"";""
+73;"1520";1;"";"";"";"1";"Ja";"11424";"2132";NA
+74;"1520";1;"";"";"";"2";"Nein";"11423";"3141";NA
+75;"1705";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+76;"1705";1;"";"";"";"1";"Ja";"25184";"2144";NA
+77;"1705";1;"";"";"";"2";"Nein";"25183";"3115";NA
+78;"1706";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+79;"1706";1;"";"";"";"1";"Ja";"25184";"2144";NA
+80;"1706";1;"";"";"";"2";"Nein";"25183";"3115";NA
+81;"1709";1;"anforderungsniveau";"Sind Sie Beamte/r im einfachen, mittleren, gehobenen oder höheren Dienst?";"Waren Sie Beamte/r im einfachen, mittleren, gehobenen oder höheren Dienst?";"";"";"";"";""
+82;"1709";1;"";"";"";"1";"im einfachen Dienst oder vergleichbar";"27182";"3119";NA
+83;"1709";1;"";"";"";"2";"im mittleren Dienst oder vergleichbar";"27182";"3119";NA
+84;"1709";1;"";"";"";"3";"im gehobenen Dienst oder vergleichbar";"27183";"3119";NA
+85;"1709";1;"";"";"";"4";"im höheren Dienst oder vergleichbar";"27184";"2149";NA
+86;"1710";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+87;"1710";1;"";"";"";"1";"Ja";"11294";"1311";"FALSE"
+88;"1710";1;"";"";"";"2";"Nein";"11293";"6129";NA
+89;"1710";2;"sonstige";"Über die Zucht welcher Tiere führen Sie Aufsicht?";"Über die Zucht welcher Tiere haben Sie Aufsicht geführt?";"";"";"";"";""
+90;"1710";2;"";"";"";"1";"Über die Zucht von Nutztieren";"11293";"6121";NA
+91;"1710";2;"";"";"";"2";"Über die Zucht von Geflügeltieren";"11293";"6122";NA
+92;"1710";2;"";"";"";"3";"Über die Zucht von Bienen";"11293";"6123";NA
+93;"1710";2;"";"";"";"4";"Über die Zucht anderer Tiere";"11293";"6129";NA
+94;"1711";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+95;"1711";1;"";"";"";"1";"Ja";"11394";"1311";"FALSE"
+96;"1711";1;"";"";"";"2";"Nein";"11393";"6121";NA
+97;"1711";2;"spezialisierung";"In welchem Bereich sind Sie vorwiegend tätig?";"In welchem Bereich waren Sie vorwiegend tätig?";"";"";"";"";""
+98;"1711";2;"";"";"";"1";"Pferdeversorgung und Administratives - z.B. Sicherstellen von Futter";"11393";"6121";NA
+99;"1711";2;"";"";"";"2";"Pferdezucht und -haltung - z.B. Zuchtpläne erstellen";"11393";"3142";NA
+100;"1711";2;"";"";"";"3";"Ausbildung und Pflege der Pferde - z.B. Pferde auf Tauglichkeit untersuchen";"11393";"5164";NA
+101;"1711";2;"";"";"";"4";"Ausbildung von Reitern - z.B. Koordination und Durchführung von Reitkursen";"11393";"3423";NA
+102;"1711";2;"";"";"";"5";"Mehr als ein Aufgabenbereich trifft zu";"11393";"6121";NA
+103;"1712";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+104;"1712";1;"";"";"";"1";"Ja";"11594";"1439";NA
+105;"1712";1;"";"";"";"2";"Nein";"11593";"5164";NA
+106;"1713";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+107;"1713";1;"";"";"";"1";"Ja";"12194";"1311";"FALSE"
+108;"1713";1;"";"";"";"2";"Nein";"12193";"6113";NA
+109;"1713";2;"sonstige";"Mit der Zucht welcher Art von Pflanzen befassen Sie sich hauptsächlich?";"Mit der Zucht welcher Art von Pflanzen haben Sie sich hauptsächlich befasst?";"";"";"";"";""
+110;"1713";2;"";"";"";"1";" Mit der Zucht von Bäumen und Sträuchern";"12193";"6112";NA
+111;"1713";2;"";"";"";"2";"Mit der Zucht von Gemüse und Obst";"12193";"6111";NA
+112;"1713";2;"";"";"";"3";"Keine der anderen Antworten trifft zu";"12193";"6113";NA
+113;"1714";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+114;"1714";1;"";"";"";"1";"Ja";"12294";"1321";NA
+115;"1714";1;"";"";"";"2";"Nein";"12293";"3122";NA
+116;"1715";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+117;"1715";1;"";"";"";"1";"Ja";"11494";"1312";"FALSE"
+118;"1715";1;"";"";"";"2";"Nein";"11493";"6223";NA
+119;"1715";2;"spezialisierung";"In welchem Bereich sind Sie vorwiegend tätig? ";"In welchem Bereich waren Sie vorwiegend tätig? ";"";"";"";"";""
+120;"1715";2;"";"";"";"1";"In der Aquakultur";"11493";"6221";"FALSE"
+121;"1715";2;"";"";"";"2";"In der Binnen- und Küstenfischerei";"11493";"6222";"FALSE"
+122;"1715";2;"";"";"";"3";"In der Hochseefischerei";"11493";"6223";"FALSE"
+123;"1716";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+124;"1716";1;"";"";"";"1";"Ja";"22104";"2145";NA
+125;"1716";1;"";"";"";"2";"Nein";"22103";"3116";NA
+126;"1717";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+127;"1717";1;"";"";"";"1";"Ja";"22394";"1321";NA
+128;"1717";1;"";"";"";"2";"Nein";"22393";"3122";NA
+129;"1718";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+130;"1718";1;"";"";"";"1";"Ja";"23414";"2149";NA
+131;"1718";1;"";"";"";"2";"Nein";"23413";"3119";NA
+132;"1719";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+133;"1719";1;"";"";"";"1";"Ja";"24114";"2146";NA
+134;"1719";1;"";"";"";"2";"Nein";"24113";"3135";NA
+135;"1720";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+136;"1720";1;"";"";"";"1";"Ja";"24424";"2144";NA
+137;"1720";1;"";"";"";"2";"Nein";"24423";"3115";NA
+138;"1721";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+139;"1721";1;"";"";"";"1";"Nein";"24532";"7311";NA
+140;"1721";1;"";"";"";"2";"Ja";"24533";"7311";NA
+141;"1722";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Maschinenbau erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Maschinenbau erforderlich?";"";"";"";"";""
+142;"1722";1;"";"";"";"1";"Ja";"25104";"2144";NA
+143;"1722";1;"";"";"";"2";"Nein";"25103";"3115";NA
+144;"1723";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+145;"1723";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"25132";"7412";NA
+146;"1723";1;"";"";"";"2";"eine berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"25133";"3115";NA
+147;"1723";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"25133";"3115";NA
+148;"1723";1;"";"";"";"4";"ein abgeschlossenes Masterstudium";"25134";"2144";NA
+149;"1724";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+150;"1724";1;"";"";"";"1";"Ja";"25184";"2144";NA
+151;"1724";1;"";"";"";"2";"Nein";"25183";"3115";NA
+152;"1725";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+153;"1725";1;"";"";"";"1";"Ja";"25224";"2144";NA
+154;"1725";1;"";"";"";"2";"Nein";"25223";"3115";NA
+155;"1726";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+156;"1726";1;"";"";"";"1";"Ja";"25234";"2144";NA
+157;"1726";1;"";"";"";"2";"Nein";"25233";"3115";NA
+158;"1727";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+159;"1727";1;"";"";"";"1";"Ja";"25244";"2144";NA
+160;"1727";1;"";"";"";"2";"Nein";"25243";"3115";NA
+161;"1728";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+162;"1728";1;"";"";"";"1";"Ja";"25254";"2144";NA
+163;"1728";1;"";"";"";"2";"Nein";"25253";"3115";NA
+164;"1729";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+165;"1729";1;"";"";"";"1";"Ja";"26114";"2151";NA
+166;"1729";1;"";"";"";"2";"Nein";"26113";"3113";NA
+167;"1730";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+168;"1730";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"26122";"7421";NA
+169;"1730";1;"";"";"";"2";"eine berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"26123";"3113";NA
+170;"1730";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium im Bereich Automatisierungstechnik";"26123";"3113";NA
+171;"1730";1;"";"";"";"4";"ein abgeschlossenes Masterstudium im Bereich Automatisierungstechnik";"26124";"2152";NA
+172;"1731";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+173;"1731";1;"";"";"";"1";"Ja";"26244";"2151";NA
+174;"1731";1;"";"";"";"2";"Nein";"26243";"3113";NA
+175;"1732";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+176;"1732";1;"";"";"";"1";"Ja";"26264";"2151";NA
+177;"1732";1;"";"";"";"2";"Nein";"26263";"3113";NA
+178;"1733";1;"spezialisierung";"Liegt der Schwerpunkt Ihrer Arbeit im Bereich Elektrotechnik oder im Bereich Elektronik?";"Lag der Schwerpunkt Ihrer Arbeit im Bereich Elektrotechnik oder im Bereich Elektronik?";"";"";"";"";""
+179;"1733";1;"";"";"";"1";"Elektrotechnik";"26303";"3113";NA
+180;"1733";1;"";"";"";"2";"Elektronik";"26303";"3114";NA
+181;"1733";2;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+182;"1733";2;"";"";"";"1";"Ja";"26304";"2151 bzw 2152";NA
+183;"1733";2;"";"";"";"2";"Nein";"26303";"3113 bzw 3114";NA
+184;"1734";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+185;"1734";1;"";"";"";"1";"Ja";"26314";"2153";"FALSE"
+186;"1734";1;"";"";"";"2";"Nein";"26313";"3522";NA
+187;"1734";2;"spezialisierung";"Liegt der Schwerpunkt Ihrer Arbeit im Bereich Rundfunk oder im Bereich Telekommunikationstechnik?";"Lag der Schwerpunkt Ihrer Arbeit im Bereich Rundfunk oder im Bereich Telekommunikationstechnik?";"";"";"";"";""
+188;"1734";2;"";"";"";"1";"Rundfunk";"26303";"3521";NA
+189;"1734";2;"";"";"";"2";"Telekommunikationstechnik";"26313";"3522";NA
+190;"1735";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+191;"1735";1;"";"";"";"1";"Ja";"26324";"2152";NA
+192;"1735";1;"";"";"";"2";"Nein";"26323";"3114";NA
+193;"1736";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+194;"1736";1;"";"";"";"1";"Ja";"26334";"2152";NA
+195;"1736";1;"";"";"";"2";"Nein";"26333";"3114";NA
+196;"1737";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+197;"1737";1;"";"";"";"1";"Ja";"27224";"2149";NA
+198;"1737";1;"";"";"";"2";"Nein";"27223";"3119";NA
+199;"1738";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+200;"1738";1;"";"";"";"1";"Ja";"27314";"2141";NA
+201;"1738";1;"";"";"";"2";"Nein";"27313";"3119";NA
+202;"1739";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+203;"1739";1;"";"";"";"1";"Ja";"28104";"2149";"FALSE"
+204;"1739";1;"";"";"";"2";"Nein";"28103";"3115";NA
+205;"1739";2;"spezialisierung";"In welchem Bereich sind sie vorwiegend tätig?";"In welchem Bereich waren sie vorwiegend tätig?";"";"";"";"";""
+206;"1739";2;"";"";"";"1";"Herstellung von Fäden, Garnen oder Zwirnen";"28133";"3115";NA
+207;"1739";2;"";"";"";"2";"Herstellung von textilen Flächengebilden wie Gewebe, Gewirke oder Strickwaren";"28123";"3115";NA
+208;"1739";2;"";"";"";"3";"Veredelung der Textilien durch Bleichen, Färben, Schrumpfen oder andere Behandlung";"28143";"3115";NA
+209;"1739";2;"";"";"";"4";"oder trifft mehr als eines zu?";"28103";"3115";NA
+210;"1740";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+211;"1740";1;"";"";"";"2";"eine abgeschlossene Berufsausbildung";"28112";"7532";NA
+212;"1740";1;"";"";"";"3";"eine berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"28113";"2163";NA
+213;"1740";1;"";"";"";"4";"ein abgeschlossenes Bachelorstudium";"28113";"2163";NA
+214;"1740";1;"";"";"";"5";"ein abgeschlossenes Masterstudium";"28114";"2163";NA
+215;"1741";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+216;"1741";1;"";"";"";"1";"Ja";"28224";"2149";NA
+217;"1741";1;"";"";"";"2";"Nein";"28223";"3119";NA
+218;"1742";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+219;"1742";1;"";"";"";"1";"Ja";"28314";"2141";NA
+220;"1742";1;"";"";"";"2";"Nein";"28313";"3119";NA
+221;"1743";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+222;"1743";1;"";"";"";"1";"Ja";"51193";"3151";"FALSE"
+223;"1743";1;"";"";"";"2";"Nein";"51132";"8350";NA
+224;"1743";2;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+225;"1743";2;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"51132";"8350";NA
+226;"1743";2;"";"";"";"2";"eine berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"51133";"3151";NA
+227;"1743";2;"";"";"";"3";"ein abgeschlossenes Bachelorstudium im Bereich der Schiffsbetriebstechnik";"51133";"3151";NA
+228;"1743";2;"";"";"";"4";"ein abgeschlossenes Masterstudium im Bereich der Schiffsbetriebstechnik";"51134";"3151";NA
+229;"1744";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+230;"1744";1;"";"";"";"1";"Ja";"51234";"2152";NA
+231;"1744";1;"";"";"";"2";"Nein";"51233";"3155";NA
+232;"1745";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+233;"1745";1;"";"";"";"1";"Nein";"51242";"8343";NA
+234;"1745";1;"";"";"";"2";"Ja";"51243";"3112";NA
+235;"1746";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+236;"1746";1;"";"";"";"1";"Ja";"51504";"2164";"FALSE"
+237;"1746";1;"";"";"";"2";"Nein";"51503";"3119";NA
+238;"1746";2;"sonstige";"Mit welchem Verkehrssystem beschäftigen Sie sich?";"Mit welchem Verkehrssystem haben Sie sich beschäftigt?";"";"";"";"";""
+239;"1746";2;"";"";"";"1";"Straßenverkehr";"51513";"3119";NA
+240;"1746";2;"";"";"";"2";"Schienenverkehr";"51523";"3119";NA
+241;"1746";2;"";"";"";"3";"mehrere Verkehrssysteme";"51503";"3119";NA
+242;"1747";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Betriebswirtschaftslehre erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Betriebswirtschaftslehre erforderlich?";"";"";"";"";""
+243;"1747";1;"";"";"";"1";"Ja";"61124";"2433";NA
+244;"1747";1;"";"";"";"2";"Nein";"61123";"3322";NA
+245;"1748";1;"sonstige";"Handelt Ihr Unternehmen mit Waren aus unterschiedlichen Branchen?";"Hat Ihr Unternehmen mit Waren aus unterschiedlichen Branchen gehandelt?";"";"";"";"";""
+246;"1748";1;"";"";"";"1";"Ja";"61203";"3324";NA
+247;"1748";1;"";"";"";"2";"Nein";"61283";"3324";NA
+248;"1748";2;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+249;"1748";2;"";"";"";"1";"Ja";"61204 bzw 61284";"2433";NA
+250;"1748";2;"";"";"";"2";"Nein";"61203 bzw 61283";"3324";NA
+251;"1749";1;"sonstige";"Handelt Ihr Unternehmen mit Waren aus unterschiedlichen Branchen?";"Hat Ihr Unternehmen mit Waren aus unterschiedlichen Branchen gehandelt?";"";"";"";"";""
+252;"1749";1;"";"";"";"1";"Ja";"61213";"3324";NA
+253;"1749";1;"";"";"";"2";"Nein";"61283";"3324";NA
+254;"1749";2;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+255;"1749";2;"";"";"";"1";"Ja";"61214 bzw 61284";"2433";NA
+256;"1749";2;"";"";"";"2";"Nein";"61213 bzw 61283";"3324";NA
+257;"1750";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+258;"1750";1;"";"";"";"1";"Ja";"62194";"1420";NA
+259;"1750";1;"";"";"";"2";"Nein";"62193";"5222";NA
+260;"1764";1;"sonstige";"Reinigen Sie das Verkehrsmittel hauptsächlich von innen oder von außen?";"Haben Sie das Verkehrsmittel hauptsächlich von innen oder von außen gereinigt?";"";"";"";"";""
+261;"1764";1;"";"";"";"1";"von innen";"54152";"9112";NA
+262;"1764";1;"";"";"";"2";"von außen";"54152";"9122";NA
+263;"1770";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+264;"1770";1;"";"";"";"1";"Nein";"43412";"2514";NA
+265;"1770";1;"";"";"";"2";"Ja";"43413";"2512";NA
+266;"1771";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+267;"1771";1;"";"";"";"1";"Ja";"43384";"2529";NA
+268;"1771";1;"";"";"";"2";"Nein";"43383";"2529";NA
+269;"1772";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+270;"1772";1;"";"";"";"1";"Ja";"43314";"2523";NA
+271;"1772";1;"";"";"";"2";"Nein";"43313";"3513";NA
+272;"1773";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+273;"1773";1;"";"";"";"1";"Ja";"42334";"2263";NA
+274;"1773";1;"";"";"";"2";"Nein";"42333";"3257";NA
+275;"1774";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+276;"1774";1;"";"";"";"1";"Ja";"42324";"2133";NA
+277;"1774";1;"";"";"";"2";"Nein";"42323";"3257";NA
+278;"1775";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+279;"1775";1;"";"";"";"1";"Nein";"31102";"3112";"FALSE"
+280;"1775";1;"";"";"";"2";"Ja";"31103";"3112";NA
+281;"1775";2;"spezialisierung";"Arbeiten Sie hauptsächlich an Projekten im Hochbau, im Tiefbau oder an Projekten im Hoch- und Tiefbau gleichermaßen?";"Haben Sie hauptsächlich an Projekten im Hochbau, im Tiefbau oder an Projekten im Hoch- und Tiefbau gleichermaßen gearbeitet?";"";"";"";"";""
+282;"1775";2;"";"";"";"1";"im Hochbau (d.h. Errichtung von Gebäuden)";"32103";"3112";NA
+283;"1775";2;"";"";"";"2";"im Tiefbau (d.h. Bauarbeiten an Rohrleitungen, Tunneln, Straßen, Brücken, Kanälen, Gleisen usw.)";"32203";"3112";NA
+284;"1775";2;"";"";"";"3";"im Hoch- und Tiefbau gleichermaßen";"31103";"3112";NA
+285;"1776";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+286;"1776";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"31132";"3112";NA
+287;"1776";1;"";"";"";"2";"eine berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"31133";"3112";NA
+288;"1776";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium im Bereich Verkehrs- oder Bauingenieurwesen";"31133";"3112";NA
+289;"1776";1;"";"";"";"4";"ein abgeschlossenes Masterstudium im Bereich Verkehrs- oder Bauingenieurwesen";"31134";"2164";NA
+290;"1777";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+291;"1777";1;"";"";"";"1";"Ja";"31154";"2161";NA
+292;"1777";1;"";"";"";"2";"Nein";"31153";"3112";NA
+293;"1778";1;"anforderungsniveau";"Ist für Ihre Tätigkeit ein abgeschlossenes Masterstudium im Bereich Bauingenieurwesen oder Architektur erforderlich?";"War für diese Tätigkeit ein abgeschlossenes Masterstudium im Bereich Bauingenieurwesen oder Architektur erforderlich?";"";"";"";"";""
+294;"1778";1;"";"";"";"1";"Ja";"32104";"2142";NA
+295;"1778";1;"";"";"";"2";"Nein";"32103";"3112";NA
+296;"1779";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Bauingenieurwesen oder Architektur erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Bauingenieurwesen oder Architektur erforderlich?";"";"";"";"";""
+297;"1779";1;"";"";"";"1";"Ja";"32204";"2142";NA
+298;"1779";1;"";"";"";"2";"Nein";"32203";"3112";NA
+299;"1780";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Bauingenieurwesen erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Bauingenieurwesen erforderlich?";"";"";"";"";""
+300;"1780";1;"";"";"";"1";"Ja";"32224";"2142";NA
+301;"1780";1;"";"";"";"2";"Nein";"32223";"3112";NA
+302;"1781";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+303;"1781";1;"";"";"";"1";"Ja";"32264";"2142";NA
+304;"1781";1;"";"";"";"2";"Nein";"32263";"3112";NA
+305;"1782";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+306;"1782";1;"";"";"";"1";"Ja";"34104";"2142";NA
+307;"1782";1;"";"";"";"2";"Nein";"34103";"3112";NA
+308;"1783";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+309;"1783";1;"";"";"";"1";"Ja";"34293";"3123";"FALSE"
+310;"1783";1;"";"";"";"2";"Nein";"34233";"3115";NA
+311;"1783";2;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+312;"1783";2;"";"";"";"1";"Ja";"34234";"2144";NA
+313;"1783";2;"";"";"";"2";"Nein";"34233";"3115";NA
+314;"1784";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+315;"1784";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"34302";"7126";NA
+316;"1784";1;"";"";"";"2";"eine berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"34303";"3115";NA
+317;"1784";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"34303";"3115";NA
+318;"1784";1;"";"";"";"4";"ein abgeschlossenes Masterstudium";"34304";"2144";NA
+319;"1785";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+320;"1785";1;"";"";"";"1";"Ja";"34314";"2143";NA
+321;"1785";1;"";"";"";"2";"Nein";"34313";"3115";NA
+322;"1786";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+323;"1786";1;"";"";"";"1";"Ja";"34324";"2142";NA
+324;"1786";1;"";"";"";"2";"Nein";"34323";"3112";NA
+325;"1787";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+326;"1787";1;"";"";"";"1";"eine kurze Anlernphase";"34301";"9612";NA
+327;"1787";1;"";"";"";"2";"eine abgeschlossene Berufsausbildung";"34332";"9612";NA
+328;"1787";1;"";"";"";"3";"eine berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"34333";"3132";NA
+329;"1787";1;"";"";"";"4";"ein abgeschlossenes Bachelorstudium";"34333";"3132";NA
+330;"1787";1;"";"";"";"5";"ein abgeschlossenes Masterstudium";"34334";"2143";NA
+331;"1788";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Mathematik erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Mathematik erforderlich?";"";"";"";"";""
+332;"1788";1;"";"";"";"1";"Ja";"41104";"2120";NA
+333;"1788";1;"";"";"";"2";"Nein";"41103";"2120";NA
+334;"1789";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+335;"1789";1;"";"";"";"1";"Ja";"41294";"1349";NA
+336;"1789";1;"";"";"";"2";"Nein";"41293";"3141";NA
+337;"1790";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Chemie erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Chemie erforderlich?";"";"";"";"";""
+338;"1790";1;"";"";"";"1";"Ja";"41304";"2113";NA
+339;"1790";1;"";"";"";"2";"Nein";"41303";"2113";NA
+340;"1791";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+341;"1791";1;"";"";"";"1";"Nein";"41312";"8131";NA
+342;"1791";1;"";"";"";"2";"Ja";"41313";"3116";NA
+343;"1792";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+344;"1792";1;"";"";"";"1";"Ja";"41394";"1349";NA
+345;"1792";1;"";"";"";"2";"Nein";"41393";"3122";NA
+346;"1793";1;"anforderungsniveau";"Ist für Ihre in der Regel Tätigkeit ein abgeschlossenes Masterstudium im Bereich Physik erforderlich?";"War für Ihre in der Regel Tätigkeit ein abgeschlossenes Masterstudium im Bereich Physik erforderlich?";"";"";"";"";""
+347;"1793";1;"";"";"";"1";"Ja";"41404";"2111";NA
+348;"1793";1;"";"";"";"2";"Nein";"41403";"2111";NA
+349;"1794";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+350;"1794";1;"";"";"";"1";"Nein";"41422";"3111";NA
+351;"1794";1;"";"";"";"2";"Ja";"41423";"3111";NA
+352;"1795";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+353;"1795";1;"";"";"";"1";"Nein";"41432";"3112";NA
+354;"1795";1;"";"";"";"2";"Ja";"41433";"3112";NA
+355;"1796";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+356;"1796";1;"";"";"";"1";"Ja";"41494";"1349";NA
+357;"1796";1;"";"";"";"2";"Nein";"41493";"3122";NA
+358;"1797";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+359;"1797";1;"";"";"";"1";"Nein";"42112";"3111";NA
+360;"1797";1;"";"";"";"2";"Ja";"42113";"3111";NA
+361;"1798";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+362;"1798";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"42142";"3111";NA
+363;"1798";1;"";"";"";"2";"eine berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"42143";"3111";NA
+364;"1798";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium im Bereich Meteorologie";"42143";"3111";NA
+365;"1798";1;"";"";"";"4";"ein abgeschlossenes Masterstudium im Bereich Meteorologie";"42144";"2112";NA
+366;"1799";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Umweltschutztechnik erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Umweltschutztechnik erforderlich?";"";"";"";"";""
+367;"1799";1;"";"";"";"1";"Ja";"42204";"2143";NA
+368;"1799";1;"";"";"";"2";"Nein";"42203";"3119";NA
+369;"1800";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+370;"1800";1;"";"";"";"1";"Ja";"41394";"1321";NA
+371;"1800";1;"";"";"";"2";"Nein";"41393";"3122";NA
+372;"1807";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+373;"1807";1;"";"";"";"1";"Ja";"81394";"1324";NA
+374;"1807";1;"";"";"";"2";"Nein";"81393";"2221";NA
+375;"1820";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+376;"1820";1;"";"";"";"1";"Nein";"63112";"4221";NA
+377;"1820";1;"";"";"";"2";"Ja";"63113";"4221";NA
+378;"1821";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+379;"1821";1;"";"";"";"1";"Nein";"63212";"3343";NA
+380;"1821";1;"";"";"";"2";"Ja";"63213";"3343";NA
+381;"1822";1;"sonstige";"Ist Ihre Stellung mindestens die eines 'Chef de Rang' oder vergleichbar?";"War Ihre Stellung mindestens die eines 'Chef de Rang' oder vergleichbar?";"";"";"";"";""
+382;"1822";1;"";"";"";"1";"Nein";"63302";"5131";NA
+383;"1822";1;"";"";"";"2";"Ja";"63303";"5131";NA
+384;"1823";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+385;"1823";1;"";"";"";"1";"Nein";"72212";"4311";NA
+386;"1823";1;"";"";"";"2";"Ja";"72213";"3313";NA
+387;"1824";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+388;"1824";1;"";"";"";"1";"Ja";"72224";"2411";NA
+389;"1824";1;"";"";"";"2";"Nein";"72223";"3313";NA
+390;"1825";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+391;"1825";1;"";"";"";"1";"Ja";"73324";"2622";NA
+392;"1825";1;"";"";"";"2";"Nein";"73323";"3433";NA
+393;"1826";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+394;"1826";1;"";"";"";"1";"Nein";"81142";"3240";NA
+395;"1826";1;"";"";"";"2";"Ja";"81143";"3240";NA
+396;"1827";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+397;"1827";1;"";"";"";"1";"Ja";"81394";"1342";NA
+398;"1827";1;"";"";"";"2";"Nein";"81393";"2221";NA
+399;"1828";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+400;"1828";1;"";"";"";"1";"Nein";"82232";"3259";NA
+401;"1828";1;"";"";"";"2";"Ja";"82233";"2265";NA
+402;"1829";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+403;"1829";1;"";"";"";"1";"Ja";"82504";"2149";NA
+404;"1829";1;"";"";"";"2";"Nein";"82503";"3119";NA
+405;"1830";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen, oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen, oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+406;"1830";1;"";"";"";"1";"Ja";"82594";"1321";NA
+407;"1830";1;"";"";"";"2";"Nein";"82593";"3214";NA
+408;"1831";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+409;"1831";1;"";"";"";"1";"Ja";"82594";"1321";NA
+410;"1831";1;"";"";"";"2";"Nein";"82593";"3214";NA
+411;"1832";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+412;"1832";1;"";"";"";"1";"Ja";"82594";"1321";NA
+413;"1832";1;"";"";"";"2";"Nein";"82593";"3254";NA
+414;"1833";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+415;"1833";1;"";"";"";"1";"Ja";"82594";"1321";NA
+416;"1833";1;"";"";"";"2";"Nein";"82593";"3214";NA
+417;"1834";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+418;"1834";1;"";"";"";"1";"Nein";"83142";"5322";NA
+419;"1834";1;"";"";"";"2";"Ja";"83143";"5322";NA
+420;"1835";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Archäologie erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Archäologie erforderlich?";"";"";"";"";""
+421;"1835";1;"";"";"";"1";"Ja";"91234";"2632";NA
+422;"1835";1;"";"";"";"2";"Nein";"91233";"3119";NA
+423;"1836";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+424;"1836";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"91342";"3314";"FALSE"
+425;"1836";1;"";"";"";"2";"eine berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"91343";"3314";"FALSE"
+426;"1836";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"91343";"3314";"FALSE"
+427;"1836";1;"";"";"";"4";"ein abgeschlossenes Masterstudium";"91344";"2120";NA
+428;"1836";2;"spezialisierung";"Welche Aufgaben führen Sie dabei in der Regel aus?";"Welche Aufgaben haben Sie dabei in der Regel ausgeführt?";"";"";"";"";""
+429;"1836";2;"";"";"";"1";"Entwicklung statistischer Analysewerkzeuge; Evaluation und Analyse statistischer Daten";"91344";"2120";NA
+430;"1836";2;"";"";"";"2";"Erarbeiten von Fragestellungen; Konzeption von Befragungsstudien; Diskussion der Ergebnisse";"91344";"2632";NA
+431;"1837";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+432;"1837";1;"";"";"";"1";"Ja";"92114";"2431";NA
+433;"1837";1;"";"";"";"2";"Nein";"92113";"2431";NA
+434;"1838";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+435;"1838";1;"";"";"";"1";"Ja";"92414";"2642";NA
+436;"1838";1;"";"";"";"2";"Nein";"92413";"2642";NA
+437;"1839";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+438;"1839";1;"";"";"";"2";"eine abgeschlossene Berufsausbildung";"93102";"2163";NA
+439;"1839";1;"";"";"";"3";"eine berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"93103";"2163";NA
+440;"1839";1;"";"";"";"4";"ein abgeschlossenes Bachelorstudium";"93103";"2163";NA
+441;"1839";1;"";"";"";"5";"ein abgeschlossenes Masterstudium";"93104";"2163";NA
+442;"1840";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+443;"1840";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"93212";"3432";NA
+444;"1840";1;"";"";"";"2";"eine berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"93213";"3432";NA
+445;"1840";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"93213";"3432";NA
+446;"1840";1;"";"";"";"4";"ein abgeschlossenes Masterstudium";"93214";"2161";NA
+447;"1841";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+448;"1841";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"93522";"7313";NA
+449;"1841";1;"";"";"";"2";"eine berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"93523";"2163";NA
+450;"1841";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"93523";"2163";NA
+451;"1841";1;"";"";"";"4";"ein abgeschlossenes Masterstudium";"93524";"2163";NA
+452;"1842";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+453;"1842";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"94532";"3521";NA
+454;"1842";1;"";"";"";"2";"eine berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"94533";"3521";NA
+455;"1842";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"94533";"3521";NA
+456;"1842";1;"";"";"";"4";"ein abgeschlossenes Masterstudium";"94534";"2654";NA
+457;"1843";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+458;"1843";1;"";"";"";"1";"Ja";"24124";"2146";NA
+459;"1843";1;"";"";"";"2";"Nein";"24123";"3135";NA
+460;"1844";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+461;"1844";1;"";"";"";"1";"Ja";"24134";"2146";NA
+462;"1844";1;"";"";"";"2";"Nein";"24133";"3117";NA
+463;"1845";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+464;"1845";1;"";"";"";"1";"Ja";"24304";"2146";NA
+465;"1845";1;"";"";"";"2";"Nein";"24303";"3116";NA
+466;"1846";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+467;"1846";1;"";"";"";"1";"Ja";"24414";"2142";NA
+468;"1846";1;"";"";"";"2";"Nein";"24413";"3112";NA
+469;"1847";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+470;"1847";1;"";"";"";"1";"Ja";"24524";"2144";NA
+471;"1847";1;"";"";"";"2";"Nein";"24523";"3115";NA
+472;"1848";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+473;"1848";1;"";"";"";"1";"Ja";"24524";"2144";NA
+474;"1848";1;"";"";"";"2";"Nein";"24523";"3115";NA
+475;"1849";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+476;"1849";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"61312";"3334";NA
+477;"1849";1;"";"";"";"2";"eine berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"61313";"3334";NA
+478;"1849";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"61313";"3334";NA
+479;"1849";1;"";"";"";"4";"ein abgeschlossenes Masterstudium";"61314";"3334";NA
+480;"1850";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+481;"1850";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"61312";"3334";NA
+482;"1850";1;"";"";"";"2";"eine berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"61313";"3334";NA
+483;"1850";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"61313";"3334";NA
+484;"1850";1;"";"";"";"4";"ein abgeschlossenes Masterstudium";"61314";"3334";NA
+485;"1851";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+486;"1851";1;"";"";"";"1";"Ja";"11194";"1311";"FALSE"
+487;"1851";1;"";"";"";"2";"Nein";"11193";"6130";NA
+488;"1851";2;"sonstige";"Über welche landwirtschaftliche Tätigkeit führen Sie Aufsicht?";"Über welche landwirtschaftliche Tätigkeit haben Sie Aufsicht geführt?";"";"";"";"";""
+489;"1851";2;"";"";"";"1";"Über den Anbau von Gemüse und Ackerbau";"11193";"6111";NA
+490;"1851";2;"";"";"";"2";"Über das Sammeln von landwirtschaftlich interessanten Daten wie beispielsweise zur Einhaltung der Qualitätsstandards";"11193";"3142";NA
+491;"1851";2;"";"";"";"3";"Keine der vorigen Antworten trifft zu";"11193";"6130";NA
+492;"1853";1;"sonstige";"Stellen Sie hauptsächlich Drähte, Drahtgewebe oder Federn her?";"Haben Sie hauptsächlich Drähte, Drahtgewebe oder Federn hergestellt?";"";"";"";"";""
+493;"1853";1;"";"";"";"1";"Ja";"24212";"7221";NA
+494;"1853";1;"";"";"";"2";"Nein";"24212";"7223";NA
+495;"1854";1;"spezialisierung";"Arbeiten Sie vorwiegend im Hochbau oder im Tiefbau?";"Haben Sie vorwiegend im Hochbau oder im Tiefbau gearbeitet?";"";"";"";"";""
+496;"1854";1;"";"";"";"1";"Hochbau (d.h. Errichtung von Gebäuden)";"32101";"9313";NA
+497;"1854";1;"";"";"";"2";"Tiefbau (d.h. Bauarbeiten an Rohrleitungen, Tunneln, Straßen, Brücken, Kanälen, Gleisen usw.)";"32201";"9312";NA
+498;"1856";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+499;"1856";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"34302";"7126";NA
+500;"1856";1;"";"";"";"2";"eine berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"34303";"3115";NA
+501;"1856";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"34303";"3115";NA
+502;"1856";1;"";"";"";"4";"ein abgeschlossenes Masterstudium";"34304";"2144";NA
+503;"2104";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+504;"2104";1;"";"";"";"1";"Ja";"26233";"3131";NA
+505;"2104";1;"";"";"";"2";"Nein";"26232";"8182";NA
+506;"2109";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+507;"2109";1;"";"";"";"1";"Ja";"26253";"3113";NA
+508;"2109";1;"";"";"";"2";"Nein";"26252";"7412";NA
+509;"2115";1;"sonstige";"Arbeiten Sie hauptsächlich an elektronischen Geräten oder an elektrischen Anlagen und Maschinen?";"Haben Sie hauptsächlich an elektronischen Geräten oder an elektrischen Anlagen und Maschinen gearbeitet?";"";"";"";"";""
+510;"2115";1;"";"";"";"1";"an elektronischen Geräten";"26302";"7421";NA
+511;"2115";1;"";"";"";"2";"an elektrischen Anlagen und Maschinen";"26302";"7412";NA
+512;"2124";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+513;"2124";1;"";"";"";"1";"Ja";"25194";"1321";NA
+514;"2124";1;"";"";"";"2";"Nein";"25193";"3122";NA
+515;"2126";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+516;"2126";1;"";"";"";"1";"Ja";"25294";"1321";NA
+517;"2126";1;"";"";"";"2";"Nein";"25293";"3122";NA
+518;"2143";1;"anforderungsniveau";"Welche Ausbildung ist für diese Tätigkeit in der Regel erforderlich?";"Welche Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+519;"2143";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"27182";"3119";NA
+520;"2143";1;"";"";"";"2";"eine berufliche Weiterbildung";"27183";"3119";NA
+521;"2143";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"27183";"3119";NA
+522;"2143";1;"";"";"";"4";"ein abgeschlossenes Masterstudium";"27184";"2149";NA
+523;"2149";1;"sonstige";"Mit welchem Material arbeiten Sie hauptsächlich?";"Mit welchem Material haben Sie hauptsächlich gearbeitet?";"";"";"";"";""
+524;"2149";1;"";"";"";"2";"Holz";"27232";"7522";NA
+525;"2149";1;"";"";"";"3";"Metall";"27232";"7222";NA
+526;"2149";1;"";"";"";"4";"unterschiedliche Materialien";"27232";"7222";NA
+527;"2154";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+528;"2154";1;"";"";"";"1";"Ja";"27294";"1223";NA
+529;"2154";1;"";"";"";"2";"Nein";"27293";"3122";NA
+530;"2155";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+531;"2155";1;"";"";"";"1";"Ja";"27394";"1321";NA
+532;"2155";1;"";"";"";"2";"Nein";"27393";"3122";NA
+533;"3010";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+534;"3010";1;"";"";"";"1";"Ja";"33393";"3123";NA
+535;"3010";1;"";"";"";"2";"Nein";"33352";"8219";NA
+536;"3013";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+537;"3013";1;"";"";"";"1";"Ja";"33393";"3123";NA
+538;"3013";1;"";"";"";"2";"Nein";"33312";"7124";NA
+539;"3017";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+540;"3017";1;"";"";"";"1";"Ja";"33393";"3123";NA
+541;"3017";1;"";"";"";"2";"Nein";"33342";"7125";NA
+542;"3205";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+543;"3205";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"71302";"4322";NA
+544;"3205";1;"";"";"";"2";"eine vertiefende berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"71303";"4322";NA
+545;"3205";1;"";"";"";"3";"ein Bachelorstudium der Betriebswirtschaftslehre, Wirtschaftswissenschaften oder eines vergleichbaren Fachs";"71303";"4322";NA
+546;"3206";1;"anforderungsniveau";"Welche Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Ausbildung war für Ihre Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+547;"3206";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"71302";"4110";NA
+548;"3206";1;"";"";"";"2";"eine vertiefende berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"71303";"3343";NA
+549;"3206";1;"";"";"";"3";"ein Bachelorstudium der Betriebswirtschaftslehre, Wirtschaftswissenschaften oder eines vergleichbaren Fachs";"71303";"3343";NA
+550;"3211";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+551;"3211";1;"";"";"";"1";"Ja";"71394";"1213";NA
+552;"3211";1;"";"";"";"2";"Nein";"71393";"3341";NA
+553;"3214";1;"sonstige";"Welcher Art sind Ihre Übersetzungen?";"Welcher Art waren Ihre Übersetzungen?";"";"";"";"";""
+554;"3214";1;"";"";"";"1";"simultanes oder konsekutives Dolmetschen auf Basis einer entsprechenden Ausbildung";"71424";"2643";NA
+555;"3214";1;"";"";"";"2";"Übersetzung von literarischen Texten oder anspruchsvollen Fachtexten auf Basis einer entsprechenden Ausbildung";"71424";"2643";NA
+556;"3214";1;"";"";"";"3";"Live-Übersetzung in die Gebärdensprache zur Assistenz von Gehörlosen";"71424";"2643";NA
+557;"3214";1;"";"";"";"4";"andere Übersetzungsleistungen";"71423";"2643";NA
+558;"3215";1;"sonstige";"Schreiben Sie Wortprotokolle mittels stenographischer Methoden von Verhandlungen in Parlamenten oder Gerichten?";"Haben Sie Wortprotokolle mittels stenographischer Methoden von Verhandlungen in Parlamenten oder Gerichten geschrieben?";"";"";"";"";""
+559;"3215";1;"";"";"";"1";"Ja";"71433";"3343";NA
+560;"3215";1;"";"";"";"2";"Nein";"71432";"4131";NA
+561;"3216";1;"sonstige";"Ist Ihre Tätigkeit auf die Überprüfung von Übersetzungen fremdsprachlicher Texte spezialisiert?";"War Ihre Tätigkeit auf die Überprüfung von Übersetzungen fremdsprachlicher Texte spezialisiert?";"";"";"";"";""
+562;"3216";1;"";"";"";"1";"Nein";"71442";"4413";NA
+563;"3216";1;"";"";"";"2";"Ja";"71412";"2643";NA
+564;"3219";1;"spezialisierung";"Welche Aufgaben führen Sie dabei in der Regel aus?";"Welche Aufgaben haben Sie dabei in der Regel ausgeführt?";"";"";"";"";""
+565;"3219";1;"";"";"";"1";"kaufmännische Aufgaben im Rahmen von grenzüberschreitenden Wirtschaftsbeziehungen (z.B. Import- und Exportaufträge bearbeiten, fremdsprachige Rechnungen ausstellen)";"71413";"4419";NA
+566;"3219";1;"";"";"";"2";"Assistenzaufgaben im Büro oder Sekretariat (z.B. Schriftstücke und Protokolle übersetzen, Besprechungen und Konferenzen vorbereiten und organisieren)";"71412";"4419";NA
+567;"3221";1;"spezialisierung";"Welche Aufgaben führen Sie dabei in der Regel aus?";"Welche Aufgaben haben Sie dabei in der Regel ausgeführt?";"";"";"";"";""
+568;"3221";1;"";"";"";"1";"Rechnungen, Formulare und andere Aufzeichnungen im Computer eintragen";"71401";"4132";NA
+569;"3221";1;"";"";"";"2";"Dokumente kopieren und abheften";"71401";"4415";NA
+570;"3221";1;"";"";"";"3";"Formulare, Belege und andere Dokumente sortieren";"71442";"4413";NA
+571;"3221";1;"";"";"";"4";"Rundschreiben und Kuverts adressieren";"71442";"4413";NA
+572;"3221";1;"";"";"";"5";"unterschiedliche Bürotätigkeiten";"71401";"4110";NA
+573;"3222";1;"spezialisierung";"Welche Aufgaben führen Sie dabei in der Regel aus?";"Welche Aufgaben haben Sie dabei in der Regel ausgeführt?";"";"";"";"";""
+574;"3222";1;"";"";"";"1";"persönliche Unterstützung von Führungskräften bei organisatorische Aufgaben";"71403";"3343";NA
+575;"3222";1;"";"";"";"2";"Korrespondenz mit Auslandskontakten in einer Fremdsprache";"71412";"4419";NA
+576;"3222";1;"";"";"";"3";"Schreiben und Beantworten von Geschäftsbriefen, technischen Schriften oder Verträgen";"71403";"3343";NA
+577;"3222";1;"";"";"";"4";"Überprüfung und Formatierung von Texten sowie Erledigung des routinemäßigen Schriftverkehrs";"71402";"4120";NA
+578;"3222";1;"";"";"";"5";"Erledigung verschiedener Büro- und Verwaltungstätigkeiten nach vorgegebenen Verfahren";"71402";"4110";NA
+579;"3518";1;"sonstige";"Arbeiten Sie im Bereich Informations- und Kommunikationstechnologie?";"Haben Sie im Bereich Informations- und Kommunikationstechnologie gearbeitet?";"";"";"";"";""
+580;"3518";1;"";"";"";"1";"Ja";"43223";"2434";NA
+581;"3518";1;"";"";"";"2";"Nein";"92133";"2431";NA
+582;"3529";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine Prüfung zum Fachwirt erforderlich?";"War für diese Tätigkeit in der Regel eine Prüfung zum Fachwirt erforderlich?";"";"";"";"";""
+583;"3529";1;"";"";"";"1";"Ja";"73113";"3342";NA
+584;"3529";1;"";"";"";"2";"Nein";"73112";"3342";NA
+585;"3530";1;"sonstige";"Welche Prüfung oder Zulassung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Prüfung oder Zulassung war für Ihre Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+586;"3530";1;"";"";"";"1";"Zulassung zur Rechtsanwaltschaft erforderlich";"73134";"2611";NA
+587;"3530";1;"";"";"";"2";"erstes juristisches Staatsexamen erforderlich";"73184";"2619";NA
+588;"3530";1;"";"";"";"3";"erstes juristischen Staatsexamen nicht erforderlich";"73183";"3411";NA
+589;"3534";1;"anforderungsniveau";"Sind Sie Beamte/r im mittleren, gehobenen oder höheren Dienst?";"Waren Sie Beamte/r im mittleren, gehobenen oder höheren Dienst?";"";"";"";"";""
+590;"3534";1;"";"";"";"1";"im mittleren Dienst oder vergleichbar";"73162";"3355";NA
+591;"3534";1;"";"";"";"2";"im gehobenen Dienst oder vergleichbar";"73163";"3355";NA
+592;"3534";1;"";"";"";"3";"im höheren Dienst oder vergleichbar";"73164";"2422";NA
+593;"3537";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+594;"3537";1;"";"";"";"1";"Ja";"73194";"1349";NA
+595;"3537";1;"";"";"";"2";"Nein";"73194";"2619";NA
+596;"3541";1;"anforderungsniveau";"Sind Sie Beamte/r im mittleren, gehobenen oder höheren Dienst?";"Waren Sie Beamte/r im mittleren, gehobenen oder höheren Dienst?";"";"";"";"";""
+597;"3541";1;"";"";"";"1";"im mittleren Dienst oder vergleichbar";"73252";"3411";NA
+598;"3541";1;"";"";"";"2";"im gehobenen Dienst oder vergleichbar";"73253";"3411";NA
+599;"3541";1;"";"";"";"3";"im höheren Dienst oder vergleichbar";"73254";"2619";NA
+600;"3544";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+601;"3544";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"73212";"3353";NA
+602;"3544";1;"";"";"";"2";"eine berufliche Weiterbildung";"73213";"3353";NA
+603;"3544";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"73213";"3353";NA
+604;"3550";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+605;"3550";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"73202";"3354";NA
+606;"3550";1;"";"";"";"2";"eine abgeschlossene berufliche Weiterbildung mit Mindestdauer 1 Jahr";"73203";"3354";NA
+607;"3550";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"73203";"3354";NA
+608;"3551";1;"anforderungsniveau";"Sind Sie Beamte/r im mittleren, gehobenen oder höheren Dienst?";"Waren Sie Beamte/r im mittleren, gehobenen oder höheren Dienst?";"";"";"";"";""
+609;"3551";1;"";"";"";"1";"im mittleren Dienst oder vergleichbar";"73232";"3352";NA
+610;"3551";1;"";"";"";"2";"im gehobenen Dienst oder vergleichbar";"73233";"3352";NA
+611;"3551";1;"";"";"";"3";"im höheren Dienst oder vergleichbar";"73234";"2411";NA
+612;"3552";1;"anforderungsniveau";"Sind Sie Beamte/r im einfachen, mittleren, gehobenen oder höheren Dienst?";"Waren Sie Beamte/r im einfachen, mittleren, gehobenen oder höheren Dienst?";"";"";"";"";""
+613;"3552";1;"";"";"";"1";"im einfachen Dienst oder vergleichbar";"73241";"3351";NA
+614;"3552";1;"";"";"";"2";"im mittleren Dienst oder vergleichbar";"73242";"3351";NA
+615;"3552";1;"";"";"";"3";"im gehobenen Dienst oder vergleichbar";"73243";"3351";NA
+616;"3552";1;"";"";"";"4";"im höheren Dienst oder vergleichbar";"73244";"3351";NA
+617;"3553";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+618;"3553";1;"";"";"";"1";"eine abgeschlossene Berufsausbilung";"73312";"4415";NA
+619;"3553";1;"";"";"";"2";"eine Ausbildung für eine Laufbahn im gehobenen Dienst";"73313";"2621";NA
+620;"3553";1;"";"";"";"3";"eine Ausbildung für eine Laufbahn im höheren Dienst";"73314";"2621";NA
+621;"3555";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+622;"3555";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"73332";"4419";NA
+623;"3555";1;"";"";"";"2";"eine berufliche Weiterbildung";"73333";"3433";NA
+624;"3555";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium im Bereich bibliotheks- oder informationswissenschaften";"73333";"3433";NA
+625;"3555";1;"";"";"";"4";"ein abgeschlossenes Masterstudium im Bereich bibliotheks- oder informationswissenschaften";"73334";"2622";NA
+626;"3573";1;"sonstige";"Berichten Sie persönlich an das übergeordnete Management?";"Haben Sie persönlich an das übergeordnete Management berichtet?";"";"";"";"";""
+627;"3573";1;"";"";"";"1";"Ja";"72234";"2411";NA
+628;"3573";1;"";"";"";"2";"Nein";"72233";"3313";NA
+629;"3577";1;"spezialisierung";"Welche Aufgaben führen Sie dabei in der Regel aus?";"Welche Aufgaben haben Sie dabei in der Regel ausgeführt?";"";"";"";"";""
+630;"3577";1;"";"";"";"1";"individuelle Beratung und Unterstützung bei der Vermögensverwaltung";"72124";"2412";NA
+631;"3577";1;"";"";"";"2";"Vermittlung und Durchführung von Geld- und Wertpapiergeschäften";"72123";"3311";NA
+632;"3577";1;"";"";"";"3";"Sekretariatstätigkeiten und Aktenführung über durchgeführte Transaktionen";"72122";"4312";NA
+633;"3577";1;"";"";"";"4";"Unterstützung des verantwortlichen Personals bei Handels- und Beratungsaktivitäten";"72122";"3311";NA
+634;"3581";1;"sonstige";"Arbeiten Sie unter Aufsicht einer verantwortlichen Person oder sind Sie selber für die Prüfergebnisse verantwortlich?";"Haben Sie unter Aufsicht einer verantwortlichen Person gearbeitet oder waren Sie selber für die Prüfergebnisse verantwortlich?";"";"";"";"";""
+635;"3581";1;"";"";"";"1";"Arbeit unter Aufsicht einer verantwortlichen Person";"72243";"2411";NA
+636;"3581";1;"";"";"";"2";"selber verantwortlich";"72244";"2411";NA
+637;"3584";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+638;"3584";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"72132";"3321";NA
+639;"3584";1;"";"";"";"2";"eine berufliche Weiterbildung";"72133";"3321";NA
+640;"3584";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"72133";"3321";NA
+641;"3585";1;"anforderungsniveau";"Welche Ausbildung ist für diese Tätigkeit in der Regel erforderlich?";"Welche Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+642;"3585";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"72132";"3315";NA
+643;"3585";1;"";"";"";"2";"eine berufliche Weiterbildung";"72133";"3321";NA
+644;"3585";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"72133";"3321";NA
+645;"3587";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+646;"3587";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"72302";"4311";NA
+647;"3587";1;"";"";"";"2";"eine Fortbildung zum Steuerfachwirt oder vergleichbar";"72303";"3313";NA
+648;"3587";1;"";"";"";"3";"ein Masterstudium im Bereich Wirtschafts- oder Rechtswissenschaften";"72304";"2411";NA
+649;"3587";1;"";"";"";"4";"eine bestandene Steuerberaterprüfung";"72304";"2411";NA
+650;"3597";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+651;"3597";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"71522";"3333";NA
+652;"3597";1;"";"";"";"2";"eine berufliche Weiterbildung";"71523";"3333";NA
+653;"3597";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"71523";"3333";NA
+654;"4002";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+655;"4002";1;"";"";"";"1";"Techniker/in der Fachrichtung Biotechnik oder eine verwandte Weiterbildung";"41213";"3141";NA
+656;"4002";1;"";"";"";"2";"ein abgeschlossenes Bachelorstudium im Bereich Biotechnologie oder ein vergleichbares Studium";"41213";"3141";NA
+657;"4002";1;"";"";"";"3";"ein abgeschlossenes Masterstudium im Bereich Biotechnologie oder ein vergleichbares Studium";"41214";"3141";NA
+658;"4014";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+659;"4014";1;"";"";"";"1";"nein";"41323";"3111";NA
+660;"4014";1;"";"";"";"2";"ja";"41324";"2145";NA
+661;"4035";1;"spezialisierung";"In welchem Bereich sind Sie vorwiegend tätig?";"In welchem Bereich waren Sie vorwiegend tätig?";"";"";"";"";""
+662;"4035";1;"";"";"";"1";"Konzeption von speziellen IT-Systemen für verschiedene Aufgaben und Anwenderbedürfnisse";"";"2511";NA
+663;"4035";1;"";"";"";"2";"Entwurf und Entwicklung von Computersoftware";"";"2512";NA
+664;"4035";1;"";"";"";"3";"Entwicklung und Entwurf von Webseiten und Online-shops/ E-Commerce";"";"2513";NA
+665;"4035";1;"";"";"";"4";"Entwicklung und Wartung von Code";"";"2514";NA
+666;"4035";1;"";"";"";"5";"Entwicklung, Kontrolle und Wartung von Datenbanken";"";"2521";NA
+667;"4035";1;"";"";"";"6";"Wartung und Verwaltung von informationstechnischen Systemen";"";"2522";NA
+668;"4035";1;"";"";"";"7";"Erforschung und Weiterentwicklung von Netzwerkarchitekturen zur Leistungsoptimierung";"";"2523";NA
+669;"4035";2;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+670;"4035";2;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"43112";"";NA
+671;"4035";2;"";"";"";"2";"eine vertiefende berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"43113";"";NA
+672;"4035";2;"";"";"";"3";"ein abgeschlossenes Bachelorstudium in Informatik, Wirtschafsinformatik oder ein vergleichbares Studium";"43113";"";NA
+673;"4035";2;"";"";"";"4";"ein abgeschlossenes Masterstudium in Informatik, Wirtschafsinformatik oder ein vergleichbares Studium";"43114";"";NA
+674;"4037";1;"spezialisierung";"In welchem Bereich sind Sie vorwiegend tätig?";"In welchem Bereich waren Sie vorwiegend tätig?";"";"";"";"";""
+675;"4037";1;"";"";"";"1";"Konzeption von speziellen IT-Systemen für verschiedene Aufgaben und Anwenderbedürfnisse";"";"2511";NA
+676;"4037";1;"";"";"";"2";"Entwurf und Entwicklung von Computersoftware";"";"2512";NA
+677;"4037";1;"";"";"";"3";"Entwicklung von Steuerprogrammen für elektrotechnische Geräte und Maschinen";"";"2152";NA
+678;"4037";1;"";"";"";"4";"Entwicklung und Wartung von Code";"";"2514";NA
+679;"4037";1;"";"";"";"5";"Verwaltung von Netzwerkdaten und Computernetzwerken";"";"3513";NA
+680;"4037";1;"";"";"";"6";"Überwachung von Hardware, Software und Computerzubehör; um optimale Leistung zu garantieren";"";"3511";NA
+681;"4037";1;"";"";"";"7";"Erforschung und Weiterentwicklung von Netzwerkarchitekturen zur Leistungsoptimierung";"";"2523";NA
+682;"4037";2;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+683;"4037";2;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"43122";"";NA
+684;"4037";2;"";"";"";"2";"eine vertiefende berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"43123";"";NA
+685;"4037";2;"";"";"";"3";"ein abgeschlossenes Bachelorstudium in Informatik, Wirtschafsinformatik oder ein vergleichbares Studium";"43123";"";NA
+686;"4037";2;"";"";"";"4";"ein abgeschlossenes Masterstudium in Informatik, Wirtschafsinformatik oder ein vergleichbares Studium";"43124";"";NA
+687;"4038";1;"spezialisierung";"In welchem Bereich sind Sie vorwiegend tätig?";"In welchem Bereich waren Sie vorwiegend tätig?";"";"";"";"";""
+688;"4038";1;"";"";"";"1";"Konzeption von speziellen IT-Systemen für verschiedene Aufgaben und Anwenderbedürfnisse";"";"2511";NA
+689;"4038";1;"";"";"";"2";"Technischer Support für Problemdiagnosen und Fehlerbehebungen";"";"3512";NA
+690;"4038";1;"";"";"";"3";"Errichtung und Verwaltung von Computernetzwerken";"";"3513";NA
+691;"4038";1;"";"";"";"4";"Wartung und Administration von Webseiten";"";"3514";NA
+692;"4038";1;"";"";"";"5";"Entwurf und Entwicklung von Computersoftware";"";"2512";NA
+693;"4038";1;"";"";"";"6";"Schreiben und Wartung von Programmcode";"";"2514";NA
+694;"4038";1;"";"";"";"7";"Entwicklung, Kontrolle und Wartung von Datenbanken";"";"2521";NA
+695;"4038";1;"";"";"";"8";"Wartung und Verwaltung von informationstechnischen Systemen";"";"2522";NA
+696;"4038";1;"";"";"";"9";"Erforschung und Weiterentwicklung von Netzwerkarchitekturen zur Leistungsoptimierung";"";"2523";NA
+697;"4038";2;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+698;"4038";2;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"43102";"";NA
+699;"4038";2;"";"";"";"2";"eine vertiefende berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"43103";"";NA
+700;"4038";2;"";"";"";"3";"ein abgeschlossenes Bachelorstudium in Informatik, Medieninformatik oder ein vergleichbares Studium";"43103";"";NA
+701;"4038";2;"";"";"";"4";"ein abgeschlossenes Masterstudium in Informatik, Medieninformatik oder ein vergleichbares Studium";"43104";"";NA
+702;"4040";1;"spezialisierung";"In welchem Bereich sind Sie vorwiegend tätig?";"In welchem Bereich waren Sie vorwiegend tätig?";"";"";"";"";""
+703;"4040";1;"";"";"";"1";"Entwicklung von Computersoftware";"43134";"2512";NA
+704;"4040";1;"";"";"";"2";"Konzeption und Entwicklung von IT-Systemen für spezielle Anforderungen";"43134";"2511";NA
+705;"4041";1;"spezialisierung";"In welchem Bereich sind Sie vorwiegend tätig?";"In welchem Bereich waren Sie vorwiegend tätig?";"";"";"";"";""
+706;"4041";1;"";"";"";"1";"Entwicklung von Computersoftware";"43134";"2512";NA
+707;"4041";1;"";"";"";"2";"Konzeption und Entwicklung von IT-Systemen für spezielle Anforderungen";"43134";"2511";NA
+708;"4041";1;"";"";"";"3";"Entwicklung, Kontrolle und Wartung von Datenbanken";"43134";"2521";NA
+709;"4042";1;"spezialisierung";"In welchem Bereich sind Sie vorwiegend tätig?";"In welchem Bereich waren Sie vorwiegend tätig?";"";"";"";"";""
+710;"4042";1;"";"";"";"1";"Entwicklung von Computersoftware";"43144";"2512";NA
+711;"4042";1;"";"";"";"2";"Konzeption und Entwicklung von IT-Systemen für spezielle Anforderungen";"43144";"2511";NA
+712;"4042";1;"";"";"";"3";"Entwicklung, Kontrolle und Wartung von Datenbanken";"43144";"2521";NA
+713;"4043";1;"spezialisierung";"In welchem Bereich sind Sie vorwiegend tätig?";"In welchem Bereich waren Sie vorwiegend tätig?";"";"";"";"";""
+714;"4043";1;"";"";"";"1";"Entwurf und Entwicklung von Computersoftware";"";"2512";NA
+715;"4043";1;"";"";"";"2";"Entwicklung und Entwurf von Webseiten, Grafiken, Videos und Animationen";"";"2513";NA
+716;"4043";1;"";"";"";"3";"Entwicklung und Wartung von Code";"";"2514";NA
+717;"4043";1;"";"";"";"4";"Entwicklung, Kontrolle und Wartung von Datenbanken";"";"2521";NA
+718;"4043";1;"";"";"";"5";"Wartung und Administration von Webseiten";"";"3514";NA
+719;"4043";2;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+720;"4043";2;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"43152";"";NA
+721;"4043";2;"";"";"";"2";"eine vertiefende berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"43153";"";NA
+722;"4043";2;"";"";"";"3";"ein abgeschlossenes Bachelorstudium in Informatik, Medieninformatik oder ein vergleichbares Studium";"43153";"";NA
+723;"4043";2;"";"";"";"4";"ein abgeschlossenes Masterstudium in Informatik, Medieninformatik oder ein vergleichbares Studium";"43154";"";NA
+724;"4048";1;"spezialisierung";"In welchem Bereich sind Sie vorwiegend tätig?";"In welchem Bereich waren Sie vorwiegend tätig?";"";"";"";"";""
+725;"4048";1;"";"";"";"1";"Konzeption und Bewertung von IT-Systemen für verschiedene Anwenderbedürfnisse";"43224";"2511";NA
+726;"4048";1;"";"";"";"2";"Kundensupport und Überprüfung von IT-Systemen und Software";"43224";"3512";NA
+727;"4219";1;"spezialisierung";"Mit welchem spezifischen Fachgebiet beschäftigen Sie sich?";"Mit welchem spezifischen Fachgebiet haben Sie sich beschäftigt?";"";"";"";"";""
+728;"4219";1;"";"";"";"1";"Eigenschaften und Herstellung von Polymeren";"41384";"2113";NA
+729;"4219";1;"";"";"";"2";"Organische Chemie";"41384";"2113";NA
+730;"4219";1;"";"";"";"3";"Anorganische Chemie";"41384";"2113";NA
+731;"4219";1;"";"";"";"4";"Chemische Analyse von Stoffen zu vorgegeben Zwecken, z.B. in der Forensik oder Produktionsüberwachung";"41384";"2113";NA
+732;"4219";1;"";"";"";"5";"Chemische Analyse von Arzneimitteln, z.B. im Hinblick auf toxikologische Risiken";"41384";"2113";NA
+733;"4219";1;"";"";"";"6";"Lebensmittelchemie";"41384";"2113";NA
+734;"4219";1;"";"";"";"7";"Planung und Überwachung von Geschäfts- und Produktionsprozessen in der chemischen und pharmazeutischen Industrie";"41384";"2113";NA
+735;"4219";1;"";"";"";"8";"Erforschung von Inhaltsstoffen natürlicher Organismen und Nutzung dieser Stoffe für Pharmazie, Landwirtschaft, Lebensmittelherstellung";"41384";"2113";NA
+736;"5001";1;"sonstige";"Führen Sie Lageraufzeichnungen durch?";"Haben Sie Lageraufzeichnungen durchgeführt?";"";"";"";"";""
+737;"5001";1;"";"";"";"1";"Ja";"51312";"4321";NA
+738;"5001";1;"";"";"";"2";"Nein";"51311";"9333";NA
+739;"5010";1;"aufsicht";"Ist ein wesentlicher Bestandteil ihrer Arbeit, andere Arbeitnehmer zu beaufsichtigen oder als Führungskraft strategische Entscheidungen für das Unternehmen zu treffen?";"War ein wesentlicher Bestandteil ihrer Arbeit, andere Arbeitnehmer zu beaufsichtigen oder als Führungskraft strategische Entscheidungen für das Unternehmen zu treffen?";"";"";"";"";""
+740;"5010";1;"";"";"";"1";"weder Führungs- noch Aufsichtstätigkeit";"51512";"4323";NA
+741;"5010";1;"";"";"";"2";"Aufsichtstätigkeit mit Verantwortung für untergeordnetes Personal";"51593";"4323";NA
+742;"5010";1;"";"";"";"3";"Führungstätigkeit mit strategischer Entscheidungsbefugnis (z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen, oder zur Einstellung und Entlassung von Personal)";"51594";"1324";NA
+743;"5011";1;"aufsicht";"Ist ein wesentlicher Bestandteil ihrer Arbeit, andere Arbeitnehmer zu beaufsichtigen oder als Führungskraft strategische Entscheidungen für das Unternehmen zu treffen?";"War ein wesentlicher Bestandteil ihrer Arbeit, andere Arbeitnehmer zu beaufsichtigen oder als Führungskraft strategische Entscheidungen für das Unternehmen zu treffen?";"";"";"";"";""
+744;"5011";1;"";"";"";"1";"weder Führungs- noch Aufsichtstätigkeit";"51522";"8312";NA
+745;"5011";1;"";"";"";"2";"Aufsichtstätigkeit mit Verantwortung für untergeordnetes Personal";"51593";"8312";NA
+746;"5011";1;"";"";"";"3";"Führungstätigkeit mit strategischer Entscheidungsbefugnis (z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen, oder zur Einstellung und Entlassung von Personal)";"51594";"1324";NA
+747;"5014";1;"aufsicht";"Ist ein wesentlicher Bestandteil ihrer Arbeit, andere Arbeitnehmer zu beaufsichtigen oder als Führungskraft strategische Entscheidungen für das Unternehmen zu treffen?";"War ein wesentlicher Bestandteil ihrer Arbeit, andere Arbeitnehmer zu beaufsichtigen oder als Führungskraft strategische Entscheidungen für das Unternehmen zu treffen?";"";"";"";"";""
+748;"5014";1;"";"";"";"1";"weder Führungs- noch Aufsichtstätigkeit";"51532";"4323";NA
+749;"5014";1;"";"";"";"2";"Aufsichtstätigkeit mit Verantwortung für untergeordnetes Personal";"51593";"4323";NA
+750;"5014";1;"";"";"";"3";"Führungstätigkeit mit strategischer Entscheidungsbefugnis (z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen, oder zur Einstellung und Entlassung von Personal)";"51594";"1324";NA
+751;"5015";1;"aufsicht";"Ist ein wesentlicher Bestandteil ihrer Arbeit, andere Arbeitnehmer zu beaufsichtigen oder als Führungskraft strategische Entscheidungen für das Unternehmen zu treffen?";"War ein wesentlicher Bestandteil ihrer Arbeit, andere Arbeitnehmer zu beaufsichtigen oder als Führungskraft strategische Entscheidungen für das Unternehmen zu treffen?";"";"";"";"";""
+752;"5015";1;"";"";"";"1";"weder Führungs- noch Aufsichtstätigkeit";"51533";"3154";NA
+753;"5015";1;"";"";"";"2";"Aufsichtstätigkeit mit Verantwortung für untergeordnetes Personal";"51593";"3154";NA
+754;"5015";1;"";"";"";"3";"Führungstätigkeit mit strategischer Entscheidungsbefugnis (z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen, oder zur Einstellung und Entlassung von Personal)";"51594";"1324";NA
+755;"5016";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+756;"5016";1;"";"";"";"1";"Ja";"51594";"1324";NA
+757;"5016";1;"";"";"";"2";"Nein";"51534";"2149";NA
+758;"5017";1;"aufsicht";"Ist ein wesentlicher Bestandteil ihrer Arbeit, andere Arbeitnehmer zu beaufsichtigen oder als Führungskraft strategische Entscheidungen für das Unternehmen zu treffen?";"War ein wesentlicher Bestandteil ihrer Arbeit, andere Arbeitnehmer zu beaufsichtigen oder als Führungskraft strategische Entscheidungen für das Unternehmen zu treffen?";"";"";"";"";""
+759;"5017";1;"";"";"";"1";"weder Führungs- noch Aufsichtstätigkeit";"51543";"3152";NA
+760;"5017";1;"";"";"";"2";"Aufsichtstätigkeit mit Verantwortung für untergeordnetes Personal";"51593";"3152";NA
+761;"5017";1;"";"";"";"3";"Führungstätigkeit mit strategischer Entscheidungsbefugnis (z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen, oder zur Einstellung und Entlassung von Personal)";"51594";"1324";NA
+762;"5018";1;"aufsicht";"Ist ein wesentlicher Bestandteil ihrer Arbeit, andere Arbeitnehmer zu beaufsichtigen oder als Führungskraft strategische Entscheidungen für das Unternehmen zu treffen?";"War ein wesentlicher Bestandteil ihrer Arbeit, andere Arbeitnehmer zu beaufsichtigen oder als Führungskraft strategische Entscheidungen für das Unternehmen zu treffen?";"";"";"";"";""
+763;"5018";1;"";"";"";"1";"weder Führungs- noch Aufsichtstätigkeit";"51583";"3119";NA
+764;"5018";1;"";"";"";"2";"Aufsichtstätigkeit mit Verantwortung für untergeordnetes Personal";"51593";"3119";NA
+765;"5018";1;"";"";"";"3";"Führungstätigkeit mit strategischer Entscheidungsbefugnis (z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen, oder zur Einstellung und Entlassung von Personal)";"51594";"1324";NA
+766;"5022";1;"anforderungsniveau";"Ist für Ihrer Tätigkeit in der Regel ein abgeschlossenes Masterstudium der Verkehrswirtschaft erforderlich?";"War für Ihrer Tätigkeit in der Regel ein abgeschlossenes Masterstudium der Verkehrswirtschaft erforderlich?";"";"";"";"";""
+767;"5022";1;"";"";"";"1";"Ja";"51614";"2433";NA
+768;"5022";1;"";"";"";"2";"Nein";"51613";"3322";NA
+769;"5025";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+770;"5025";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"51622";"4323";NA
+771;"5025";1;"";"";"";"2";"eine vertiefende berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"51623";"3331";NA
+772;"5025";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium im Bereich Betriebswirtschaftslehre, Logistik oder ein vergleichbares Studium";"51623";"3331";NA
+773;"5025";1;"";"";"";"4";"ein abgeschlossenes Masterstudium im Bereich Betriebswirtschaftslehre, Logistik oder ein vergleichbares Studium";"51624";"2421";NA
+774;"5028";1;"sonstige";"Führen Sie Lageraufzeichnungen durch?";"Haben Sie Lageraufzeichnungen durchgeführt?";"";"";"";"";""
+775;"5028";1;"";"";"";"1";"Ja";"51312";"4321";NA
+776;"5028";1;"";"";"";"2";"Nein";"51311";"9333";NA
+777;"5047";1;"sonstige";"Gehört es zu Ihren Tätigkeiten, Piloten auszubilden oder Personaleinsatzpläne zu entwerfen?";"Hat es zu Ihren Tätigkeiten gehört, Piloten auszubilden oder Personaleinsatzpläne zu entwerfen?";"";"";"";"";""
+778;"5047";1;"";"";"";"1";"Ja";"52314";"3153";NA
+779;"5047";1;"";"";"";"2";"Nein";"52313";"3153";NA
+780;"5053";1;"sonstige";"Sind Sie verantwortlich für die wirtschaftliche Führung von Schiffen sowie die Durchführung von Ausbildungen an Bord?";"Waren Sie verantwortlich für die wirtschaftliche Führung von Schiffen sowie die Durchführung von Ausbildungen an Bord?";"";"";"";"";""
+781;"5053";1;"";"";"";"1";"Ja";"52423";"3152";NA
+782;"5053";1;"";"";"";"2";"Nein";"52422";"3152";NA
+783;"5076";1;"spezialisierung";"In welchem Bereich sind Sie vorwiegend tätig?";"In welchem Bereich waren Sie vorwiegend tätig?";"";"";"";"";""
+784;"5076";1;"";"";"";"1";"im Wach- und Sicherheitsgewerbe";"53193";"5414";NA
+785;"5076";1;"";"";"";"2";"im Werkschutz";"53193";"3119";NA
+786;"5076";1;"";"";"";"3";"in der Badeaufsicht";"53193";"5419";NA
+787;"5078";1;"anforderungsniveau";"Sind Sie Beamte/r im mittleren, gehobenen oder höheren Dienst?";"Waren Sie Beamte/r im mittleren, gehobenen oder höheren Dienst?";"";"";"";"";""
+788;"5078";1;"";"";"";"1";"im mittleren Dienst oder vergleichbar";"53212";"5412";"FALSE"
+789;"5078";1;"";"";"";"2";"im gehobenen Dienst oder vergleichbar";"53213";"5412";"FALSE"
+790;"5078";1;"";"";"";"3";"im höheren Dienst oder vergleichbar";"53214";"1349";NA
+791;"5078";2;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+792;"5078";2;"";"";"";"1";"ja";"53214";"1349";NA
+793;"5078";2;"";"";"";"2";"Nein";"53214";"5412";NA
+794;"5079";1;"anforderungsniveau";"Sind Sie Beamte/r im mittleren, gehobenen oder höheren Dienst?";"Waren Sie Beamte/r im mittleren, gehobenen oder höheren Dienst?";"";"";"";"";""
+795;"5079";1;"";"";"";"1";"im mittleren Dienst oder vergleichbar";"53222";"3355";NA
+796;"5079";1;"";"";"";"2";"im gehobenen Dienst oder vergleichbar";"53223";"3355";NA
+797;"5079";1;"";"";"";"3";"im höheren Dienst oder vergleichbar";"53224";"3355";NA
+798;"5080";1;"sonstige";"Für welche/n Auftraggeber arbeiten Sie hauptsächlich?";"Für welche/n Auftraggeber haben Sie hauptsächlich gearbeitet?";"";"";"";"";""
+799;"5080";1;"";"";"";"1";"für Justizbehörden";"53232";"3411";NA
+800;"5080";1;"";"";"";"2";"für Finanzverwaltungen";"53232";"3352";NA
+801;"5085";1;"anforderungsniveau";"Sind Sie Beamte/r im mittleren, gehobenen oder höheren technischen Dienst?";"Waren Sie Beamte/r im mittleren, gehobenen oder höheren technischen Dienst?";"";"";"";"";""
+802;"5085";1;"";"";"";"1";"im mittleren technischen Dienst oder vergleichbar";"53312";"3354";NA
+803;"5085";1;"";"";"";"2";"im gehobenen technischen Dienst oder vergleichbar";"53313";"3354";NA
+804;"5085";1;"";"";"";"3";"im höheren technischen Dienst oder vergleichbar";"53314";"2263";NA
+805;"5088";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung als Lebensmittelkontrolleur/in erforderlich und werden Sie durch Behörden beauftragt?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung als Lebensmittelkontrolleur/in erforderlich und werden Sie durch Behörden beauftragt?";"";"";"";"";""
+806;"5088";1;"";"";"";"1";"Ja";"53333";"3257";NA
+807;"5088";1;"";"";"";"2";"Nein";"53332";"3257";NA
+808;"5089";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+809;"5089";1;"";"";"";"1";"Ja";"53393";"7544";NA
+810;"5089";1;"";"";"";"2";"Nein";"53342";"7544";NA
+811;"5094";1;"anforderungsniveau";"Mussten Sie für diese Tätigkeit neues Wissen lernen?";"Mussten Sie für diese Tätigkeit neues Wissen lernen?";"";"";"";"";""
+812;"5094";1;"";"";"";"1";"Ja";"54132";"8157";NA
+813;"5094";1;"";"";"";"2";"Nein";"54101";"8157";NA
+814;"5099";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+815;"5099";1;"";"";"";"1";"Ja";"51193";"3115";NA
+816;"5099";1;"";"";"";"2";"Nein";"51112";"8312";NA
+817;"5100";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+818;"5100";1;"";"";"";"1";"Ja";"51193";"3115";NA
+819;"5100";1;"";"";"";"2";"Nein";"51113";"3115";NA
+820;"5101";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+821;"5101";1;"";"";"";"1";"Ja";"51193";"3115";NA
+822;"5101";1;"";"";"";"2";"Nein";"51122";"9333";NA
+823;"5102";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+824;"5102";1;"";"";"";"1";"Ja";"51193";"3115";NA
+825;"5102";1;"";"";"";"2";"Nein";"51123";"3115";NA
+826;"5105";1;"sonstige";"Sind Sie für die Wartung funktechnischer Geräte auf dem Schiff verantwortlich?";"Waren Sie für die Wartung funktechnischer Geräte auf dem Schiff verantwortlich?";"";"";"";"";""
+827;"5105";1;"";"";"";"1";"Ja";"51183";"3521";NA
+828;"5105";1;"";"";"";"2";"Nein";"51182";"3521";NA
+829;"5124";1;"sonstige";"Gehört es zu Ihren Tätigkeiten die Budgetierung von Werbemaßnahmen zu übernehmen und Gestaltungs- und Präsentationskonzepte zu entwerfen?";"Gehörte es zu Ihren Tätigkeiten die Budgetierung von Werbemaßnahmen zu übernehmen und Gestaltungs- und Präsentationskonzepte zu entwerfen?";"";"";"";"";""
+830;"5124";1;"";"";"";"1";"Ja";"93223";"3432";NA
+831;"5124";1;"";"";"";"2";"Nein";"93222";"3432";NA
+832;"5128";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+833;"5128";1;"";"";"";"1";"Ja";"93304";"2651";NA
+834;"5128";1;"";"";"";"2";"Nein";"93303";"2651";NA
+835;"5141";1;"spezialisierung";"In welchem Bereich sind Sie vorwiegend tätig?";"In welchem Bereich waren Sie vorwiegend tätig?";"";"";"";"";""
+836;"5141";1;"";"";"";"1";"in der Bildhauerei, Drechslerei und Spielzeugherstellung, in der Wachszieherei, im Vergolderhandwerk oder in anderen Bereichen der bildenden Kunst";"93393";"3122";NA
+837;"5141";1;"";"";"";"2";"In der Keramik- und Glasgestaltung";"93493";"3122";NA
+838;"5141";1;"";"";"";"3";"In der Schmuckherstellung und Gravur, Schilder- und Lichtreklameherstellung oder Metallbildnerei";"93593";"3122";NA
+839;"5219";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+840;"5219";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"23222";"2166";NA
+841;"5219";1;"";"";"";"2";"eine vertiefende berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"23223";"2166";NA
+842;"5219";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium im Bereich Design und Mediendesign oder eines vergleichbaren Fachs";"23223";"2166";NA
+843;"5219";1;"";"";"";"4";"ein abgeschlossenes Masterstudium im Bereich Design und Mediendesign oder eines vergleichbaren Fachs";"23224";"2166";NA
+844;"5222";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+845;"5222";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"23212";"7321";NA
+846;"5222";1;"";"";"";"2";"eine vertiefende berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"23213";"7321";NA
+847;"5222";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"23213";"7321";NA
+848;"5224";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+849;"5224";1;"";"";"";"1";"Ja";"23294";"1222";NA
+850;"5224";1;"";"";"";"2";"Nein";"23293";"2166";NA
+851;"5226";1;"anforderungsniveau";"Mussten Sie für diese Tätigkeit neues Wissen lernen?";"Mussten Sie für diese Tätigkeit neues Wissen lernen?";"";"";"";"";""
+852;"5226";1;"";"";"";"1";"Ja";"54112";"9112";NA
+853;"5226";1;"";"";"";"2";"Nein";"54101";"9112";NA
+854;"5234";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine abgeschlossene Berufsausbildung im Bereich Druck erforderlich?";"War für diese Tätigkeit in der Regel eine abgeschlossene Berufsausbildung im Bereich Druck erforderlich?";"";"";"";"";""
+855;"5234";1;"";"";"";"1";"Ja";"23412";"7322";NA
+856;"5234";1;"";"";"";"2";"Nein";"23411";"9329";NA
+857;"5246";1;"spezialisierung";"Arbeiten Sie hauptsächlich an Projekten im Hochbau, im Tiefbau oder an Projekten im Hoch- und Tiefbau gleichermaßen?";"Haben Sie hauptsächlich an Projekten im Hochbau, im Tiefbau oder an Projekten im Hoch- und Tiefbau gleichermaßen gearbeitet?";"";"";"";"";""
+858;"5246";1;"";"";"";"1";"Verkehrswege und Verkehrsanlagen planen";"31134";"2164";NA
+859;"5246";1;"";"";"";"2";"wasserwirtschaftliche Anlagen planen";"31144";"2142";NA
+860;"5246";1;"";"";"";"3";"im Hochbau Bauarbeiten an Gebäuden planen und überwachen";"32104";"2142";NA
+861;"5246";1;"";"";"";"4";"im Tiefbau Bauarbeiten an Straßen überwachen";"32224";"2142";NA
+862;"5246";1;"";"";"";"5";"im Tiefbau Bauarbeiten an Wasserstraßen und Wasserbauwerken überwachen";"32264";"2142";NA
+863;"5246";1;"";"";"";"6";"im Tiefbau Bauarbeiten verschiedener Art überwachen";"32204";"2142";NA
+864;"5246";1;"";"";"";"7";"im Hoch- und Tiefbau Bauarbeiten verschiedener Art planen und überwachen";"31104";"2142";NA
+865;"5257";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen in das eigene Unternehmen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen in das eigene Unternehmen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+866;"5257";1;"";"";"";"1";"Ja";"31194";"1323";NA
+867;"5257";1;"";"";"";"2";"Nein";"31193";"3123";NA
+868;"5260";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+869;"5260";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"31212";"3112";NA
+870;"5260";1;"";"";"";"2";"eine berufliche Weiterbildung";"31213";"3112";NA
+871;"5260";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"31213";"3112";NA
+872;"5260";1;"";"";"";"4";"ein abgeschlossenes Masterstudium";"31214";"2165";NA
+873;"5261";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+874;"5261";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"31222";"3118";NA
+875;"5261";1;"";"";"";"2";"eine berufliche Weiterbildung";"31223";"3118";NA
+876;"5261";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"31223";"3118";NA
+877;"5261";1;"";"";"";"4";"ein abgeschlossenes Masterstudium";"31224";"2165";NA
+878;"5262";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+879;"5262";1;"";"";"";"1";"Ja";"32193";"3123";NA
+880;"5262";1;"";"";"";"2";"Nein";"32122";"7112";NA
+881;"5282";1;"sonstige";"Ist Ihre Tätigkeit hauptsächlich körperliche Arbeit unter Verwendung von Baumaschinen oder beschäftigen Sie sich hauptsächlich mit der Planung und Koordination von Baumaßnahmen?";"War Ihre Tätigkeit hauptsächlich körperliche Arbeit unter Verwendung von Baumaschinen oder haben Sie sich hauptsächlich mit der Planung und Koordination von Baumaßnahmen beschäftigt?";"";"";"";"";""
+882;"5282";1;"";"";"";"1";"körperliche Arbeit unter Verwendung von Maschinen";"32112";"7114";NA
+883;"5282";1;"";"";"";"2";"Planung und Koordination der Baumaßnahmen";"32113";"3112";NA
+884;"5292";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+885;"5292";1;"";"";"";"1";"Ja";"33393";"3123";NA
+886;"5292";1;"";"";"";"2";"Nein";"33322";"7115";NA
+887;"5293";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+888;"5293";1;"";"";"";"1";"Ja";"33393";"3123";NA
+889;"5293";1;"";"";"";"2";"Nein";"33332";"7115";NA
+890;"5294";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+891;"5294";1;"";"";"";"1";"Ja";"34293";"3123";NA
+892;"5294";1;"";"";"";"2";"Nein";"34232";"7127";NA
+893;"5297";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+894;"5297";1;"";"";"";"1";"Ja";"34293";"3123";"FALSE"
+895;"5297";1;"";"";"";"2";"Nein";"34212";"7126";NA
+896;"5297";2;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+897;"5297";2;"";"";"";"1";"eine kurze Anlernphase";"34201";"9313";NA
+898;"5297";2;"";"";"";"2";"eine abgeschlossene Berufsausbildung im Bereich Sanitär-, Heizungs- und Klimatechnik";"34212";"7126";NA
+899;"5297";2;"";"";"";"3";"eine vertiefende berufliche Weiterbildung mit einer Mindestdauer von 18 Monaten";"34213";"3112";NA
+900;"5297";2;"";"";"";"4";"ein abgeschlossenes Bachelorstudium";"34213";"3112";NA
+901;"5298";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine abgeschlossene Berufsausbildung als Bodenleger/in erforderlich?";"War für diese Tätigkeit in der Regel eine abgeschlossene Berufsausbildung als Bodenleger/in erforderlich?";"";"";"";"";""
+902;"5298";1;"";"";"";"1";"Ja";"33102";"7122";NA
+903;"5298";1;"";"";"";"2";"Nein";"33101";"9313";NA
+904;"5316";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+905;"5316";1;"";"";"";"1";"Ja";"33393";"3123";"FALSE"
+906;"5316";1;"";"";"";"2";"Nein";"33302";"7123";NA
+907;"5316";2;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine abgeschlossene Berufsausbildung im Bereich Trockenbau erforderlich?";"War für diese Tätigkeit in der Regel eine abgeschlossene Berufsausbildung im Bereich Trockenbau erforderlich?";"";"";"";"";""
+908;"5316";2;"";"";"";"1";"Ja";"33302";"7123";NA
+909;"5316";2;"";"";"";"2";"Nein";"33301";"9313";NA
+910;"5317";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+911;"5317";1;"";"";"";"1";"Ja";"33393";"3123";NA
+912;"5317";1;"";"";"";"2";"Nein";"33303";"3112";NA
+913;"5318";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+914;"5318";1;"";"";"";"1";"Ja";"33393";"3123";NA
+915;"5318";1;"";"";"";"2";"Nein";"33323";"7115";NA
+916;"5327";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+917;"5327";1;"";"";"";"1";"Ja";"34293";"3123";"FALSE"
+918;"5327";1;"";"";"";"2";"Nein";"34202";"7126";NA
+919;"5327";2;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine abgeschlossene Berufsausbildung als Klempner/in erforderlich?";"War für diese Tätigkeit in der Regel eine abgeschlossene Berufsausbildung als Klempner/in erforderlich?";"";"";"";"";""
+920;"5327";2;"";"";"";"1";"Ja";"34202";"7126";NA
+921;"5327";2;"";"";"";"2";"Nein";"34201";"9313";NA
+922;"5328";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+923;"5328";1;"";"";"";"1";"Ja";"34293";"3123";NA
+924;"5328";1;"";"";"";"2";"Nein";"34203";"3112";NA
+925;"5329";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+926;"5329";1;"";"";"";"1";"Ja";"34293";"3123";NA
+927;"5329";1;"";"";"";"2";"Nein";"34213";"3112";NA
+928;"5330";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+929;"5330";1;"";"";"";"1";"Ja";"34293";"3123";NA
+930;"5330";1;"";"";"";"2";"Nein";"34214";"2142";NA
+931;"5331";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+932;"5331";1;"";"";"";"1";"Ja";"34293";"3123";NA
+933;"5331";1;"";"";"";"2";"Nein";"34222";"7112";NA
+934;"5346";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Anlagenbau erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Anlagenbau erforderlich?";"";"";"";"";""
+935;"5346";1;"";"";"";"1";"Ja";"34344";"2144";NA
+936;"5346";1;"";"";"";"2";"Nein";"34343";"3115";NA
+937;"5350";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine abgeschlossene Berufsausbildung als Hochbaufacharbeiter/in erforderlich?";"War für diese Tätigkeit in der Regel eine abgeschlossene Berufsausbildung als Hochbaufacharbeiter/in erforderlich?";"";"";"";"";""
+938;"5350";1;"";"";"";"1";"Ja";"32102";"7111";NA
+939;"5350";1;"";"";"";"2";"Nein";"32101";"9313";NA
+940;"5402";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+941;"5402";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"31173";"3112";NA
+942;"5402";1;"";"";"";"2";"eine berufliche Weiterbildung";"31173";"3112";NA
+943;"5402";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"31173";"2149";NA
+944;"5402";1;"";"";"";"4";"ein abgeschlossenes Masterstudium";"31174";"2149";NA
+945;"5403";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+946;"5403";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"31142";"3112";NA
+947;"5403";1;"";"";"";"2";"eine vertiefende berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"31143";"3112";NA
+948;"5403";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium im Bereich Wasser- und Bodenmanagement oder eines vergleichbaren Fachs";"31143";"3112";NA
+949;"5403";1;"";"";"";"4";"ein abgeschlossenes Masterstudium im Bereich Wasser- und Bodenmanagement oder eines vergleichbaren Fachs";"31144";"2142";NA
+950;"6022";1;"sonstige";"Handelt Ihr Unternehmen mit Waren aus unterschiedlichen Branchen?";"Hat Ihr Unternehmen mit Waren aus unterschiedlichen Branchen gehandelt?";"";"";"";"";""
+951;"6022";1;"";"";"";"1";"Ja";"61212";"4419";NA
+952;"6022";1;"";"";"";"2";"Nein";"61282";"4419";NA
+953;"6034";1;"sonstige";"Verkaufen Sie Ihre Speisen an ständig wechselnden Standorten?";"Haben Sie Ihre Speisen an ständig wechselnden Standorten verkauft?";"";"";"";"";""
+954;"6034";1;"";"";"";"1";"Nein";"62301";"5246";NA
+955;"6034";1;"";"";"";"2";"Ja";"62301";"5212";NA
+956;"6066";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung zum/zur geprüften Fachverkäufer/in für Automobilteile und -zubehör erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung zum/zur geprüften Fachverkäufer/in für Automobilteile und -zubehör erforderlich?";"";"";"";"";""
+957;"6066";1;"";"";"";"1";"Nein";"62272";"5223";NA
+958;"6066";1;"";"";"";"2";"Ja";"62272";"5223";NA
+959;"6073";1;"sonstige";"Sind Sie außerdem für den Einsatz finanzieller Ressourcen, die Erstellung von Speiseplänen und die Beschaffung sowie Lagerung von Waren bzw. Lebensmitteln zuständig?";"Waren Sie außerdem für den Einsatz finanzieller Ressourcen, die Erstellung von Speiseplänen und die Beschaffung sowie Lagerung von Waren bzw. Lebensmitteln zuständig?";"";"";"";"";""
+960;"6073";1;"";"";"";"1";"Nein";"63393";"1412";NA
+961;"6073";1;"";"";"";"2";"Ja";"63394";"1412";NA
+962;"6102";1;"spezialisierung";"Welche Aufgaben führen Sie dabei in der Regel aus?";"Welche Aufgaben haben Sie dabei in der Regel ausgeführt?";"";"";"";"";""
+963;"6102";1;"";"";"";"1";"Großveranstaltungen mit mehr als 1000 Teilnehmern managen";"63404";"3332";NA
+964;"6102";1;"";"";"";"2";"Veranstaltungen mit weniger als 1000 Teilnehmern managen";"63403";"3332";NA
+965;"6102";1;"";"";"";"3";"das Veranstaltungsmanagement bei einzelnen Aufgaben unterstützen";"63402";"3332";NA
+966;"7001";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+967;"7001";1;"";"";"";"1";"Nein";"81102";"3256";NA
+968;"7001";1;"";"";"";"2";"Ja";"81103";"3256";NA
+969;"7002";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+970;"7002";1;"";"";"";"1";"Nein";"81112";"3251";NA
+971;"7002";1;"";"";"";"2";"Ja";"81113";"3251";NA
+972;"7003";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+973;"7003";1;"";"";"";"1";"Nein";"73222";"3344";NA
+974;"7003";1;"";"";"";"2";"Ja";"73223";"3344";NA
+975;"7005";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+976;"7005";1;"";"";"";"1";"Nein";"73223";"3343";NA
+977;"7005";1;"";"";"";"2";"Ja";"73224";"2421";NA
+978;"7009";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine Weiterbildung als biomedizinische/r Fachanalytiker/in für Immunhämatologie und Transfusionsmedizin erforderlich?";"War für diese Tätigkeit in der Regel eine Weiterbildung als biomedizinische/r Fachanalytiker/in für Immunhämatologie und Transfusionsmedizin erforderlich?";"";"";"";"";""
+979;"7009";1;"";"";"";"1";"Nein";"81212";"3212";NA
+980;"7009";1;"";"";"";"2";"Ja";"81213";"3212";NA
+981;"7013";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+982;"7013";1;"";"";"";"1";"Nein";"81232";"3211";NA
+983;"7013";1;"";"";"";"2";"Ja";"81233";"3211";NA
+984;"7015";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossene Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossene Weiterbildung erforderlich?";"";"";"";"";""
+985;"7015";1;"";"";"";"1";"Nein";"81242";"3240";NA
+986;"7015";1;"";"";"";"2";"Ja";"81243";"3240";NA
+987;"7021";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+988;"7021";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"81332";"3256";NA
+989;"7021";1;"";"";"";"2";"eine berufliche Weiterbildung";"81333";"3256";NA
+990;"7021";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"81333";"3256";NA
+991;"7022";1;"sonstige";"Gehört die medizinische Versorgung von Patienten zu Ihren Aufgaben?";"Gehörte die medizinische Versorgung von Patienten zu Ihren Aufgaben?";"";"";"";"";""
+992;"7022";1;"";"";"";"1";"Ja";"81341";"3258";NA
+993;"7022";1;"";"";"";"2";"Nein";"81341";"8322";NA
+994;"7023";1;"sonstige";"Führen Sie normale Entbindungen selbstständig durch oder unterstützen Sie hauptsächlich andere Hebammen bei der Betreuung von Mutter und Kind?";"Haben Sie normale Entbindungen selbstständig durchgeführt oder unterstützten Sie hauptsächlich andere Hebammen bei der Betreuung von Mutter und Kind?";"";"";"";"";""
+995;"7023";1;"";"";"";"1";"Durchführung von Entbindungen";"81353";"2222";NA
+996;"7023";1;"";"";"";"2";"Unterstützung bei der Betreuung von Mutter und Kind";"81352";"3222";NA
+997;"7028";1;"spezialisierung";"Arbeiten Sie in der Arbeits-, Sport- oder Umweltmedizin?";"Haben Sie in der Arbeits-, Sport- oder Umweltmedizin gearbeitet?";"";"";"";"";""
+998;"7028";1;"";"";"";"1";"Nein";"81404";"2211";NA
+999;"7028";1;"";"";"";"2";"Ja";"81484";"2212";NA
+1000;"7036";1;"sonstige";"Welche Tiere behandeln Sie?";"Welche Tiere haben Sie behandelt?";"";"";"";"";""
+1001;"7036";1;"";"";"";"1";"Groß- und Nutztiere ";"81514";"2250";NA
+1002;"7036";1;"";"";"";"2";"Haus- und Heimtiere ";"81524";"2250";NA
+1003;"7036";1;"";"";"";"3";"sonstige";"81504";"2250";NA
+1004;"7041";1;"spezialisierung";"Sind Sie in der klinischen Psychologie tätig?";"Waren Sie in der klinischen Psychologie tätig?";"";"";"";"";""
+1005;"7041";1;"";"";"";"1";"Ja";"81624";"2634";NA
+1006;"7041";1;"";"";"";"2";"Nein";"81614";"2634";NA
+1007;"7043";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+1008;"7043";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung als Masseur/in und medizinische/r Bademeister/in";"81712";"3255";NA
+1009;"7043";1;"";"";"";"2";"eine abgeschlossene Berufsausbildung oder ein Bachelorstudium im Bereich Physiotherapie";"81713";"2264";NA
+1010;"7043";1;"";"";"";"3";"ein abgeschlossenes Masterstudium im Bereich Motologie";"81714";"2264";NA
+1011;"7047";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Ergotherapie erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Ergotherapie erforderlich?";"";"";"";"";""
+1012;"7047";1;"";"";"";"1";"Nein";"81723";"2269";NA
+1013;"7047";1;"";"";"";"2";"Ja";"81724";"2269";NA
+1014;"7048";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+1015;"7048";1;"";"";"";"1";"Nein";"81733";"2266";NA
+1016;"7048";1;"";"";"";"2";"Ja";"81734";"2266";NA
+1017;"7049";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Kunst- oder Musiktherapie erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Kunst- oder Musiktherapie erforderlich?";"";"";"";"";""
+1018;"7049";1;"";"";"";"1";"Nein";"81743";"2269";NA
+1019;"7049";1;"";"";"";"2";"Ja";"81744";"2269";NA
+1020;"7050";1;"sonstige";"Wenden Sie überwiegend homöopathische Heilverfahren an?";"Haben Sie überwiegend homöopathische Heilverfahren angewendet?";"";"";"";"";""
+1021;"7050";1;"";"";"";"1";"Nein";"81752";"2230";NA
+1022;"7050";1;"";"";"";"2";"Ja";"81753";"2230";NA
+1023;"7051";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+1024;"7051";1;"";"";"";"1";"Ja";"81763";"2265";NA
+1025;"7051";1;"";"";"";"2";"Nein";"81762";"2265";NA
+1026;"7053";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+1027;"7053";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"81782";"3259";NA
+1028;"7053";1;"";"";"";"2";"eine berufliche Weiterbildung zum Diabetesberater/in";"81783";"3259";NA
+1029;"7053";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"81783";"2269";NA
+1030;"7053";1;"";"";"";"4";" ein abgeschlossenes Masterstudium";"81784";"2269";NA
+1031;"7057";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+1032;"7057";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"81822";"3213";NA
+1033;"7057";1;"";"";"";"2";"ein abgeschlossenes Hochschulstudium der Pharmazie";"81804";"2262";NA
+1034;"7065";1;"sonstige";"Leiten Sie Altenpflegeschüler/innen und Hilfskräfte an?";"Haben Sie Altenpflegeschüler/innen und Hilfskräfte angeleitet?";"";"";"";"";""
+1035;"7065";1;"";"";"";"1";"Ja";"82103";"3221";NA
+1036;"7065";1;"";"";"";"2";"Nein";"82102";"3221";NA
+1037;"7066";1;"sonstige";"Leiten Sie Altenpflegeschüler/innen und Hilfskräfte an?";"Haben Sie Altenpflegeschüler/innen und Hilfskräfte angeleitet?";"";"";"";"";""
+1038;"7066";1;"";"";"";"1";"Nein";"82182";"3221";NA
+1039;"7066";1;"";"";"";"2";"Ja";"82183";"3221";NA
+1040;"7072";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+1041;"7072";1;"";"";"";"1";"Nein";"82222";"5142";NA
+1042;"7072";1;"";"";"";"2";"Ja";"82223";"3423";NA
+1043;"7078";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine abgeschlossene Berufsausbildung als Friseur/in erforderlich?";"War für diese Tätigkeit in der Regel eine abgeschlossene Berufsausbildung als Friseur/in erforderlich?";"";"";"";"";""
+1044;"7078";1;"";"";"";"1";"Nein";"82311";"9629";NA
+1045;"7078";1;"";"";"";"2";"Ja";"82312";"5141";NA
+1046;"7081";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Bachelorstudium im Bereich Maskenbild erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Bachelorstudium im Bereich Maskenbild erforderlich?";"";"";"";"";""
+1047;"7081";1;"";"";"";"1";"Nein";"82342";"5142";NA
+1048;"7081";1;"";"";"";"2";"Ja";"82343";"2163";NA
+1049;"7082";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung als Bestattungsfachwirt/in erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung als Bestattungsfachwirt/in erforderlich?";"";"";"";"";""
+1050;"7082";1;"";"";"";"1";"Nein";"82402";"5163";NA
+1051;"7082";1;"";"";"";"2";"Ja";"82403";"5163";NA
+1052;"7088";1;"spezialisierung";"Welche Aufgaben führen Sie dabei in der Regel aus?";"Welche Aufgaben haben Sie dabei in der Regel ausgeführt?";"";"";"";"";""
+1053;"7088";1;"";"";"";"1";"Strategische Planung und Führung des Unternehmens";"82494";"1439";NA
+1054;"7088";1;"";"";"";"2";"Abwicklung von einzelnen Bestattungsaufträgen";"82493";"5163";NA
+1055;"7094";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+1056;"7094";1;"";"";"";"1";"Nein";"82512";"3214";NA
+1057;"7094";1;"";"";"";"2";"Ja";"82513";"3214";NA
+1058;"7097";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung als staatlich geprüfte/r Augenoptiker/in erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung als staatlich geprüfte/r Augenoptiker/in erforderlich?";"";"";"";"";""
+1059;"7097";1;"";"";"";"1";"Nein";"82522";"3254";NA
+1060;"7097";1;"";"";"";"2";"Ja";"82523";"3254";NA
+1061;"7099";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung als Hörgerätetechniker/in erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung als Hörgerätetechniker/in erforderlich?";"";"";"";"";""
+1062;"7099";1;"";"";"";"1";"Nein";"82532";"3214";NA
+1063;"7099";1;"";"";"";"2";"Ja";"82533";"3214";NA
+1064;"7100";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung als Arbeitsmedizinische/r Assistent/in erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung als Arbeitsmedizinische/r Assistent/in erforderlich?";"";"";"";"";""
+1065;"7100";1;"";"";"";"1";"Nein";"81182";"3256";NA
+1066;"7100";1;"";"";"";"2";"Ja";"81183";"3256";NA
+1067;"7104";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung als Fachkrankenschwester/-pfleger erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung als Fachkrankenschwester/-pfleger erforderlich?";"";"";"";"";""
+1068;"7104";1;"";"";"";"1";"Ja";"81313";"3221";NA
+1069;"7104";1;"";"";"";"2";"Nein";"81302";"3221";NA
+1070;"8004";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+1071;"8004";1;"";"";"";"1";"Ja";"83124";"2635";NA
+1072;"8004";1;"";"";"";"2";"Nein";"83123";"3412";NA
+1073;"8006";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine staatliche Anerkennung erforderlich?";"War für diese Tätigkeit in der Regel eine staatliche Anerkennung erforderlich?";"";"";"";"";""
+1074;"8006";1;"";"";"";"1";"Ja";"83132";"3412";NA
+1075;"8006";1;"";"";"";"2";"Nein";"83131";"5321";NA
+1076;"8007";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine staatliche Anerkennung erforderlich?";"War für diese Tätigkeit in der Regel eine staatliche Anerkennung erforderlich?";"";"";"";"";""
+1077;"8007";1;"";"";"";"1";"Ja";"83132";"3412";NA
+1078;"8007";1;"";"";"";"2";"Nein";"83131";"5322";NA
+1079;"8008";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+1080;"8008";1;"";"";"";"1";"ja";"83134";"2352";NA
+1081;"8008";1;"";"";"";"2";"nein";"83133";"3412";NA
+1082;"8011";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+1083;"8011";1;"";"";"";"1";"Ja";"83154";"2635";NA
+1084;"8011";1;"";"";"";"2";"Nein";"83154";"3412";NA
+1085;"8014";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung im Bereich Hauswirtschaft erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung im Bereich Hauswirtschaft erforderlich?";"";"";"";"";""
+1086;"8014";1;"";"";"";"1";"Ja";"83213";"5152";NA
+1087;"8014";1;"";"";"";"2";"Nein";"83212";"5152";NA
+1088;"8019";1;"sonstige";"Gehört es zu Ihren Tätigkeiten, Aufgaben in der Sozial- und Bildungsarbeit wahrzunehmen?";"Gehörte es zu Ihren Tätigkeiten, Aufgaben in der Sozial- und Bildungsarbeit wahrzunehmen?";"";"";"";"";""
+1089;"8019";1;"";"";"";"1";"Ja";"83323";"3413";NA
+1090;"8019";1;"";"";"";"2";"Nein";"83322";"3413";NA
+1091;"8034";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein mindestens 4-jähriges Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein mindestens 4-jähriges Masterstudium erforderlich?";"";"";"";"";""
+1092;"8034";1;"";"";"";"1";"Ja";"84214";"2320";NA
+1093;"8034";1;"";"";"";"2";"Nein";"84213";"2320";NA
+1094;"8035";1;"sonstige";"Vermitteln Sie die Ausbildungsinhalte unmittelbar im Betrieb?";"Haben Sie die Ausbildungsinhalte unmittelbar im Betrieb vermittelt?";"";"";"";"";""
+1095;"8035";1;"";"";"";"1";"Ja";"84223";"2320";NA
+1096;"8035";1;"";"";"";"2";"Nein";"84224";"2320";NA
+1097;"8041";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+1098;"8041";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"84412";"2354";NA
+1099;"8041";1;"";"";"";"2";"eine berufliche Weiterbildung";"84413";"2354";NA
+1100;"8041";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium";"84413";"2354";NA
+1101;"8041";1;"";"";"";"4";"ein abgeschlossenes Masterstudium";"84414";"2354";NA
+1102;"8062";1;"sonstige";"Wird für die Ausübung Ihrer Tätigkeit eine abgeschlossene Weiterbildung im Bereich der Hauswirtschaft vorausgesetzt?";"War für die Ausübung Ihrer Tätigkeit eine abgeschlossene Weiterbildung im Bereich der Hauswirtschaft vorausgesetzt?";"";"";"";"";""
+1103;"8062";1;"";"";"";"1";"Ja";"83213";"5152";NA
+1104;"8062";1;"";"";"";"2";"Nein";"83212";"5151";NA
+1105;"8999";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine abgeschlossene Berufsausbildung erforderlich?";"War für diese Tätigkeit in der Regel eine abgeschlossene Berufsausbildung erforderlich?";"";"";"";"";""
+1106;"8999";1;"";"";"";"1";"Ja";"28222";"8153";NA
+1107;"8999";1;"";"";"";"2";"Nein";"28221";"8153";NA
+1108;"9005";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+1109;"9005";1;"";"";"";"1";"Ja";"29194";"1321";NA
+1110;"9005";1;"";"";"";"2";"Nein";"29193";"3122";NA
+1111;"9010";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+1112;"9010";1;"";"";"";"1";"Ja";"28194";"1321";NA
+1113;"9010";1;"";"";"";"2";"Nein";"28193";"3122";NA
+1114;"9013";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+1115;"9013";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"28212";"7532";NA
+1116;"9013";1;"";"";"";"2";"eine vertiefende berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"28213";"7532";NA
+1117;"9013";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium im Bereich Modedesign oder eines vergleichbaren Fachs";"28213";"7532";NA
+1118;"9013";1;"";"";"";"4";"ein abgeschlossenes Masterstudium im Bereich Modedesign oder eines vergleichbaren Fachs";"28214";"7532";NA
+1119;"9014";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+1120;"9014";1;"";"";"";"1";"eine abgeschlossene Berufsausbildung";"28212";"2163";NA
+1121;"9014";1;"";"";"";"2";"eine vertiefende berufliche Weiterbildung mit Mindestdauer von 18 Monaten";"28213";"2163";NA
+1122;"9014";1;"";"";"";"3";"ein abgeschlossenes Bachelorstudium im Bereich Modedesign oder eines vergleichbaren Fachs";"28213";"2163";NA
+1123;"9014";1;"";"";"";"4";"ein abgeschlossenes Masterstudium im Bereich Modedesign oder eines vergleichbaren Fachs";"28214";"2163";NA
+1124;"9016";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+1125;"9016";1;"";"";"";"1";"Ja";"29104";"2145";NA
+1126;"9016";1;"";"";"";"2";"Nein";"29103";"3116";NA
+1127;"9019";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+1128;"9019";1;"";"";"";"1";"Ja";"29114";"2145";NA
+1129;"9019";1;"";"";"";"2";"Nein";"29113";"3116";NA
+1130;"9024";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium erforderlich?";"";"";"";"";""
+1131;"9024";1;"";"";"";"1";"Ja";"29134";"2145";NA
+1132;"9024";1;"";"";"";"2";"Nein";"29133";"3116";NA
+1133;"9030";1;"spezialisierung";"In welchem Bereich sind sie vorwiegend tätig?";"In welchem Bereich waren sie vorwiegend tätig?";"";"";"";"";""
+1134;"9030";1;"";"";"";"1";"Herstellung von Fäden, Garnen oder Zwirnen";"28132";"8151";NA
+1135;"9030";1;"";"";"";"2";"Herstellung von textilen Flächengebilden wie Gewebe, Gewirke oder Strickwaren";"28122";"8152";NA
+1136;"9030";1;"";"";"";"3";"Veredelung der Textilien durch Bleichen, Färben, Schrumpfen oder andere Behandlung";"28142";"8154";NA
+1137;"9030";1;"";"";"";"4";"oder trifft mehr als eines zu?";"28102";"8152";NA
+1138;"9046";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+1139;"9046";1;"";"";"";"1";"Ja";"28294";"1321";NA
+1140;"9046";1;"";"";"";"2";"Nein";"28293";"3122";NA
+1141;"9053";1;"sonstige";"Besteht Ihre Arbeit aus Fließbandarbeit an der Maschine?";"Hat Ihre Arbeit aus Fließbandarbeit an der Maschine bestanden?";"";"";"";"";""
+1142;"9053";1;"";"";"";"1";"Ja";"28342";"8155";NA
+1143;"9053";1;"";"";"";"2";"Nein";"28342";"7535";NA
+1144;"9055";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+1145;"9055";1;"";"";"";"1";"Ja";"28394";"1321";NA
+1146;"9055";1;"";"";"";"2";"Nein";"28393";"3122";NA
+1147;"9061";1;"sonstige";"Bedienen Sie bei dieser Tätigkeit hauptsächlich eine einzelne Maschine?";"Haben Sie bei dieser Tätigkeit hauptsächlich eine einzelne Maschine bedient?";"";"";"";"";""
+1148;"9061";1;"";"";"";"1";"Ja";"29222";"8160";NA
+1149;"9061";1;"";"";"";"2";"Nein";"29222";"7512";NA
+1150;"9063";1;"sonstige";"Bedienen Sie bei dieser Tätigkeit hauptsächlich eine einzelne Maschine?";"Haben Sie bei dieser Tätigkeit hauptsächlich eine einzelne Maschine bedient?";"";"";"";"";""
+1151;"9063";1;"";"";"";"1";"Ja";"29232";"8160";NA
+1152;"9063";1;"";"";"";"2";"Nein";"29232";"7511";NA
+1153;"9065";1;"sonstige";"Bedienen Sie bei dieser Tätigkeit hauptsächlich eine einzelne Maschine?";"Haben Sie bei dieser Tätigkeit hauptsächlich eine einzelne Maschine bedient?";"";"";"";"";""
+1154;"9065";1;"";"";"";"1";"Ja";"29242";"8160";NA
+1155;"9065";1;"";"";"";"2";"Nein";"29242";"7511";NA
+1156;"9067";1;"sonstige";"Bedienen Sie bei dieser Tätigkeit hauptsächlich eine einzelne Maschine?";"Haben Sie bei dieser Tätigkeit hauptsächlich eine einzelne Maschine bedient?";"";"";"";"";""
+1157;"9067";1;"";"";"";"1";"Ja";"29252";"8160";NA
+1158;"9067";1;"";"";"";"2";"Nein";"29252";"7513";NA
+1159;"9071";1;"sonstige";"Bedienen Sie bei dieser Tätigkeit hauptsächlich Maschinen?";"Haben Sie bei dieser Tätigkeit hauptsächlich Maschinen bedient?";"";"";"";"";""
+1160;"9071";1;"";"";"";"1";"Ja";"29272";"8160";NA
+1161;"9071";1;"";"";"";"2";"Nein";"29272";"7516";NA
+1162;"9076";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+1163;"9076";1;"";"";"";"1";"Ja";"29294";"1321";NA
+1164;"9076";1;"";"";"";"2";"Nein";"29293";"3122";NA
+1165;"9077";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+1166;"9077";1;"";"";"";"1";"Ja";"29294";"1321";NA
+1167;"9077";1;"";"";"";"2";"Nein";"29293";"3122";NA
+1168;"9079";1;"sonstige";"Bereiten Sie nur bestimmte Speisen zu, nämlich ...";"Haben Sie nur bestimmte Speisen zubereitet, nämlich ...";"";"";"";"";""
+1169;"9079";1;"";"";"";"1";"nur einfache Speisen zum Sofortverkauf in Fast-Food-Restaurants";"63312";"9411";NA
+1170;"9079";1;"";"";"";"2";"nur Vorspeisen, kalten Speisen und Süßspeisen";"29312";"5120";NA
+1171;"9079";1;"";"";"";"3";"nur Fischgerichte und Seafoodgerichte";"29322";"5120";NA
+1172;"9079";1;"";"";"";"4";"nur Fleischgerichte und Grillgerichte sowie gebratene und frittierte Speisen";"29322";"5120";NA
+1173;"9079";1;"";"";"";"5";"nur Fonds, Soßen und Buttermischungen";"29382";"5120";NA
+1174;"9079";1;"";"";"";"6";"nur warme Beilagen";"29382";"5120";NA
+1175;"9079";1;"";"";"";"7";"nur diätische Mahlzeiten";"29322";"5120";NA
+1176;"9079";1;"";"";"";"8";"oder trifft nichts davon auf Sie zu?";"29302";"5120";NA
+1177;"9088";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+1178;"9088";1;"";"";"";"1";"Ja";"29394";"1412";NA
+1179;"9088";1;"";"";"";"2";"Nein";"29393";"3434";NA
+1180;"9090";1;"sonstige";"Bedienen Sie bei dieser Tätigkeit hauptsächlich eine einzelne Maschine?";"Haben Sie bei dieser Tätigkeit hauptsächlich eine einzelne Maschine bedient?";"";"";"";"";""
+1181;"9090";1;"";"";"";"1";"Ja";"29252";"8160";NA
+1182;"9090";1;"";"";"";"2";"Nein";"29252";"7513";NA
+1183;"9110";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine vertiefende berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine vertiefende berufliche Weiterbildung erforderlich?";"";"";"";"";""
+1184;"9110";1;"";"";"";"1";"Ja";"28313";"7535";NA
+1185;"9110";1;"";"";"";"2";"Nein";"28312";"7535";NA
+1186;"9200";1;"sonstige";"Haben Sie zusätzlich zur Arbeit auf dem Weinberg noch weitere Aufgaben?";"Hatten Sie zusätzlich zur Arbeit auf dem Weinberg noch weitere Aufgaben?";"";"";"";"";""
+1187;"9200";1;"";"";"";"1";"Ja";"11603";"6112";NA
+1188;"9200";1;"";"";"";"2";"Nein";"11602";"6112";NA
+1189;"9201";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Weinbau oder einem verwandten Fach erforderlich?";"War für diese Tätigkeit in der Regel ein abgeschlossenes Masterstudium im Bereich Weinbau oder einem verwandten Fach erforderlich?";"";"";"";"";""
+1190;"9201";1;"";"";"";"1";"Ja";"11604";"2132";NA
+1191;"9201";1;"";"";"";"2";"Nein";"11603";"3142";NA
+1192;"9202";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+1193;"9202";1;"";"";"";"1";"Ja";"11694";"1311";NA
+1194;"9202";1;"";"";"";"2";"Nein";"11693";"6112";NA
+1195;"9203";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+1196;"9203";1;"";"";"";"1";"eine kurze Anlernphase";"11711";"9215";NA
+1197;"9203";1;"";"";"";"2";"eine abgeschlossene Berufsausbildung";"11712";"6210";NA
+1198;"9203";1;"";"";"";"3";"eine berufliche Weiterbildung";"11713";"3143";NA
+1199;"9203";1;"";"";"";"4";"ein abgeschlossenes Bachelorstudium im Bereich Forstwirtschaften";"11713";"3143";NA
+1200;"9203";1;"";"";"";"5";"ein abgeschlossenes Masterstudium im Bereich Forstwirtschaften";"11714";"2132";NA
+1201;"9204";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+1202;"9204";1;"";"";"";"1";"eine kurze Anlernphase";"11711";"9215";NA
+1203;"9204";1;"";"";"";"2";"eine abgeschlossene Berufsausbildung";"11722";"6113";NA
+1204;"9204";1;"";"";"";"3";"eine berufliche Weiterbildung";"11723";"3143";NA
+1205;"9204";1;"";"";"";"4";"ein abgeschlossenes Bachelorstudium im Bereich Landschaftsökologie und Naturschutz";"11723";"3143";NA
+1206;"9204";1;"";"";"";"5";"ein abgeschlossenes Masterstudium im Bereich Landschaftsökologie und Naturschutz";"11724";"2143";NA
+1207;"9205";1;"aufsicht";"Gehört es zu Ihren beruflichen Aufgaben, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"Hat es zu Ihren beruflichen Aufgaben gehört, die Arbeit anderer Arbeitnehmer zu beaufsichtigen oder ihnen zu sagen, was sie tun müssen?";"";"";"";"";""
+1208;"9205";1;"";"";"";"1";"Ja";"11793";"5419";NA
+1209;"9205";1;"";"";"";"2";"Nein";"11732";"5419";NA
+1210;"9207";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+1211;"9207";1;"";"";"";"1";"Ja";"11794";"1311";NA
+1212;"9207";1;"";"";"";"2";"Nein";"11793";"3143";NA
+1213;"9208";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+1214;"9208";1;"";"";"";"1";"eine kurze Anlernphase";"21111";"9311";NA
+1215;"9208";1;"";"";"";"2";"eine abgeschlossene Berufsausbildung";"21112";"8111";NA
+1216;"9208";1;"";"";"";"3";"eine berufliche Weiterbildung";"21113";"3117";NA
+1217;"9208";1;"";"";"";"4";"ein abgeschlossenes Bachelorstudium im Bereich Rohstoffingenieurwesen";"21113";"3117";NA
+1218;"9208";1;"";"";"";"5";"ein abgeschlossenes Masterstudium im Bereich Rohstoffingenieurwesen";"21114";"2146";NA
+1219;"9209";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+1220;"9209";1;"";"";"";"1";"eine kurze Anlernphase";"21111";"8113";NA
+1221;"9209";1;"";"";"";"2";"eine abgeschlossene Berufsausbildung";"21112";"8113";NA
+1222;"9209";1;"";"";"";"3";"eine berufliche Weiterbildung";"21113";"3117";NA
+1223;"9209";1;"";"";"";"4";"ein abgeschlossenes Masterstudium im Bereich Rohstoffingenieurwesen";"21113";"3117";NA
+1224;"9209";1;"";"";"";"5";"ein abgeschlossenes Masterstudium im Bereich Rohstoffingenieurwesen";"21114";"2146";NA
+1225;"9210";1;"spezialisierung";"Welche Aufgaben führen Sie dabei in der Regel aus?";"Welche Aufgaben haben Sie dabei in der Regel ausgeführt?";"";"";"";"";""
+1226;"9210";1;"";"";"";"1";"sprengberechtigte Fachkräfte unterstützen";"21122";"7542";NA
+1227;"9210";1;"";"";"";"2";"die Sicherheit von Sprengungen verantworten";"21123";"7542";NA
+1228;"9210";1;"";"";"";"3";"Sprengungen planen und besonders komplexe Sprengungen selber übernehmen";"21124";"2149";NA
+1229;"9211";1;"aufsicht";"Sind Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"Waren Sie befugt strategische Entscheidungen zu treffen, z.B. zur Einführung neuer Verfahren, zu finanziellen Investitionen oder zur Einstellung und Entlassung von Personal?";"";"";"";"";""
+1230;"9211";1;"";"";"";"1";"Ja";"21194";"1322";NA
+1231;"9211";1;"";"";"";"2";"Nein";"21193";"3121";NA
+1232;"9212";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+1233;"9212";1;"";"";"";"1";"eine kurze Anlernphase";"21201";"9329";NA
+1234;"9212";1;"";"";"";"2";"eine abgeschlossene Berufsausbildung";"21212";"8112";NA
+1235;"9212";1;"";"";"";"3";"eine berufliche Weiterbildung";"21213";"3117";NA
+1236;"9212";1;"";"";"";"4";"ein abgeschlossenes Bachelorstudium";"21213";"3117";NA
+1237;"9213";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+1238;"9213";1;"";"";"";"1";"eine kurze Anlernphase";"21201";"9329";NA
+1239;"9213";1;"";"";"";"2";"eine abgeschlossene Berufsausbildung";"21212";"8112";NA
+1240;"9213";1;"";"";"";"3";"eine berufliche Weiterbildung";"21213";"3117";NA
+1241;"9213";1;"";"";"";"4";"ein abgeschlossenes Bachelorstudium";"21213";"3117";NA
+1242;"9214";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+1243;"9214";1;"";"";"";"1";"eine kurze Anlernphase";"21201";"9329";NA
+1244;"9214";1;"";"";"";"2";"eine abgeschlossene Berufsausbildung";"21222";"8114";NA
+1245;"9216";1;"anforderungsniveau";"Welche Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Ausbildung war für Ihre Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+1246;"9216";1;"";"";"";"1";"eine kurze Anlernphase";"21201";"9329";NA
+1247;"9216";1;"";"";"";"2";"eine abgeschlossene Berufsausbildung";"21232";"7113";NA
+1248;"9216";1;"";"";"";"3";"eine berufliche Weiterbildung";"21233";"7113";NA
+1249;"9216";1;"";"";"";"4";"ein abgeschlossenes Bachelorstudium";"21233";"7113";NA
+1250;"9221";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine abgeschlossene Berufsausbildung erforderlich?";"War für diese Tätigkeit in der Regel eine abgeschlossene Berufsausbildung erforderlich?";"";"";"";"";""
+1251;"9221";1;"";"";"";"1";"Ja";"21312";"8181";NA
+1252;"9221";1;"";"";"";"2";"Nein";"21311";"9329";NA
+1253;"9223";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+1254;"9223";1;"";"";"";"1";"Ja";"21323";"3119";NA
+1255;"9223";1;"";"";"";"2";"Nein";"21322";"7315";NA
+1256;"9224";1;"spezialisierung";"Liegt Ihr Arbeitsschwerpunkt im Glasblasen oder in der Justierung der Messinstrumente?";"Lag Ihr Arbeitsschwerpunkt im Glasblasen oder in der Justierung der Messinstrumente?";"";"";"";"";""
+1257;"9224";1;"";"";"";"1";"Glasblasen";"21332";"7315";NA
+1258;"9224";1;"";"";"";"2";"Justierung der Messinstrumente";"21352";"7311";NA
+1259;"9229";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+1260;"9229";1;"";"";"";"1";"Ja";"21363";"7549";NA
+1261;"9229";1;"";"";"";"2";"Nein";"21362";"7549";NA
+1262;"9231";1;"anforderungsniveau";"Welche Art von Ausbildung ist für Ihre Tätigkeit in der Regel erforderlich?";"Welche Art von Ausbildung war für diese Tätigkeit in der Regel erforderlich?";"";"";"";"";""
+1263;"9231";1;"";"";"";"1";"eine kurze Anlernphase";"21411";"9329";NA
+1264;"9231";1;"";"";"";"2";"eine abgeschlossene Berufsausbildung";"21412";"8181";NA
+1265;"9231";1;"";"";"";"3";"eine berufliche Weiterbildung";"21413";"3119";NA
+1266;"9231";1;"";"";"";"4";"ein abgeschlossenes Bachelorstudium";"21413";"3119";NA
+1267;"9232";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung erforderlich?";"";"";"";"";""
+1268;"9232";1;"";"";"";"1";"Ja";"21423";"3119";NA
+1269;"9232";1;"";"";"";"2";"Nein";"21422";"7314";NA
+1270;"9504";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine abgeschlossene Berufsausbildung erforderlich?";"War für diese Tätigkeit in der Regel eine abgeschlossene Berufsausbildung erforderlich?";"";"";"";"";""
+1271;"9504";1;"";"";"";"1";"Ja";"28312";"7535";NA
+1272;"9504";1;"";"";"";"2";"Nein";"28301";"8155";NA
+1273;"9900";1;"anforderungsniveau";"Ist für Ihre Tätigkeit in der Regel eine berufliche Weiterbildung zum Fachwirt erforderlich?";"War für diese Tätigkeit in der Regel eine berufliche Weiterbildung zum Fachwirt erforderlich?";"";"";"";"";""
+1274;"9900";1;"";"";"";"1";"Ja";"51643";"";NA
+1275;"9900";1;"";"";"";"2";"Nein";"51642";"";NA
+1276;"9900";2;"spezialisierung";"Welche Aufgaben führen Sie dabei in der Regel aus?";"Welche Aufgaben haben Sie dabei in der Regel ausgeführt?";"";"";"";"";""
+1277;"9900";2;"";"";"";"1";"für Fluggäste Beratungs- und Serviceleistungen erbringen";"";"4221";NA
+1278;"9900";2;"";"";"";"2";"mit anderen Unternehmen Geschäftsbeziehungen unterhalten";"";"3324";NA
+1279;"9900";2;"";"";"";"3";"Transportleistungen koordinieren";"";"4323";NA
+1280;"9999";1;"sonstige";"Welchen Dienstgrad haben Sie?";"Welchen Dienstgrad hatten Sie?";"";"";"";"";""
+1281;"9999";1;"";"";"";"1";"einen Mannschaftsdienstgrad";"01402";"0310";NA
+1282;"9999";1;"";"";"";"2";"einen Unteroffiziersdienstgrad ohne Portepee (z.B. Unteroffizier, Stabsunteroffizier)";"01302";"0210";NA
+1283;"9999";1;"";"";"";"3";"einen Unteroffiziersdienstgrad mit Portepee (z.B. Feldwebel, Oberfeldwebel usw.)";"01203";"0210";NA
+1284;"9999";1;"";"";"";"4";"einen Offiziersdienstgrad bis einschließlich Hauptmann (z.B. Leutnant, Hauptmann)";"01104";"0110";NA
+1285;"9999";1;"";"";"";"5";"einen Offiziersdienstgrad ab Major";"01104";"0110";NA
