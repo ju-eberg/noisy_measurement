@@ -1,0 +1,59 @@
+Multiprocess sampling (4 chains in 4 jobs)
+CompoundStep
+>CompoundStep
+>>Metropolis: [pi]
+>>Metropolis: [theta]
+>CategoricalGibbsMetropolis: [z]
+I (Items, bereinigt): 1347, J (Annotatoren): 2, K (Klassen): 10
+I (Items, bereinigt): 1347, J (Annotatoren): 2, K (Klassen): 10
+I (Items, bereinigt): 1347, J (Annotatoren): 2, K (Klassen): 10
+I (Items, bereinigt): 1347, J (Annotatoren): 2, K (Klassen): 10
+
+                                       Accept    Sampli…
+  Progre…   Draws   Tuning   Scaling   Rate      Speed     Elapsed   Remaini…
+ ─────────────────────────────────────────────────────────────────────────────
+  -------   6000    False    0.39      0.50      1.38      1:12:39   0:00:00
+                                                 draws/s
+  -------   6000    False    0.38      0.27      1.37      1:12:48   0:00:00
+                                                 draws/s
+  -------   6000    False    0.39      0.39      1.38      1:12:35   0:00:00
+                                                 draws/s
+  -------   6000    False    0.37      0.40      1.38      1:12:35   0:00:00
+                                                 draws/s
+
+Sampling 4 chains for 2_000 tune and 4_000 draw iterations (8_000 + 16_000 draws total) took 4373 seconds.
+C:\Users\jeroe\Uni_C\noisy_measurement\.venv\Lib\site-packages\arviz\stats\diagnostics.py:596: RuntimeWarning: invalid value encountered in scalar divide
+  (between_chain_variance / within_chain_variance + num_samples - 1) / (num_samples)
+The rhat statistic is larger than 1.01 for some parameters. This indicates problems during sampling. See https://arxiv.org/abs/1903.08008 for details
+The effective sample size per chain is smaller than 100 for some parameters.  A higher number is needed for reliable rhat and ess computation. See https://arxiv.org/abs/1903.08008 for details
+
+Sampling abgeschlossen. Extrahiere Ergebnisse...
+
+--- Geschätzte Wahre Labels (Erste 10 Items) ---
+    item_id  res1_isco_1st  res2_isco_1st  z_hat_dawid_skene
+0         1              2              2                  2
+1         2              8              8                  2
+2         3              3              3                  2
+3         4              7              7                  2
+4         5              4              4                  2
+5         6              2              2                  2
+6         7              3              4                  2
+7         8              3              3                  2
+10       11              3              3                  2
+11       12              1              1                  2
+
+--- Geschätzte Konfusionsmatrix für Annotator 0 (Auszug) ---
+[[0.18 0.07 0.07 0.07 0.07 0.07 0.07 0.08 0.26 0.07]
+ [0.01 0.89 0.03 0.01 0.02 0.01 0.01 0.01 0.01 0.01]
+ [0.   0.02 0.92 0.03 0.   0.01 0.   0.   0.   0.  ]
+ [0.   0.02 0.04 0.86 0.05 0.01 0.   0.01 0.01 0.  ]
+ [0.01 0.01 0.01 0.06 0.85 0.01 0.01 0.01 0.01 0.02]
+ [0.01 0.04 0.01 0.02 0.02 0.85 0.01 0.01 0.01 0.02]
+ [0.06 0.05 0.05 0.05 0.05 0.05 0.54 0.05 0.05 0.05]
+ [0.01 0.01 0.01 0.03 0.01 0.01 0.01 0.88 0.02 0.02]
+ [0.04 0.03 0.03 0.04 0.03 0.03 0.03 0.06 0.64 0.04]
+ [0.02 0.02 0.02 0.02 0.04 0.02 0.02 0.03 0.01 0.81]]
+
+Process finished with exit code 0
+
+An Sampling arbeiten.

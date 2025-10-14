@@ -2,3 +2,5 @@ pymc
 arviz
 numpy
 pandas
+aesara
+pytensor
