@@ -5,7 +5,7 @@ output:
   html_document: default
 ---
 
-```{r echo=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 setwd("C:/users/jeroe/Uni_C/noisy_measurement")
 library(dplyr)
 source("load_data_main.R")
