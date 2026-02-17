@@ -19,8 +19,7 @@ PROJECT_ROOT <- "/Users/yourname/path/to/noisy_measurement"
 
 This path will be used throughout all R scripts and R Markdown files. The configuration file is automatically loaded by all analysis scripts.
 
-**Note**: Data loading happens automatically when you run any analysis script. The scripts in [`src/`](src/) automatically load [`data_preparation.Rmd`](src/data_preparation.Rmd), which in turn loads all necessary data via [`load_data_main.R`](load_data_main.R). You do not need to manually load data before running analyses.
-
+**Note**: Data has been removed from this public repository for data security reasons.
 -----------------------------------
 
 ## Project Structure
