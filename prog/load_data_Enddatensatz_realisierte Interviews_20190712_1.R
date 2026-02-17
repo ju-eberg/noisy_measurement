@@ -1,0 +1,1 @@
+infas_completed_interviews <- haven::read_dta(paste0("orig-data/infas_7130_AuxCo Usability Test_Enddatensatz_realisierte Interviews_20190712_1.dta"))

@@ -1,0 +1,1086 @@
+---
+title: "ISCO: Convergence tests under baseline model for different HMC hyperparameters"
+output: pdf_document
+---
+
+```{r setup, echo=FALSE, warning=FALSE, message=FALSE}
+# Load project configuration
+source(here::here("config.R"), local = TRUE)
+
+setwd(PROJECT_ROOT)
+knitr::opts_knit$set(root.dir = PROJECT_ROOT)
+
+knitr::purl(file.path(PROJECT_ROOT, "src/data_preparation.Rmd"),
+            output = file.path(PROJECT_ROOT, "src/data_preparation.R"))
+
+source(file.path(PROJECT_ROOT, "src/data_preparation.R"),
+       local = knitr::knit_global())
+```
+
+```{r Filtering and preparing ISCO data, warning=FALSE, message=FALSE}
+# Packages
+library(data.table)
+library(dplyr)
+library(tidyr)
+library(cmdstanr)
+
+
+
+# keep only relevant columns
+isco_data <- data_basis %>%
+  select(item_id, isco_tool_1st, res1_isco_1st, res2_isco_1st)
+
+#Rename columns
+setnames(
+  data_basis,
+  old = c("isco_tool_1st", "res1_isco_1st", "res2_isco_1st"),
+  new = c("isco_tool", "isco_human1", "isco_human2")
+)
+
+
+head(data_basis)
+
+
+#### 1) Select only ISCO, as character
+isco_data <- data_basis %>%
+  dplyr::select(item_id, isco_human1, isco_human2, isco_tool) %>%
+  mutate(across(c(isco_human1, isco_human2, isco_tool), as.character))
+
+### Remove all lines with NAs
+isco_data <- isco_data %>%
+  filter(!is.na(isco_human1) & !is.na(isco_human2) & !is.na(isco_tool))
+
+# First:
+### Keep only two most common classes: "2" and "3"
+
+isco_data <- isco_data %>%
+  filter(isco_human1 == "2" | isco_human1 == "3") %>%
+  filter(isco_human2 == "2" | isco_human2 == "3") %>%
+  filter(isco_tool   == "2" | isco_tool   == "3")
+
+# 1) Number of rows where all three classify as "2"
+count_all_2 <- isco_data %>%
+  dplyr::filter(isco_human1 == "2", isco_human2 == "2", isco_tool == "2") %>%
+  nrow()
+
+# 2) Number of rows where all three classify as "3"
+count_all_3 <- isco_data %>%
+  dplyr::filter(isco_human1 == "3", isco_human2 == "3", isco_tool == "3") %>%
+  nrow()
+
+# 3) Number of rows where at least one value is "2" and at least one value is "3"
+count_mixed_2_and_3 <- isco_data %>%
+  dplyr::rowwise() %>%
+  dplyr::filter(
+    any(c(isco_human1, isco_human2, isco_tool) == "2") &
+      any(c(isco_human1, isco_human2, isco_tool) == "3")
+  ) %>%
+  nrow()
+
+# 4) Number of rows where minimum one element is neither "2" nor "3" - should be 0
+count_other <- isco_data %>%
+  dplyr::rowwise() %>%
+  dplyr::filter(
+    any(!c(isco_human1, isco_human2, isco_tool) %in% c("2", "3"))
+  ) %>%
+  nrow()
+
+# Show results
+count_all_2         # 235
+count_all_3         # 80
+count_mixed_2_and_3 # 42
+count_other         # 0 
+
+# Reindex item_id (1, 2, 3,...)
+isco_data <- isco_data %>%
+  dplyr::mutate(item_id = dplyr::row_number())
+
+# Collect all observed classes
+isco_levels <- isco_data %>%
+  dplyr::select(isco_human1, isco_human2, isco_tool) %>%
+  unlist(use.names = FALSE) %>%
+  unique() %>%
+  sort() %>%
+  as.character() %>%
+  as.vector()
+
+#head(isco_data)
+
+# K, number of distinct classes
+K <- length(isco_levels)
+stopifnot(K >= 2)
+
+# Helper: map original labels to 1..K using isco_levels for stan compatibility
+to_index <- function(v) as.integer(factor(v, levels = isco_levels))
+
+# 1) Map original labels to 1..K
+isco_data_idx <- isco_data %>%
+  dplyr::mutate(
+    isco_human1 = to_index(isco_human1),
+    isco_human2 = to_index(isco_human2),
+    isco_tool   = to_index(isco_tool)
+  )
+
+# 2) Long format (now without NAs)
+long_data <- isco_data_idx %>%
+  dplyr::transmute(item_id, r1 = isco_human1, r2 = isco_human2, r3 = isco_tool) %>%
+  tidyr::pivot_longer(cols = starts_with("r"), names_to = "rater", values_to = "y") %>%
+  dplyr::mutate(rater_id = as.integer(factor(rater, levels = c("r1", "r2", "r3")))) %>%
+  dplyr::arrange(item_id, rater_id)
+
+# Robust 1..I indexing
+item_ids <- sort(unique(long_data$item_id))
+long_data$item_id_idx <- as.integer(factor(long_data$item_id, levels = item_ids))
+
+I <- length(item_ids) # number of items (people interviewed)
+J <- 3L # number of raters
+N <- nrow(long_data) # number of observations (I * J if no missing)
+
+cat("Items after filtering:", I, "\n") #357
+cat("Observations:", N, "\n") #3*357=1071
+cat("Classes:", K, "\n") #2
+```
+
+
+```{r Modeling with Dawid-Skene in Stan - BASIS, warning=FALSE, message=FALSE}
+# Packages
+library(data.table)
+library(dplyr)
+library(tidyr)
+library(cmdstanr)
+
+
+
+# Fully neutral Stan data
+stan_data <- list(
+  I = I,
+  J = J,
+  K = K,
+  N = N,
+  ii = as.integer(long_data$item_id_idx),
+  jj = as.integer(long_data$rater_id),
+  y  = as.integer(long_data$y),
+
+  # No data-driven information
+  alpha = rep(1.0, K),
+  beta  = matrix(1.0, nrow = K, ncol = K)
+)
+
+# 3) Write Stan model to file
+stan_file <- "dawid_skene_isco.stan"
+writeLines(con = stan_file, text = '
+  data {
+    int<lower=2> K;                      // number of categories
+    int<lower=1> I;                      // items
+    int<lower=1> J;                      // raters
+    int<lower=1> N;                      // number of observed ratings
+    array[N] int<lower=1, upper=I> ii;   // item index per observation
+    array[N] int<lower=1, upper=J> jj;   // rater index per observation
+    array[N] int<lower=1, upper=K> y;    // observed category per observation
+  
+    vector<lower=0>[K] alpha;            // prior for pi
+    array[K] vector<lower=0>[K] beta;    // Dirichlet priors for theta rows, vary by true class
+  }
+
+parameters {
+  simplex[K] pi;                       // prevalence over true classes
+  array[J, K] simplex[K] theta;        // confusion rows: for rater j and true class k
+}
+
+transformed parameters {
+  // log_q_z[i, k] = log p(z_i = k | pi, theta) up to a constant
+  array[I] vector[K] log_q_z;
+
+  // Initialize with log pi
+  for (i in 1:I) {
+    log_q_z[i] = log(pi);
+  }
+
+  // Accumulate per observation
+  for (n in 1:N) {
+    int i = ii[n];
+    int j = jj[n];
+    int y_n = y[n];
+    for (k in 1:K) {
+      // Add log categorical pmf of y_n under theta[j, k, :]
+      log_q_z[i, k] += categorical_lpmf(y_n | theta[j, k]);
+    }
+  }
+}
+
+model {
+  // Priors
+  pi ~ dirichlet(alpha);
+  for (j in 1:J)
+    for (k in 1:K)
+      theta[j, k] ~ dirichlet(beta[k]);
+
+  // Marginalized likelihood
+  for (i in 1:I) {
+    target += log_sum_exp(log_q_z[i]);
+  }
+}
+
+generated quantities {
+  array[I] simplex[K] q_z;
+  for (i in 1:I) {
+    vector[K] lq = log_q_z[i];
+    q_z[i] = softmax(lq);
+  }
+}
+')
+
+# 4) Compile and sample with cmdstanr
+mod <- cmdstan_model(stan_file, cpp_options = list(stan_threads = TRUE))
+
+fit_basis <- mod$sample(
+  data = stan_data,
+  seed = 1234,
+  chains = 4,
+  parallel_chains = 4,
+  threads_per_chain = 1,
+  iter_warmup = 1000,
+  iter_sampling = 4000,
+  refresh = 200,
+  adapt_delta = 0.99
+)
+
+# print number of rhats above 1.1
+s <- fit_basis$summary()
+s$rhat <- as.numeric(s$rhat)
+
+subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))[, c("variable","rhat","ess_bulk","ess_tail")]
+# print string if no rhats above 1.1
+if (nrow(subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))) == 0) {
+  cat("No R-hat values above 1.1\n")
+}
+```
+
+```{r Modeling with Dawid-Skene in Stan - chains_lower, warning=FALSE, message=FALSE}
+fit_chains_lower <- mod$sample(
+  data = stan_data,
+  seed = 1234,
+  chains = 2,
+  parallel_chains = 4,
+  threads_per_chain = 1,
+  iter_warmup = 1000,
+  iter_sampling = 4000,
+  refresh = 200,
+  adapt_delta = 0.99
+)
+
+# print number of rhats above 1.1
+s <- fit_chains_lower$summary()
+s$rhat <- as.numeric(s$rhat)
+
+subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))[, c("variable","rhat","ess_bulk","ess_tail")]
+# print string if no rhats above 1.1
+if (nrow(subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))) == 0) {
+  cat("No R-hat values above 1.1\n")
+}
+```
+# 
+```{r Modeling with Dawid-Skene in Stan - chains_higher, warning=FALSE, message=FALSE}
+fit_chains_higher <- mod$sample(
+  data = stan_data,
+  seed = 1234,
+  chains = 6,
+  parallel_chains = 4,
+  threads_per_chain = 1,
+  iter_warmup = 1000,
+  iter_sampling = 4000,
+  refresh = 200,
+  adapt_delta = 0.99
+)
+
+# print number of rhats above 1.1
+s <- fit_chains_higher$summary()
+s$rhat <- as.numeric(s$rhat)
+
+subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))[, c("variable","rhat","ess_bulk","ess_tail")]
+# print string if no rhats above 1.1
+if (nrow(subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))) == 0) {
+  cat("No R-hat values above 1.1\n")
+}
+```
+# 
+```{r Modeling with Dawid-Skene in Stan - paral_chains_lower, warning=FALSE, message=FALSE}
+fit_paral_chains_lower <- mod$sample(
+  data = stan_data,
+  seed = 1234,
+  chains = 4,
+  parallel_chains = 2,
+  threads_per_chain = 1,
+  iter_warmup = 1000,
+  iter_sampling = 4000,
+  refresh = 200,
+  adapt_delta = 0.99
+)
+
+# print number of rhats above 1.1
+s <- fit_paral_chains_lower$summary()
+s$rhat <- as.numeric(s$rhat)
+
+subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))[, c("variable","rhat","ess_bulk","ess_tail")]
+# print string if no rhats above 1.1
+if (nrow(subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))) == 0) {
+  cat("No R-hat values above 1.1\n")
+}
+```
+# 
+```{r Modeling with Dawid-Skene in Stan - paral_chains_higher, warning=FALSE, message=FALSE}
+fit_paral_chains_higher <- mod$sample(
+  data = stan_data,
+  seed = 1234,
+  chains = 4,
+  parallel_chains = 4,
+  threads_per_chain = 1,
+  iter_warmup = 1000,
+  iter_sampling = 4000,
+  refresh = 200,
+  adapt_delta = 0.99
+)
+
+# print number of rhats above 1.1
+s <- fit_paral_chains_higher$summary()
+s$rhat <- as.numeric(s$rhat)
+
+subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))[, c("variable","rhat","ess_bulk","ess_tail")]
+# print string if no rhats above 1.1
+if (nrow(subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))) == 0) {
+  cat("No R-hat values above 1.1\n")
+}
+```
+# 
+```{r Modeling with Dawid-Skene in Stan - warmup_lower, warning=FALSE, message=FALSE}
+fit_warmup_lower <- mod$sample(
+  data = stan_data,
+  seed = 1234,
+  chains = 4,
+  parallel_chains = 4,
+  threads_per_chain = 1,
+  iter_warmup = 500,
+  iter_sampling = 4000,
+  refresh = 200,
+  adapt_delta = 0.99
+)
+
+# print number of rhats above 1.1
+s <- fit_warmup_lower$summary()
+s$rhat <- as.numeric(s$rhat)
+
+subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))[, c("variable","rhat","ess_bulk","ess_tail")]
+# print string if no rhats above 1.1
+if (nrow(subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))) == 0) {
+  cat("No R-hat values above 1.1\n")
+}
+```
+# 
+```{r Modeling with Dawid-Skene in Stan - warmup_higher, warning=FALSE, message=FALSE}
+fit_warmup_higher <- mod$sample(
+  data = stan_data,
+  seed = 1234,
+  chains = 4,
+  parallel_chains = 4,
+  threads_per_chain = 1,
+  iter_warmup = 2000,
+  iter_sampling = 4000,
+  refresh = 200,
+  adapt_delta = 0.99
+)
+
+# print number of rhats above 1.1
+s <- fit_warmup_higher$summary()
+s$rhat <- as.numeric(s$rhat)
+
+subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))[, c("variable","rhat","ess_bulk","ess_tail")]
+# print string if no rhats above 1.1
+if (nrow(subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))) == 0) {
+  cat("No R-hat values above 1.1\n")
+}
+```
+# 
+```{r Modeling with Dawid-Skene in Stan - sampling_lower, warning=FALSE, message=FALSE}
+fit_sampling_lower <- mod$sample(
+  data = stan_data,
+  seed = 1234,
+  chains = 4,
+  parallel_chains = 4,
+  threads_per_chain = 1,
+  iter_warmup = 1000,
+  iter_sampling = 2000,
+  refresh = 200,
+  adapt_delta = 0.99
+)
+
+# print number of rhats above 1.1
+s <- fit_sampling_lower$summary()
+s$rhat <- as.numeric(s$rhat)
+
+subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))[, c("variable","rhat","ess_bulk","ess_tail")]
+# print string if no rhats above 1.1
+if (nrow(subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))) == 0) {
+  cat("No R-hat values above 1.1\n")
+}
+```
+# 
+```{r Modeling with Dawid-Skene in Stan - sampling_higher, warning=FALSE, message=FALSE}
+fit_sampling_higher <- mod$sample(
+  data = stan_data,
+  seed = 1234,
+  chains = 4,
+  parallel_chains = 4,
+  threads_per_chain = 1,
+  iter_warmup = 1000,
+  iter_sampling = 8000,
+  refresh = 200,
+  adapt_delta = 0.99
+)
+
+# print number of rhats above 1.1
+s <- fit_sampling_higher$summary()
+s$rhat <- as.numeric(s$rhat)
+
+subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))[, c("variable","rhat","ess_bulk","ess_tail")]
+# print string if no rhats above 1.1
+if (nrow(subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))) == 0) {
+  cat("No R-hat values above 1.1\n")
+}
+```
+# 
+```{r Modeling with Dawid-Skene in Stan - refresh_lower, warning=FALSE, message=FALSE}
+fit_refresh_lower <- mod$sample(
+  data = stan_data,
+  seed = 1234,
+  chains = 4,
+  parallel_chains = 4,
+  threads_per_chain = 1,
+  iter_warmup = 1000,
+  iter_sampling = 4000,
+  refresh = 100,
+  adapt_delta = 0.99
+)
+
+# print number of rhats above 1.1
+s <- fit_refresh_lower$summary()
+s$rhat <- as.numeric(s$rhat)
+
+subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))[, c("variable","rhat","ess_bulk","ess_tail")]
+# print string if no rhats above 1.1
+if (nrow(subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))) == 0) {
+  cat("No R-hat values above 1.1\n")
+}
+```
+# 
+```{r Modeling with Dawid-Skene in Stan - refresh_higher, warning=FALSE, message=FALSE}
+fit_refresh_higher <- mod$sample(
+  data = stan_data,
+  seed = 1234,
+  chains = 4,
+  parallel_chains = 4,
+  threads_per_chain = 1,
+  iter_warmup = 1000,
+  iter_sampling = 4000,
+  refresh = 400,
+  adapt_delta = 0.99
+)
+
+# print number of rhats above 1.1
+s <- fit_refresh_higher$summary()
+s$rhat <- as.numeric(s$rhat)
+
+subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))[, c("variable","rhat","ess_bulk","ess_tail")]
+# print string if no rhats above 1.1
+if (nrow(subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))) == 0) {
+  cat("No R-hat values above 1.1\n")
+}
+```
+# 
+```{r Modeling with Dawid-Skene in Stan - adapt_delta_lower, warning=FALSE, message=FALSE}
+fit_adapt_delta_lower <- mod$sample(
+  data = stan_data,
+  seed = 1234,
+  chains = 4,
+  parallel_chains = 4,
+  threads_per_chain = 1,
+  iter_warmup = 1000,
+  iter_sampling = 4000,
+  refresh = 200,
+  adapt_delta = 0.9
+)
+
+# print number of rhats above 1.1
+s <- fit_adapt_delta_lower$summary()
+s$rhat <- as.numeric(s$rhat)
+
+subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))[, c("variable","rhat","ess_bulk","ess_tail")]
+# print string if no rhats above 1.1
+if (nrow(subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))) == 0) {
+  cat("No R-hat values above 1.1\n")
+}
+```
+# 
+```{r Modeling with Dawid-Skene in Stan - adapt_delta_higher, warning=FALSE, message=FALSE}
+fit_adapt_delta_higher <- mod$sample(
+  data = stan_data,
+  seed = 1234,
+  chains = 4,
+  parallel_chains = 4,
+  threads_per_chain = 1,
+  iter_warmup = 1000,
+  iter_sampling = 4000,
+  refresh = 200,
+  adapt_delta = 0.999
+)
+
+# print number of rhats above 1.1
+s <- fit_adapt_delta_higher$summary()
+s$rhat <- as.numeric(s$rhat)
+
+subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))[, c("variable","rhat","ess_bulk","ess_tail")]
+# print string if no rhats above 1.1
+if (nrow(subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))) == 0) {
+  cat("No R-hat values above 1.1\n")
+}
+```
+
+```{r Convergence checks}
+if (interactive() && is.null(knitr::opts_knit$get("rmarkdown.pandoc.to"))) {
+  library(shinystan)
+  launch_shinystan(fit_basis)
+}
+
+if (interactive() && is.null(knitr::opts_knit$get("rmarkdown.pandoc.to"))) {
+  library(shinystan)
+  launch_shinystan(fit_adapt_delta_lower)
+}
+```
+
+
+
+# Robustness check - Are there differences in the results if one changes convergence settings?
+```{r compare}
+library(posterior)
+names(summarise_draws(as_draws_df(fit_basis$draws("pi")), mean, sd, ~quantile(.x, c(.05, .95))))
+
+
+compare_param <- function(fit1, fit2, var) {
+  d1 <- as_draws_df(fit1$draws(var))
+  d2 <- as_draws_df(fit2$draws(var))
+
+  s1 <- summarise_draws(d1, mean, sd, ~quantile(.x, c(.05, .95), na.rm = TRUE))
+  s2 <- summarise_draws(d2, mean, sd, ~quantile(.x, c(.05, .95), na.rm = TRUE))
+
+  out <- s1[, c("variable", "mean", "sd", "5%", "95%")]
+  out$mean_2 <- s2$mean
+  out$sd_2   <- s2$sd
+  out$`5%_2` <- s2$`5%`
+  out$`95%_2` <- s2$`95%`
+  out$diff_mean <- out$mean_2 - out$mean
+  out
+}
+
+
+# 1) Compare parameters
+pi_cmp    <- compare_param(fit_basis, fit_adapt_delta_lower, "pi")
+theta_cmp <- compare_param(fit_basis, fit_adapt_delta_lower, "theta")
+
+#2) Show largest differences
+pi_cmp[order(abs(pi_cmp$diff_mean), decreasing = TRUE), ]
+theta_cmp[order(abs(theta_cmp$diff_mean), decreasing = TRUE), ][1:20, ]
+
+# show only differences larger than 0.001
+subset(theta_cmp, abs(diff_mean) > 1e-3)
+# no content
+
+theta_cmp$overlap_5_95 <- pmin(theta_cmp$`95%`, theta_cmp$`95%_2`) -
+  pmax(theta_cmp$`5%`,  theta_cmp$`5%_2`)
+
+# negative values mean no overlap
+theta_cmp[order(theta_cmp$overlap_5_95), ][1:20, ]
+
+theta_cmp$diff_over_sd <- abs(theta_cmp$diff_mean) / theta_cmp$sd
+theta_cmp[order(theta_cmp$diff_over_sd, decreasing = TRUE), ][1:20, ]
+
+
+```
+
+
+```{r Posterior summaries and analysis - BASIS, eval=FALSE, warning=FALSE, message=FALSE} 
+# library(dplyr)
+# library(posterior)
+# library(ggplot2)
+# library(reshape2)
+# 
+# out_dir <- "img/model_results/isco/two_categories"
+# dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+# 
+# save_plot <- function(p, filename, width = 7, height = 5, dpi = 600) {
+#   ggsave(
+#     filename = file.path(out_dir, filename),
+#     plot = p,
+#     width = width,
+#     height = height,
+#     dpi = dpi
+#   )
+# }
+# 
+# # ------------------------------------------------------------
+# # 0) Basic diagnostics for key parameters
+# # ------------------------------------------------------------
+# diag_tbl <- fit_basis$summary(variables = c("pi", "theta")) %>%
+#   dplyr::select(variable, rhat, ess_bulk, ess_tail)
+# 
+# diag_bad <- diag_tbl %>%
+#   dplyr::filter(is.finite(rhat), rhat > 1.01) %>%
+#   dplyr::arrange(desc(rhat))
+# 
+# diag_bad
+# 
+# # Divergences, treedepth hits, if available (cmdstanr)
+# div_info <- tryCatch(fit_basis$diagnostic_summary(), error = function(e) NULL)
+# if (is.null(div_info)) {
+#   div_info <- tryCatch(fit_basis$cmdstan_diagnose(), error = function(e) NULL)
+# }
+# div_info
+# 
+# # ------------------------------------------------------------
+# # 1) Confusion matrices (theta), posterior mean and uncertainty
+# # ------------------------------------------------------------
+# theta_draws_mat <- fit_basis$draws("theta", format = "draws_matrix")
+# theta_mean_vec  <- colMeans(theta_draws_mat)
+# 
+# # Expectation: theta has dimensions [J rater, K true, K given]
+# theta_mean_arr <- array(
+#   theta_mean_vec,
+#   dim = c(J, K, K),
+#   dimnames = list(
+#     rater = c("human1", "human2", "tool"),
+#     true  = isco_levels,
+#     given = isco_levels
+#   )
+# )
+# 
+# theta_human1_mean <- theta_mean_arr["human1", , ]
+# theta_human2_mean <- theta_mean_arr["human2", , ]
+# theta_tool_mean   <- theta_mean_arr["tool",   , ]
+# 
+# theta_human1_mean
+# rowSums(theta_human1_mean)
+# 
+# theta_human2_mean
+# rowSums(theta_human2_mean)
+# 
+# theta_tool_mean
+# rowSums(theta_tool_mean)
+# 
+# plot_theta <- function(mat, title_txt) {
+#   long <- reshape2::melt(mat, varnames = c("True", "Given"), value.name = "Prob")
+#   ggplot(long, aes(x = Given, y = True, fill = Prob)) +
+#     geom_tile(color = "white") +
+#     scale_fill_gradient(low = "white", high = "darkgreen") +
+#     theme_light() +
+#     labs(
+#       title = title_txt,
+#       x = "Observed class",
+#       y = "True class (latent)"
+#     ) +
+#     theme(axis.text.x = element_text(angle = 45, hjust = 1))
+# }
+# 
+# p_theta_h1_mean <- plot_theta(theta_human1_mean, "Confusion matrix, human 1 (posterior mean)")
+# p_theta_h2_mean <- plot_theta(theta_human2_mean, "Confusion matrix, human 2 (posterior mean)")
+# p_theta_tool_mean <- plot_theta(theta_tool_mean, "Confusion matrix, tool (posterior mean)")
+# 
+# save_plot(p_theta_h1_mean, "theta_human1_mean.png")
+# save_plot(p_theta_h2_mean, "theta_human2_mean.png")
+# save_plot(p_theta_tool_mean, "theta_tool_mean.png")
+# 
+# p_theta_h1_mean
+# p_theta_h2_mean
+# p_theta_tool_mean
+# 
+# # Credible intervals for all theta entries
+# theta_summ <- summarise_draws(
+#   as_draws_df(fit_basis$draws("theta")),
+#   mean, sd,
+#   ~quantile(.x, probs = c(`5%` = 0.05, `50%` = 0.50, `95%` = 0.95), na.rm = TRUE)
+# )
+# theta_summ
+# 
+# # Posterior SD heatmaps for theta (uncertainty by cell)
+# theta_sd_vec <- apply(theta_draws_mat, 2, sd)
+# theta_sd_arr <- array(
+#   theta_sd_vec,
+#   dim = c(J, K, K),
+#   dimnames = list(
+#     rater = c("human1", "human2", "tool"),
+#     true  = isco_levels,
+#     given = isco_levels
+#   )
+# )
+# 
+# p_theta_h1_sd <- plot_theta(theta_sd_arr["human1", , ], "Confusion matrix, human 1 (posterior SD)")
+# p_theta_h2_sd <- plot_theta(theta_sd_arr["human2", , ], "Confusion matrix, human 2 (posterior SD)")
+# p_theta_tool_sd <- plot_theta(theta_sd_arr["tool", , ], "Confusion matrix, tool (posterior SD)")
+# 
+# save_plot(p_theta_h1_sd, "theta_human1_sd.png")
+# save_plot(p_theta_h2_sd, "theta_human2_sd.png")
+# save_plot(p_theta_tool_sd, "theta_tool_sd.png")
+# 
+# p_theta_h1_sd
+# p_theta_h2_sd
+# p_theta_tool_sd
+# 
+# # ------------------------------------------------------------
+# # 2) Class prevalence (pi), posterior mean and uncertainty
+# # ------------------------------------------------------------
+# pi_summ <- summarise_draws(
+#   as_draws_df(fit_basis$draws("pi")),
+#   mean, sd,
+#   ~quantile(.x, probs = c(`5%` = 0.05, `50%` = 0.50, `95%` = 0.95), na.rm = TRUE)
+# )
+# pi_summ
+# 
+# pi_means <- colMeans(as_draws_matrix(fit_basis$draws("pi")))
+# pi_df <- data.frame(
+#   class = isco_levels,
+#   prevalence = as.numeric(pi_means)
+# )
+# 
+# p_pi_bar <- ggplot(pi_df, aes(x = class, y = prevalence)) +
+#   geom_bar(stat = "identity", fill = "#02626f") +
+#   theme_light() +
+#   labs(
+#     title = "Posterior mean of class prevalence (p)",
+#     x = "Class",
+#     y = "Prevalence"
+#   ) +
+#   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+# 
+# save_plot(p_pi_bar, "pi_mean_bar.png", width = 6, height = 4)
+# p_pi_bar
+# 
+# # ------------------------------------------------------------
+# # 2b) Rater level scalar summaries from theta
+# # ------------------------------------------------------------
+# pi_mean_vec <- as.numeric(pi_means)
+# names(pi_mean_vec) <- isco_levels
+# 
+# weighted_diag_mass <- function(mat, w) sum(diag(mat) * w)
+# weighted_offdiag_mass <- function(mat, w) sum((1 - diag(mat)) * w)
+# 
+# rater_summary <- data.frame(
+#   rater = c("human1", "human2", "tool"),
+#   weighted_diag_mass = c(
+#     weighted_diag_mass(theta_human1_mean, pi_mean_vec),
+#     weighted_diag_mass(theta_human2_mean, pi_mean_vec),
+#     weighted_diag_mass(theta_tool_mean,   pi_mean_vec)
+#   ),
+#   weighted_offdiag_mass = c(
+#     weighted_offdiag_mass(theta_human1_mean, pi_mean_vec),
+#     weighted_offdiag_mass(theta_human2_mean, pi_mean_vec),
+#     weighted_offdiag_mass(theta_tool_mean,   pi_mean_vec)
+#   )
+# )
+# rater_summary
+# 
+# p_rater_diag <- ggplot(rater_summary, aes(x = rater, y = weighted_diag_mass)) +
+#   geom_bar(stat = "identity", fill = "#02626f") +
+#   theme_light() +
+#   labs(
+#     title = "Rater summary: Weighted diagonal mass",
+#     x = "Rater",
+#     y = "Sum_j pi_j * theta_jj"
+#   )
+# 
+# save_plot(p_rater_diag, "rater_weighted_diag_mass.png", width = 6, height = 4)
+# p_rater_diag
+# 
+# # ------------------------------------------------------------
+# # 3) Posterior class probabilities per item (q_z)
+# # ------------------------------------------------------------
+# qz_draws_mat <- fit_basis$draws("q_z", format = "draws_matrix")
+# qz_mean_vec  <- colMeans(qz_draws_mat)
+# 
+# qz_mean <- matrix(
+#   qz_mean_vec,
+#   nrow = I, ncol = K,
+#   dimnames = list(item = item_ids, class = isco_levels)
+# )
+# 
+# qz_df <- as.data.frame(qz_mean)
+# p_cols <- paste0("p_", isco_levels)
+# colnames(qz_df) <- p_cols
+# qz_df$item_id <- item_ids
+# 
+# # MAP label
+# qz_df$map_class_idx   <- max.col(qz_df[p_cols], ties.method = "first")
+# qz_df$map_class_label <- isco_levels[qz_df$map_class_idx]
+# 
+# # Uncertainty measures
+# eps <- 1e-12
+# qz_df$max_p <- apply(qz_df[p_cols], 1, max)
+# 
+# qz_df$entropy <- -rowSums(as.matrix(qz_df[p_cols]) * log(as.matrix(qz_df[p_cols]) + eps))
+# 
+# qz_df$margin <- apply(qz_df[p_cols], 1, function(p) {
+#   ps <- sort(p, decreasing = TRUE)
+#   ps[1] - ps[2]
+# })
+# 
+# # Credible set per item, smallest set reaching cumulative posterior mass >= level
+# credible_set <- function(p, classes, level = 0.95) {
+#   o <- order(p, decreasing = TRUE)
+#   cum <- cumsum(p[o])
+#   m <- which(cum >= level)[1]
+#   classes[o[seq_len(m)]]
+# }
+# qz_df$cs95 <- apply(qz_df[p_cols], 1, function(x) credible_set(x, isco_levels, level = 0.95))
+# 
+# table(lengths(qz_df$cs95))
+# 
+# # Plots of uncertainty and confidence
+# p_maxp_hist <- ggplot(qz_df, aes(x = max_p)) +
+#   geom_histogram(binwidth = 0.025, fill = "#333333", color = "white", size = 0.1) +
+#   theme_light() +
+#   labs(x = "Posterior max probability", y = "Count",
+#        title = "Model confidence per item")
+# 
+# p_entropy_hist <- ggplot(qz_df, aes(x = entropy)) +
+#   geom_histogram(binwidth = 0.025, fill = "#333333", color = "white", size = 0.1) +
+#   theme_light() +
+#   labs(x = "Posterior entropy", y = "Count",
+#        title = "Item uncertainty (entropy)")
+# 
+# p_margin_hist <- ggplot(qz_df, aes(x = margin)) +
+#   geom_histogram(binwidth = 0.025, fill = "#333333", color = "white", size = 0.1) +
+#   theme_light() +
+#   labs(x = "Posterior margin (top1 minus top2)", y = "Count",
+#        title = "Item uncertainty (margin)")
+# 
+# save_plot(p_maxp_hist, "qz_maxp_hist.png", width = 6, height = 4)
+# save_plot(p_entropy_hist, "qz_entropy_hist.png", width = 6, height = 4)
+# save_plot(p_margin_hist, "qz_margin_hist.png", width = 6, height = 4)
+# 
+# p_maxp_hist
+# p_entropy_hist
+# p_margin_hist
+# 
+# # ------------------------------------------------------------
+# # 3b) MAP distribution vs pi (sanity check)
+# # ------------------------------------------------------------
+# map_tab <- qz_df %>%
+#   count(map_class_label, name = "n_map") %>%
+#   mutate(map_share = n_map / sum(n_map)) %>%
+#   rename(class = map_class_label)
+# 
+# pi_tab <- data.frame(class = isco_levels, pi_mean = as.numeric(pi_means))
+# 
+# map_vs_pi <- left_join(map_tab, pi_tab, by = "class")
+# map_vs_pi
+# 
+# p_map_vs_pi <- ggplot(map_vs_pi, aes(x = class)) +
+#   geom_col(aes(y = map_share), fill = "#02626f") +
+#   geom_point(aes(y = pi_mean), size = 2) +
+#   theme_light() +
+#   labs(
+#     title = "MAP share (bars) vs posterior mean pi (points)",
+#     x = "Class",
+#     y = "Share / prevalence"
+#   )
+# 
+# save_plot(p_map_vs_pi, "map_share_vs_pi.png", width = 6, height = 4)
+# p_map_vs_pi
+# 
+# # ------------------------------------------------------------
+# # 4) Merge predictions with original ratings, include uncertainty
+# # ------------------------------------------------------------
+# ratings <- isco_data %>%
+#   dplyr::select(item_id, isco_human1, isco_human2, isco_tool)
+# 
+# predictions <- qz_df %>%
+#   dplyr::select(item_id, map_class_label, all_of(p_cols), max_p, entropy, margin, cs95)
+# 
+# ratings_with_predictions <- ratings %>%
+#   dplyr::left_join(predictions, by = "item_id") %>%
+#   dplyr::rename(
+#     predicted_class = map_class_label,
+#     rating_human1 = isco_human1,
+#     rating_human2 = isco_human2,
+#     rating_tool   = isco_tool
+#   ) %>%
+#   dplyr::arrange(item_id)
+# 
+# head(ratings_with_predictions, 30)
+# 
+# # Most uncertain items by entropy, include posterior probabilities
+# most_uncertain <- ratings_with_predictions %>%
+#   dplyr::arrange(desc(entropy)) %>%
+#   dplyr::select(item_id, predicted_class, entropy, margin, max_p, all_of(p_cols),
+#                 rating_human1, rating_human2, rating_tool)
+# 
+# head(most_uncertain, 20)
+# 
+# # ------------------------------------------------------------
+# # 5) Observed agreement, descriptive, not model based
+# # ------------------------------------------------------------
+# mean(isco_data$isco_human1 == isco_data$isco_tool, na.rm = TRUE)
+# mean(isco_data$isco_human2 == isco_data$isco_tool, na.rm = TRUE)
+# 
+# isco_data %>%
+#   dplyr::count(isco_human1, isco_human2, isco_tool) %>%
+#   dplyr::arrange(desc(n))
+# 
+```
+
+```{r Posterior summaries and analysis - ADAPT DELTA LOWER, eval=FALSE, warning=FALSE, message=FALSE}  
+# # 5) Posterior summaries
+# # Confusion matrices per rater (posterior mean)
+# theta_draws_rvars <- fit_adapt_delta_lower$draws("theta")
+# theta_rvars <- posterior::as_draws_rvars(theta_draws_rvars)
+# theta_mean_rvar <- posterior::rvar_mean(theta_rvars$theta)
+# 
+# # Get draws directly as a matrix
+# theta_draws_mat <- fit_adapt_delta_lower$draws("theta", format = "draws_matrix")
+# 
+# # Mean across all draws
+# theta_mean_vec <- colMeans(theta_draws_mat)
+# 
+# # Reshape into a 3D array (J x K x K)
+# theta_mean_arr <- array(
+#   theta_mean_vec,
+#   dim = c(J, K, K),
+#   dimnames = list(
+#     rater = c("human1", "human2", "tool"),
+#     true  = isco_levels,
+#     given = isco_levels
+#   )
+# )
+# 
+# # Example: Human 1 (rater 1)
+# theta_human1_mean <- theta_mean_arr["human1", , ]
+# theta_human1_mean
+# 
+# rowSums(theta_human1_mean)
+# # Should all be about 1
+# 
+# # Same for rater 2 and tool
+# theta_human2_mean <- theta_mean_arr["human2", , ]
+# theta_tool_mean   <- theta_mean_arr["tool", , ]
+# 
+# theta_human2_mean
+# theta_tool_mean
+# 
+# # Posterior class probabilities per item (with original labels)
+# qz_draws_array <- fit_adapt_delta_lower$draws("q_z", format = "draws_array")    # [iter, chain, I, K]
+# qz_draws_mat   <- fit_adapt_delta_lower$draws("q_z", format = "draws_matrix")
+# 
+# # Mean across all draws
+# qz_mean_vec <- colMeans(qz_draws_mat)
+# 
+# # Reshape into an I x K matrix
+# qz_mean <- matrix(
+#   qz_mean_vec,
+#   nrow = I, ncol = K,
+#   dimnames = list(item = item_ids, class = isco_levels)
+# )
+# 
+# qz_df <- as.data.frame(qz_mean)
+# colnames(qz_df) <- paste0("p_", isco_levels)
+# qz_df$item_id <- item_ids
+# 
+# # MAP, both as index and as original label
+# qz_df$map_class_idx   <- max.col(qz_df[paste0("p_", isco_levels)], ties.method = "first")
+# qz_df$map_class_label <- isco_levels[qz_df$map_class_idx]
+# 
+# # Join back to items
+# result_items <- data.frame(item_id = item_ids) %>%
+#   dplyr::left_join(qz_df, by = "item_id")
+# 
+# head(result_items)
+# print(head(result_items, 20))
+# 
+# isco_data %>%
+#   dplyr::count(isco_human1, isco_human2, isco_tool) %>%
+#   dplyr::arrange(desc(n))
+# 
+# mean(isco_data$isco_human1 == isco_data$isco_tool, na.rm = TRUE)
+# mean(isco_data$isco_human2 == isco_data$isco_tool, na.rm = TRUE)
+# 
+# library(ggplot2)
+# qz_df$max_p <- apply(qz_df[paste0("p_", isco_levels)], 1, max)
+# 
+# ggplot(qz_df, aes(x = max_p)) +
+#   geom_histogram(binwidth = 0.025, fill = "#333333", color = "white", size = 0.1) +
+#   labs(x = "Posterior max probability", y = "Count",
+#        title = "Model confidence per item")
+# 
+# # Output from already executed code
+# 
+# rowSums(theta_human1_mean)
+# # Should all be about 1
+# 
+# library(reshape2)
+# theta_human1_long <- melt(theta_human1_mean, varnames = c("True", "Given"), value.name = "Prob")
+# 
+# ggplot(theta_human1_long, aes(x = Given, y = True, fill = Prob)) +
+#   geom_tile(color = "white") +
+#   scale_fill_gradient(low = "white", high = "darkgreen") +
+#   theme_light() +
+#   labs(
+#     title = "Confusion matrix (Human rater 1)",
+#     x = "Observed class",
+#     y = "True class (latent)"
+#   ) +
+#   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+# 
+# library(posterior)
+# pi_means <- colMeans(as_draws_matrix(fit_adapt_delta_lower$draws("pi")))
+# pi_means
+# 
+# isco_levels[1]
+# 
+# # Visualize pi_means in a bar chart
+# pi_df <- data.frame(
+#   class = isco_levels,
+#   prevalence = pi_means
+# )
+# 
+# ggplot(pi_df, aes(x = class, y = prevalence)) +
+#   geom_bar(stat = "identity", fill = "#02626f") +
+#   theme_light() +
+#   labs(
+#     title = "Posterior mean of class prevalence (p)",
+#     x = "Class",
+#     y = "Prevalence"
+#   ) +
+#   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+# 
+# # Merge ratings and predicted class
+# 
+# # 1) Get the original rater labels again
+# ratings <- isco_data %>%
+#   dplyr::select(item_id, isco_human1, isco_human2, isco_tool)
+# 
+# # 2) Combine with posterior class assignments
+# predictions <- qz_df %>%
+#   dplyr::select(item_id, map_class_label, starts_with("p_"))
+# 
+# # 3) Merge
+# ratings_with_predictions <- ratings %>%
+#   dplyr::left_join(predictions, by = "item_id") %>%
+#   dplyr::arrange(item_id)
+# 
+# # 4) Readable column names
+# ratings_with_predictions <- ratings_with_predictions %>%
+#   dplyr::rename(
+#     predicted_class = map_class_label,
+#     rating_human1 = isco_human1,
+#     rating_human2 = isco_human2,
+#     rating_tool   = isco_tool
+#   )
+# 
+# # 5) Example output
+# head(ratings_with_predictions, 30)
+```

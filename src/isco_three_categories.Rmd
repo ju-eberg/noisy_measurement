@@ -1,0 +1,1087 @@
+---
+title: "ISCO Three Category Version"
+output: pdf_document
+---
+
+```{r setup, echo=FALSE, warning=FALSE, message=FALSE}
+# Load project configuration
+source(here::here("config.R"), local = TRUE)
+
+setwd(PROJECT_ROOT)
+knitr::opts_knit$set(root.dir = PROJECT_ROOT)
+
+knitr::purl(file.path(PROJECT_ROOT, "src/data_preparation.Rmd"),
+            output = file.path(PROJECT_ROOT, "src/data_preparation.R"))
+
+source(file.path(PROJECT_ROOT, "src/data_preparation.R"),
+       local = knitr::knit_global())
+```
+
+```{r Filtering and preparing ISCO data, warning=FALSE, message=FALSE}
+# Packages
+library(data.table)
+library(dplyr)
+library(tidyr)
+library(cmdstanr)
+
+
+
+# keep only relevant columns
+isco_data <- data_basis %>%
+  select(item_id, isco_tool_1st, res1_isco_1st, res2_isco_1st)
+
+#Rename columns
+setnames(
+  data_basis,
+  old = c("isco_tool_1st", "res1_isco_1st", "res2_isco_1st"),
+  new = c("isco_tool", "isco_human1", "isco_human2")
+)
+
+head(data_basis)
+
+#### 1) Select only ISCO, as character
+isco_data <- data_basis %>%
+  dplyr::select(item_id, isco_human1, isco_human2, isco_tool) %>%
+  mutate(across(c(isco_human1, isco_human2, isco_tool), as.character))
+
+### Remove all lines with NAs
+isco_data <- isco_data %>%
+  filter(!is.na(isco_human1) & !is.na(isco_human2) & !is.na(isco_tool))
+
+# Keep only three categories: "2" and "3" and "1"
+isco_data <- isco_data %>%
+  filter(isco_human1 == "2" | isco_human1 == "3" | isco_human1 == "1") %>%
+  filter(isco_human2 == "2" | isco_human2 == "3" | isco_human2 == "1") %>%
+  filter(isco_tool   == "2" | isco_tool   == "3" | isco_tool == "1")
+
+# 1) Number of rows where all three classify as "2"
+count_all_2 <- isco_data %>%
+  dplyr::filter(isco_human1 == "2", isco_human2 == "2", isco_tool == "2") %>%
+  nrow()
+
+# 2) Number of rows where all three classify as "3"
+count_all_3 <- isco_data %>%
+  dplyr::filter(isco_human1 == "3", isco_human2 == "3", isco_tool == "3") %>%
+  nrow()
+
+# 2a) Number of rows where all three classify as "1"
+count_all_1 <- isco_data %>%
+  dplyr::filter(isco_human1 == "1", isco_human2 == "1", isco_tool == "1") %>%
+  nrow()
+
+# 3) Number of rows where at least one value is "2" and at least one value is "3"
+count_mixed_2_and_3 <- isco_data %>%
+  dplyr::rowwise() %>%
+  dplyr::filter(
+    any(c(isco_human1, isco_human2, isco_tool) == "2") &
+      any(c(isco_human1, isco_human2, isco_tool) == "3")
+  ) %>%
+  nrow()
+
+# 3a) Number of rows where at least one value is "1" and at least one value is "2" or "3"
+count_mixed_1_and_else <- isco_data %>%
+  dplyr::rowwise() %>%
+  dplyr::filter(
+    any(c(isco_human1, isco_human2, isco_tool) == "1") &
+      any(c(isco_human1, isco_human2, isco_tool) != "1")
+  ) %>%
+  nrow()
+
+# 4) Number of rows where minimum one element is neither "2" nor "3" nor "1" - should be 0
+count_other <- isco_data %>%
+  dplyr::rowwise() %>%
+  dplyr::filter(
+    any(!c(isco_human1, isco_human2, isco_tool) %in% c("1","2", "3"))
+  ) %>%
+  nrow()
+
+# Show results
+count_all_1         # 46
+count_all_2         # 235
+count_all_3         # 80
+count_mixed_2_and_3 # 42
+count_mixed_1_and_else #57
+count_other         # 0 
+
+# Reindex item_id (1, 2, 3,...)
+isco_data <- isco_data %>%
+  dplyr::mutate(item_id = dplyr::row_number())
+
+# Collect all observed classes
+isco_levels <- isco_data %>%
+  dplyr::select(isco_human1, isco_human2, isco_tool) %>%
+  unlist(use.names = FALSE) %>%
+  unique() %>%
+  sort() %>%
+  as.character() %>%
+  as.vector()
+
+# K, number of distinct classes
+K <- length(isco_levels)
+stopifnot(K >= 3)
+
+# Helper: map original labels to 1..K using isco_levels for stan compatibility
+to_index <- function(v) as.integer(factor(v, levels = isco_levels))
+
+# 1) Map original labels to 1..K
+isco_data_idx <- isco_data %>%
+  dplyr::mutate(
+    isco_human1 = to_index(isco_human1),
+    isco_human2 = to_index(isco_human2),
+    isco_tool   = to_index(isco_tool)
+  )
+
+# 2) Long format (now without NAs)
+long_data <- isco_data_idx %>%
+  dplyr::transmute(item_id, r1 = isco_human1, r2 = isco_human2, r3 = isco_tool) %>%
+  tidyr::pivot_longer(cols = starts_with("r"), names_to = "rater", values_to = "y") %>%
+  dplyr::mutate(rater_id = as.integer(factor(rater, levels = c("r1", "r2", "r3")))) %>%
+  dplyr::arrange(item_id, rater_id)
+
+# Robust 1..I indexing
+item_ids <- sort(unique(long_data$item_id))
+long_data$item_id_idx <- as.integer(factor(long_data$item_id, levels = item_ids))
+
+I <- length(item_ids) # number of items (people interviewed)
+J <- 3L # number of raters
+N <- nrow(long_data) # number of observations (I * J if no missing)
+
+cat("Items after filtering:", I, "\n")
+cat("Observations:", N, "\n")
+cat("Classes:", K, "\n")
+cat("Class levels:", paste(isco_levels, collapse = ", "), "\n")
+```
+
+
+```{r Modeling with Dawid-Skene in Stan - All 4 Models, warning=FALSE, message=FALSE}
+# Packages
+library(data.table)
+library(dplyr)
+library(tidyr)
+library(cmdstanr)
+
+
+
+# 3) Write Stan model to file
+stan_file <- "dawid_skene_isco.stan"
+writeLines(con = stan_file, text = '
+  data {
+    int<lower=2> K;                      // number of categories
+    int<lower=1> I;                      // items
+    int<lower=1> J;                      // raters
+    int<lower=1> N;                      // number of observed ratings
+    array[N] int<lower=1, upper=I> ii;   // item index per observation
+    array[N] int<lower=1, upper=J> jj;   // rater index per observation
+    array[N] int<lower=1, upper=K> y;    // observed category per observation
+  
+    vector<lower=0>[K] alpha;            // prior for pi
+    array[K] vector<lower=0>[K] beta;    // Dirichlet priors for theta rows, vary by true class
+  }
+
+parameters {
+  simplex[K] pi;                       // prevalence over true classes
+  array[J, K] simplex[K] theta;        // confusion rows: for rater j and true class k
+}
+
+transformed parameters {
+  // log_q_z[i, k] = log p(z_i = k | pi, theta) up to a constant
+  array[I] vector[K] log_q_z;
+
+  // Initialize with log pi
+  for (i in 1:I) {
+    log_q_z[i] = log(pi);
+  }
+
+  // Accumulate per observation
+  for (n in 1:N) {
+    int i = ii[n];
+    int j = jj[n];
+    int y_n = y[n];
+    for (k in 1:K) {
+      // Add log categorical pmf of y_n under theta[j, k, :]
+      log_q_z[i, k] += categorical_lpmf(y_n | theta[j, k]);
+    }
+  }
+}
+
+model {
+  // Priors
+  pi ~ dirichlet(alpha);
+  for (j in 1:J)
+    for (k in 1:K)
+      theta[j, k] ~ dirichlet(beta[k]);
+
+  // Marginalized likelihood
+  for (i in 1:I) {
+    target += log_sum_exp(log_q_z[i]);
+  }
+}
+
+generated quantities {
+  array[I] simplex[K] q_z;
+  for (i in 1:I) {
+    vector[K] lq = log_q_z[i];
+    q_z[i] = softmax(lq);
+  }
+}
+')
+
+# Compile model once
+mod <- cmdstan_model(stan_file, cpp_options = list(stan_threads = TRUE))
+
+# Define 4 model configurations
+model_configs <- list(
+  list(
+    name = "model1",
+    alpha = c(1,1,1),
+    beta = lapply(1:K, function(k) { v <- rep(1, K); v[k] <- 15; v })
+  ),
+  list(
+    name = "model2",
+    alpha = c(7,20,15),
+    beta = lapply(1:K, function(k) { v <- rep(1, K); v[k] <- 15; v })
+  )
+  # list(
+  #   name = "model3",
+  #   alpha = c(7,20,15),
+  #   beta = lapply(1:K, function(k) { v <- rep(1, K); v[k] <- 30; v })
+  # ),
+  # list(
+  #   name = "model4",
+  #   alpha = c(1,1,1),
+  #   beta = lapply(1:K, function(k) { v <- rep(1, K); v[k] <- 30; v })
+  # )
+  # list(
+  #   name = "alpha11_beta5diag",
+  #   alpha = c(1.0, 1.0),
+  #   beta = matrix(1.0, nrow = K, ncol = K) + diag(4.0, K)  # 5 on diagonal, 1 elsewhere
+  # ),
+  # list(
+  #   name = "alpha1510_beta1",
+  #   alpha = c(15.0, 10.0),
+  #   beta = matrix(1.0, nrow = K, ncol = K)
+  # # ),
+  # list(
+  #   name = "alpha1510_beta5diag",
+  #   alpha = c(15.0, 10.0),
+  #   beta = matrix(1.0, nrow = K, ncol = K) + diag(4.0, K)  # 5 on diagonal, 1 elsewhere
+  # )
+)
+
+# Fit all 1 models
+fits <- list()
+for (config in model_configs) {
+  cat("\n=== Fitting model:", config$name, "===\n")
+  
+  stan_data <- list(
+    I = I,
+    J = J,
+    K = K,
+    N = N,
+    ii = as.integer(long_data$item_id_idx),
+    jj = as.integer(long_data$rater_id),
+    y  = as.integer(long_data$y),
+    alpha = config$alpha,
+    beta  = config$beta
+  )
+  
+  fit <- mod$sample(
+    data = stan_data,
+    seed = 1234,
+    chains = 4,
+    parallel_chains = 4,
+    threads_per_chain = 1,
+    iter_warmup = 1000,
+    iter_sampling = 4000,
+    refresh = 200,
+    adapt_delta = 0.99
+  )
+  
+  fits[[config$name]] <- fit
+  
+  # Check convergence
+  s <- fit$summary()
+  s$rhat <- as.numeric(s$rhat)
+  bad_rhat <- subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))
+  if (nrow(bad_rhat) > 0) {
+    cat("WARNING: R-hat values above 1.1:\n")
+    print(bad_rhat[, c("variable","rhat","ess_bulk","ess_tail")])
+  } else {
+    cat("No R-hat values above 1.1\n")
+  }
+}
+```
+
+```{r Convergence checks}
+fit_basis <- fits[["model1"]]
+
+if (interactive() && is.null(knitr::opts_knit$get("rmarkdown.pandoc.to"))) {
+  library(shinystan)
+  launch_shinystan(fit_basis)
+}
+```
+
+
+
+```{r Posterior summaries and analysis - BASIS, warning=FALSE, message=FALSE} 
+library(dplyr)
+library(posterior)
+library(ggplot2)
+library(reshape2)
+
+out_dir <- "img/model_results/isco/three_categories/alpha1"
+dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+
+# use first fit 
+fit_basis <- fits[["model1"]]
+
+save_plot <- function(p, filename, width = 7, height = 5, dpi = 600) {
+  ggsave(
+    filename = file.path(out_dir, filename),
+    plot = p,
+    width = width,
+    height = height,
+    dpi = dpi
+  )
+}
+
+# ------------------------------------------------------------
+# 0) Basic diagnostics for key parameters
+# ------------------------------------------------------------
+diag_tbl <- fit_basis$summary(variables = c("pi", "theta")) %>%
+  dplyr::select(variable, rhat, ess_bulk, ess_tail)
+
+diag_bad <- diag_tbl %>%
+  dplyr::filter(is.finite(rhat), rhat > 1.01) %>%
+  dplyr::arrange(desc(rhat))
+
+diag_bad
+
+# Divergences, treedepth hits, if available (cmdstanr)
+div_info <- tryCatch(fit_basis$diagnostic_summary(), error = function(e) NULL)
+if (is.null(div_info)) {
+  div_info <- tryCatch(fit_basis$cmdstan_diagnose(), error = function(e) NULL)
+}
+div_info
+
+# ------------------------------------------------------------
+# 1) Confusion matrices (theta), posterior mean and uncertainty
+# ------------------------------------------------------------
+theta_draws_mat <- fit_basis$draws("theta", format = "draws_matrix")
+theta_mean_vec  <- colMeans(theta_draws_mat)
+
+# Expectation: theta has dimensions [J rater, K true, K given]
+theta_mean_arr <- array(
+  theta_mean_vec,
+  dim = c(J, K, K),
+  dimnames = list(
+    rater = c("human1", "human2", "tool"),
+    true  = isco_levels,
+    given = isco_levels
+  )
+)
+
+theta_human1_mean <- theta_mean_arr["human1", , ]
+theta_human2_mean <- theta_mean_arr["human2", , ]
+theta_tool_mean   <- theta_mean_arr["tool",   , ]
+
+theta_human1_mean
+rowSums(theta_human1_mean)
+
+theta_human2_mean
+rowSums(theta_human2_mean)
+
+theta_tool_mean
+rowSums(theta_tool_mean)
+
+plot_theta <- function(mat, title_txt) {
+  long <- reshape2::melt(mat, varnames = c("True", "Given"), value.name = "Prob")
+  ggplot(long, aes(x = Given, y = True, fill = Prob)) +
+    geom_tile(color = "white") +
+    scale_fill_gradient(low = "white", high = "darkgreen") +
+    theme_light() +
+    labs(
+      title = title_txt,
+      x = "Observed class",
+      y = "True class C_i"
+    ) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+}
+
+p_theta_h1_mean <- plot_theta(theta_human1_mean, "Confusion matrix pi^(1) (posterior mean)")
+p_theta_h2_mean <- plot_theta(theta_human2_mean, "Confusion matrix pi^(2) (posterior mean)")
+p_theta_tool_mean <- plot_theta(theta_tool_mean, "Confusion matrix pi^(3) (posterior mean)")
+
+save_plot(p_theta_h1_mean, "theta_human1_mean.png")
+save_plot(p_theta_h2_mean, "theta_human2_mean.png")
+save_plot(p_theta_tool_mean, "theta_tool_mean.png")
+
+p_theta_h1_mean
+p_theta_h2_mean
+p_theta_tool_mean
+
+# Credible intervals for all theta entries
+theta_summ <- summarise_draws(
+  as_draws_df(fit_basis$draws("theta")),
+  mean, sd,
+  ~quantile(.x, probs = c(`5%` = 0.05, `50%` = 0.50, `95%` = 0.95), na.rm = TRUE)
+)
+theta_summ
+
+# Posterior SD heatmaps for theta (uncertainty by cell)
+theta_sd_vec <- apply(theta_draws_mat, 2, sd)
+theta_sd_arr <- array(
+  theta_sd_vec,
+  dim = c(J, K, K),
+  dimnames = list(
+    rater = c("human1", "human2", "tool"),
+    true  = isco_levels,
+    given = isco_levels
+  )
+)
+
+p_theta_h1_sd <- plot_theta(theta_sd_arr["human1", , ], "Confusion matrix pi^(1) (posterior SD)")
+p_theta_h2_sd <- plot_theta(theta_sd_arr["human2", , ], "Confusion matrix pi^(2) (posterior SD)")
+p_theta_tool_sd <- plot_theta(theta_sd_arr["tool", , ], "Confusion matrix pi^(3) (posterior SD)")
+
+save_plot(p_theta_h1_sd, "theta_human1_sd.png")
+save_plot(p_theta_h2_sd, "theta_human2_sd.png")
+save_plot(p_theta_tool_sd, "theta_tool_sd.png")
+
+p_theta_h1_sd
+p_theta_h2_sd
+p_theta_tool_sd
+
+# ------------------------------------------------------------
+# 2) Class prevalence (pi), posterior mean and uncertainty
+# ------------------------------------------------------------
+pi_summ <- summarise_draws(
+  as_draws_df(fit_basis$draws("pi")),
+  mean, sd,
+  ~quantile(.x, probs = c(`5%` = 0.05, `50%` = 0.50, `95%` = 0.95), na.rm = TRUE)
+)
+pi_summ
+
+pi_means <- colMeans(as_draws_matrix(fit_basis$draws("pi")))
+pi_df <- data.frame(
+  class = isco_levels,
+  prevalence = as.numeric(pi_means)
+)
+
+p_pi_bar <- ggplot(pi_df, aes(x = class, y = prevalence)) +
+  geom_bar(stat = "identity", fill = "#02626f") +
+  theme_light() +
+  labs(
+    title = "Posterior mean of class prevalence (p)",
+    x = "Class",
+    y = "Prevalence"
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+save_plot(p_pi_bar, "pi_mean_bar.png", width = 6, height = 4)
+p_pi_bar
+
+# ------------------------------------------------------------
+# 2b) Rater level scalar summaries from theta
+# ------------------------------------------------------------
+pi_mean_vec <- as.numeric(pi_means)
+names(pi_mean_vec) <- isco_levels
+
+weighted_diag_mass <- function(mat, w) sum(diag(mat) * w)
+weighted_offdiag_mass <- function(mat, w) sum((1 - diag(mat)) * w)
+
+rater_summary <- data.frame(
+  rater = c("human1", "human2", "tool"),
+  weighted_diag_mass = c(
+    weighted_diag_mass(theta_human1_mean, pi_mean_vec),
+    weighted_diag_mass(theta_human2_mean, pi_mean_vec),
+    weighted_diag_mass(theta_tool_mean,   pi_mean_vec)
+  ),
+  weighted_offdiag_mass = c(
+    weighted_offdiag_mass(theta_human1_mean, pi_mean_vec),
+    weighted_offdiag_mass(theta_human2_mean, pi_mean_vec),
+    weighted_offdiag_mass(theta_tool_mean,   pi_mean_vec)
+  )
+)
+rater_summary
+
+p_rater_diag <- ggplot(rater_summary, aes(x = rater, y = weighted_diag_mass, fill = rater)) +
+  geom_bar(stat = "identity") +
+  scale_x_discrete(labels = c("human1" = "Human 1", "human2" = "Human 2", "tool" = "Tool")) +
+  scale_fill_manual(values = c("human1" = "#d95f02", "human2" = "#7570b3", "tool" = "#1b9e77"),
+                    guide = "none") +
+  theme_light() +
+  labs(
+    title = "Rater summary: Weighted diagonal mass",
+    x = "Rater",
+    y = "Weighted diagonal mass"
+  )
+
+save_plot(p_rater_diag, "rater_weighted_diag_mass.png", width = 6, height = 4)
+p_rater_diag
+
+# ------------------------------------------------------------
+# 3) Posterior class probabilities per item (q_i,j = P(C_i = j | data))
+# ------------------------------------------------------------
+qz_draws_mat <- fit_basis$draws("q_z", format = "draws_matrix")
+qz_mean_vec  <- colMeans(qz_draws_mat)
+
+qz_mean <- matrix(
+  qz_mean_vec,
+  nrow = I, ncol = K,
+  dimnames = list(item = item_ids, class = isco_levels)
+)
+
+qz_df <- as.data.frame(qz_mean)
+p_cols <- paste0("p_", isco_levels)
+colnames(qz_df) <- p_cols
+qz_df$item_id <- item_ids
+
+# MAP label
+qz_df$map_class_idx   <- max.col(qz_df[p_cols], ties.method = "first")
+qz_df$map_class_label <- isco_levels[qz_df$map_class_idx]
+
+# Uncertainty measures
+eps <- 1e-12
+qz_df$max_p <- apply(qz_df[p_cols], 1, max)
+
+qz_df$entropy <- -rowSums(as.matrix(qz_df[p_cols]) * log(as.matrix(qz_df[p_cols]) + eps))
+
+qz_df$margin <- apply(qz_df[p_cols], 1, function(p) {
+  ps <- sort(p, decreasing = TRUE)
+  ps[1] - ps[2]
+})
+
+# Credible set per item, smallest set reaching cumulative posterior mass >= level
+credible_set <- function(p, classes, level = 0.95) {
+  o <- order(p, decreasing = TRUE)
+  cum <- cumsum(p[o])
+  m <- which(cum >= level)[1]
+  classes[o[seq_len(m)]]
+}
+qz_df$cs95 <- apply(qz_df[p_cols], 1, function(x) credible_set(x, isco_levels, level = 0.95))
+
+table(lengths(qz_df$cs95))
+
+# Plots of uncertainty and confidence
+p_maxp_hist <- ggplot(qz_df, aes(x = max_p)) +
+  geom_histogram(binwidth = 0.025, fill = "#333333", color = "white", size = 0.1) +
+  theme_light() +
+  labs(x = "Posterior max probability", y = "Count",
+       title = "Model confidence per item") +
+  xlim(0, 1.1)
+
+p_entropy_hist <- ggplot(qz_df, aes(x = entropy)) +
+  geom_histogram(binwidth = 0.025, fill = "#333333", color = "white", size = 0.1) +
+  theme_light() +
+  labs(x = "Posterior entropy", y = "Count",
+       title = "Item uncertainty (entropy)") +
+  xlim(-0.1, 1.0)
+
+p_margin_hist <- ggplot(qz_df, aes(x = margin)) +
+  geom_histogram(binwidth = 0.025, fill = "#333333", color = "white", size = 0.1) +
+  theme_light() +
+  labs(x = "Posterior margin (top1 minus top2)", y = "Count",
+       title = "Item uncertainty (margin)") +
+  xlim(0, 1.1)
+
+save_plot(p_maxp_hist, "qz_maxp_hist.png", width = 6, height = 4)
+save_plot(p_entropy_hist, "qz_entropy_hist.png", width = 6, height = 4)
+save_plot(p_margin_hist, "qz_margin_hist.png", width = 6, height = 4)
+
+p_maxp_hist
+p_entropy_hist
+p_margin_hist
+
+# ------------------------------------------------------------
+# 3b) MAP distribution vs pi (sanity check)
+# ------------------------------------------------------------
+map_tab <- qz_df %>%
+  count(map_class_label, name = "n_map") %>%
+  mutate(map_share = n_map / sum(n_map)) %>%
+  rename(class = map_class_label)
+
+pi_tab <- data.frame(class = isco_levels, pi_mean = as.numeric(pi_means))
+
+map_vs_pi <- left_join(map_tab, pi_tab, by = "class")
+map_vs_pi
+
+p_map_vs_pi <- ggplot(map_vs_pi, aes(x = class)) +
+  geom_col(aes(y = map_share), fill = "#02626f") +
+  geom_point(aes(y = pi_mean), size = 2) +
+  theme_light() +
+  labs(
+    title = "MAP share (bars) vs posterior mean p (points)",
+    x = "Class",
+    y = "Share / prevalence"
+  )
+
+save_plot(p_map_vs_pi, "map_share_vs_pi.png", width = 6, height = 4)
+p_map_vs_pi
+
+# ------------------------------------------------------------
+# 4) Merge predictions with original ratings, include uncertainty
+# ------------------------------------------------------------
+ratings <- isco_data %>%
+  dplyr::select(item_id, isco_human1, isco_human2, isco_tool)
+
+predictions <- qz_df %>%
+  dplyr::select(item_id, map_class_label, all_of(p_cols), max_p, entropy, margin, cs95)
+
+ratings_with_predictions <- ratings %>%
+  dplyr::left_join(predictions, by = "item_id") %>%
+  dplyr::rename(
+    predicted_class = map_class_label,
+    rating_human1 = isco_human1,
+    rating_human2 = isco_human2,
+    rating_tool   = isco_tool
+  ) %>%
+  dplyr::arrange(item_id)
+
+head(ratings_with_predictions, 30)
+
+# Most uncertain items by entropy, include posterior probabilities
+most_uncertain <- ratings_with_predictions %>%
+  dplyr::arrange(desc(entropy)) %>%
+  dplyr::select(item_id, predicted_class, entropy, margin, max_p, all_of(p_cols),
+                rating_human1, rating_human2, rating_tool)
+
+head(most_uncertain, 20)
+
+# ------------------------------------------------------------
+# 5) Observed agreement, descriptive, not model based
+# ------------------------------------------------------------
+mean(isco_data$isco_human1 == isco_data$isco_tool, na.rm = TRUE)
+mean(isco_data$isco_human2 == isco_data$isco_tool, na.rm = TRUE)
+
+isco_data %>%
+  dplyr::count(isco_human1, isco_human2, isco_tool) %>%
+  dplyr::arrange(desc(n))
+
+```
+
+
+
+```{r Posterior summaries and analysis - ALPHA INFORMATIVE, warning=FALSE, message=FALSE} 
+library(dplyr)
+library(posterior)
+library(ggplot2)
+library(reshape2)
+
+out_dir <- "img/model_results/isco/three_categories/alpha_informative"
+dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+
+# use first fit 
+fit_basis <- fits[["model2"]]
+
+save_plot <- function(p, filename, width = 7, height = 5, dpi = 600) {
+  ggsave(
+    filename = file.path(out_dir, filename),
+    plot = p,
+    width = width,
+    height = height,
+    dpi = dpi
+  )
+}
+
+# ------------------------------------------------------------
+# 0) Basic diagnostics for key parameters
+# ------------------------------------------------------------
+diag_tbl <- fit_basis$summary(variables = c("pi", "theta")) %>%
+  dplyr::select(variable, rhat, ess_bulk, ess_tail)
+
+diag_bad <- diag_tbl %>%
+  dplyr::filter(is.finite(rhat), rhat > 1.01) %>%
+  dplyr::arrange(desc(rhat))
+
+diag_bad
+
+# Divergences, treedepth hits, if available (cmdstanr)
+div_info <- tryCatch(fit_basis$diagnostic_summary(), error = function(e) NULL)
+if (is.null(div_info)) {
+  div_info <- tryCatch(fit_basis$cmdstan_diagnose(), error = function(e) NULL)
+}
+div_info
+
+# ------------------------------------------------------------
+# 1) Confusion matrices (theta), posterior mean and uncertainty
+# ------------------------------------------------------------
+theta_draws_mat <- fit_basis$draws("theta", format = "draws_matrix")
+theta_mean_vec  <- colMeans(theta_draws_mat)
+
+# Expectation: theta has dimensions [J rater, K true, K given]
+theta_mean_arr <- array(
+  theta_mean_vec,
+  dim = c(J, K, K),
+  dimnames = list(
+    rater = c("human1", "human2", "tool"),
+    true  = isco_levels,
+    given = isco_levels
+  )
+)
+
+theta_human1_mean <- theta_mean_arr["human1", , ]
+theta_human2_mean <- theta_mean_arr["human2", , ]
+theta_tool_mean   <- theta_mean_arr["tool",   , ]
+
+theta_human1_mean
+rowSums(theta_human1_mean)
+
+theta_human2_mean
+rowSums(theta_human2_mean)
+
+theta_tool_mean
+rowSums(theta_tool_mean)
+
+plot_theta <- function(mat, title_txt) {
+  long <- reshape2::melt(mat, varnames = c("True", "Given"), value.name = "Prob")
+  ggplot(long, aes(x = Given, y = True, fill = Prob)) +
+    geom_tile(color = "white") +
+    scale_fill_gradient(low = "white", high = "darkgreen") +
+    theme_light() +
+    labs(
+      title = title_txt,
+      x = "Observed class",
+      y = "True class C_i"
+    ) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+}
+
+p_theta_h1_mean <- plot_theta(theta_human1_mean, "Confusion matrix pi^(1) (posterior mean)")
+p_theta_h2_mean <- plot_theta(theta_human2_mean, "Confusion matrix pi^(2) (posterior mean)")
+p_theta_tool_mean <- plot_theta(theta_tool_mean, "Confusion matrix pi^(3) (posterior mean)")
+
+save_plot(p_theta_h1_mean, "theta_human1_mean.png")
+save_plot(p_theta_h2_mean, "theta_human2_mean.png")
+save_plot(p_theta_tool_mean, "theta_tool_mean.png")
+
+p_theta_h1_mean
+p_theta_h2_mean
+p_theta_tool_mean
+
+# Credible intervals for all theta entries
+theta_summ <- summarise_draws(
+  as_draws_df(fit_basis$draws("theta")),
+  mean, sd,
+  ~quantile(.x, probs = c(`5%` = 0.05, `50%` = 0.50, `95%` = 0.95), na.rm = TRUE)
+)
+theta_summ
+
+# Posterior SD heatmaps for theta (uncertainty by cell)
+theta_sd_vec <- apply(theta_draws_mat, 2, sd)
+theta_sd_arr <- array(
+  theta_sd_vec,
+  dim = c(J, K, K),
+  dimnames = list(
+    rater = c("human1", "human2", "tool"),
+    true  = isco_levels,
+    given = isco_levels
+  )
+)
+
+p_theta_h1_sd <- plot_theta(theta_sd_arr["human1", , ], "Confusion matrix pi^(1) (posterior SD)")
+p_theta_h2_sd <- plot_theta(theta_sd_arr["human2", , ], "Confusion matrix pi^(2) (posterior SD)")
+p_theta_tool_sd <- plot_theta(theta_sd_arr["tool", , ], "Confusion matrix pi^(3) (posterior SD)")
+
+save_plot(p_theta_h1_sd, "theta_human1_sd.png")
+save_plot(p_theta_h2_sd, "theta_human2_sd.png")
+save_plot(p_theta_tool_sd, "theta_tool_sd.png")
+
+p_theta_h1_sd
+p_theta_h2_sd
+p_theta_tool_sd
+
+# ------------------------------------------------------------
+# 2) Class prevalence (pi), posterior mean and uncertainty
+# ------------------------------------------------------------
+pi_summ <- summarise_draws(
+  as_draws_df(fit_basis$draws("pi")),
+  mean, sd,
+  ~quantile(.x, probs = c(`5%` = 0.05, `50%` = 0.50, `95%` = 0.95), na.rm = TRUE)
+)
+pi_summ
+
+pi_means <- colMeans(as_draws_matrix(fit_basis$draws("pi")))
+pi_df <- data.frame(
+  class = isco_levels,
+  prevalence = as.numeric(pi_means)
+)
+
+p_pi_bar <- ggplot(pi_df, aes(x = class, y = prevalence)) +
+  geom_bar(stat = "identity", fill = "#02626f") +
+  theme_light() +
+  labs(
+    title = "Posterior mean of class prevalence (p)",
+    x = "Class",
+    y = "Prevalence"
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+save_plot(p_pi_bar, "pi_mean_bar.png", width = 6, height = 4)
+p_pi_bar
+
+# ------------------------------------------------------------
+# 2b) Rater level scalar summaries from theta
+# ------------------------------------------------------------
+pi_mean_vec <- as.numeric(pi_means)
+names(pi_mean_vec) <- isco_levels
+
+weighted_diag_mass <- function(mat, w) sum(diag(mat) * w)
+weighted_offdiag_mass <- function(mat, w) sum((1 - diag(mat)) * w)
+
+rater_summary <- data.frame(
+  rater = c("human1", "human2", "tool"),
+  weighted_diag_mass = c(
+    weighted_diag_mass(theta_human1_mean, pi_mean_vec),
+    weighted_diag_mass(theta_human2_mean, pi_mean_vec),
+    weighted_diag_mass(theta_tool_mean,   pi_mean_vec)
+  ),
+  weighted_offdiag_mass = c(
+    weighted_offdiag_mass(theta_human1_mean, pi_mean_vec),
+    weighted_offdiag_mass(theta_human2_mean, pi_mean_vec),
+    weighted_offdiag_mass(theta_tool_mean,   pi_mean_vec)
+  )
+)
+rater_summary
+
+p_rater_diag <- ggplot(rater_summary, aes(x = rater, y = weighted_diag_mass, fill = rater)) +
+  geom_bar(stat = "identity") +
+  scale_x_discrete(labels = c("human1" = "Human 1", "human2" = "Human 2", "tool" = "Tool")) +
+  scale_fill_manual(values = c("human1" = "#d95f02", "human2" = "#7570b3", "tool" = "#1b9e77"),
+                    guide = "none") +
+  theme_light() +
+  labs(
+    title = "Rater summary: Weighted diagonal mass",
+    x = "Rater",
+    y = "Weighted diagonal mass"
+  )
+
+save_plot(p_rater_diag, "rater_weighted_diag_mass.png", width = 6, height = 4)
+p_rater_diag
+
+# ------------------------------------------------------------
+# 3) Posterior class probabilities per item (q_i,j = P(C_i = j | data))
+# ------------------------------------------------------------
+qz_draws_mat <- fit_basis$draws("q_z", format = "draws_matrix")
+qz_mean_vec  <- colMeans(qz_draws_mat)
+
+qz_mean <- matrix(
+  qz_mean_vec,
+  nrow = I, ncol = K,
+  dimnames = list(item = item_ids, class = isco_levels)
+)
+
+qz_df <- as.data.frame(qz_mean)
+p_cols <- paste0("p_", isco_levels)
+colnames(qz_df) <- p_cols
+qz_df$item_id <- item_ids
+
+# MAP label
+qz_df$map_class_idx   <- max.col(qz_df[p_cols], ties.method = "first")
+qz_df$map_class_label <- isco_levels[qz_df$map_class_idx]
+
+# Uncertainty measures
+eps <- 1e-12
+qz_df$max_p <- apply(qz_df[p_cols], 1, max)
+
+qz_df$entropy <- -rowSums(as.matrix(qz_df[p_cols]) * log(as.matrix(qz_df[p_cols]) + eps))
+
+qz_df$margin <- apply(qz_df[p_cols], 1, function(p) {
+  ps <- sort(p, decreasing = TRUE)
+  ps[1] - ps[2]
+})
+
+# Credible set per item, smallest set reaching cumulative posterior mass >= level
+credible_set <- function(p, classes, level = 0.95) {
+  o <- order(p, decreasing = TRUE)
+  cum <- cumsum(p[o])
+  m <- which(cum >= level)[1]
+  classes[o[seq_len(m)]]
+}
+qz_df$cs95 <- apply(qz_df[p_cols], 1, function(x) credible_set(x, isco_levels, level = 0.95))
+
+table(lengths(qz_df$cs95))
+
+# Plots of uncertainty and confidence
+p_maxp_hist <- ggplot(qz_df, aes(x = max_p)) +
+  geom_histogram(binwidth = 0.025, fill = "#333333", color = "white", size = 0.1) +
+  theme_light() +
+  labs(x = "Posterior max probability", y = "Count",
+       title = "Model confidence per item") +
+  xlim(0, 1.1)
+
+p_entropy_hist <- ggplot(qz_df, aes(x = entropy)) +
+  geom_histogram(binwidth = 0.025, fill = "#333333", color = "white", size = 0.1) +
+  theme_light() +
+  labs(x = "Posterior entropy", y = "Count",
+       title = "Item uncertainty (entropy)") +
+  xlim(-0.1, 1.0)
+
+p_margin_hist <- ggplot(qz_df, aes(x = margin)) +
+  geom_histogram(binwidth = 0.025, fill = "#333333", color = "white", size = 0.1) +
+  theme_light() +
+  labs(x = "Posterior margin (top1 minus top2)", y = "Count",
+       title = "Item uncertainty (margin)") +
+  xlim(0, 1.1)
+
+save_plot(p_maxp_hist, "qz_maxp_hist.png", width = 6, height = 4)
+save_plot(p_entropy_hist, "qz_entropy_hist.png", width = 6, height = 4)
+save_plot(p_margin_hist, "qz_margin_hist.png", width = 6, height = 4)
+
+p_maxp_hist
+p_entropy_hist
+p_margin_hist
+
+# ------------------------------------------------------------
+# 3b) MAP distribution vs pi (sanity check)
+# ------------------------------------------------------------
+map_tab <- qz_df %>%
+  count(map_class_label, name = "n_map") %>%
+  mutate(map_share = n_map / sum(n_map)) %>%
+  rename(class = map_class_label)
+
+pi_tab <- data.frame(class = isco_levels, pi_mean = as.numeric(pi_means))
+
+map_vs_pi <- left_join(map_tab, pi_tab, by = "class")
+map_vs_pi
+
+p_map_vs_pi <- ggplot(map_vs_pi, aes(x = class)) +
+  geom_col(aes(y = map_share), fill = "#02626f") +
+  geom_point(aes(y = pi_mean), size = 2) +
+  theme_light() +
+  labs(
+    title = "MAP share (bars) vs posterior mean p (points)",
+    x = "Class",
+    y = "Share / prevalence"
+  )
+
+save_plot(p_map_vs_pi, "map_share_vs_pi.png", width = 6, height = 4)
+p_map_vs_pi
+
+# ------------------------------------------------------------
+# 4) Merge predictions with original ratings, include uncertainty
+# ------------------------------------------------------------
+ratings <- isco_data %>%
+  dplyr::select(item_id, isco_human1, isco_human2, isco_tool)
+
+predictions <- qz_df %>%
+  dplyr::select(item_id, map_class_label, all_of(p_cols), max_p, entropy, margin, cs95)
+
+ratings_with_predictions <- ratings %>%
+  dplyr::left_join(predictions, by = "item_id") %>%
+  dplyr::rename(
+    predicted_class = map_class_label,
+    rating_human1 = isco_human1,
+    rating_human2 = isco_human2,
+    rating_tool   = isco_tool
+  ) %>%
+  dplyr::arrange(item_id)
+
+head(ratings_with_predictions, 30)
+
+# Most uncertain items by entropy, include posterior probabilities
+most_uncertain <- ratings_with_predictions %>%
+  dplyr::arrange(desc(entropy)) %>%
+  dplyr::select(item_id, predicted_class, entropy, margin, max_p, all_of(p_cols),
+                rating_human1, rating_human2, rating_tool)
+
+head(most_uncertain, 20)
+
+# ------------------------------------------------------------
+# 5) Observed agreement, descriptive, not model based
+# ------------------------------------------------------------
+mean(isco_data$isco_human1 == isco_data$isco_tool, na.rm = TRUE)
+mean(isco_data$isco_human2 == isco_data$isco_tool, na.rm = TRUE)
+
+isco_data %>%
+  dplyr::count(isco_human1, isco_human2, isco_tool) %>%
+  dplyr::arrange(desc(n))
+
+```
+
+
+```{r}
+# ------------------------------------------------------------
+# Diagnose: Konvergenz, Divergences, Label switching (pi, theta)
+# ------------------------------------------------------------
+
+library(posterior)
+
+# 0) Grunddiagnostik aus cmdstanr
+cat("\n--- cmdstanr diagnostic_summary() ---\n")
+print(tryCatch(fit_basis$diagnostic_summary(), error = function(e) e))
+
+cat("\n--- cmdstan_diagnose() (falls verfügbar) ---\n")
+print(tryCatch(fit_basis$cmdstan_diagnose(), error = function(e) e))
+
+# 1) R-hat Check nur für pi und theta (hart: > 1.1)
+s <- fit_basis$summary()
+s$rhat <- as.numeric(s$rhat)
+
+bad_rhat <- subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))
+cat("\n--- Parameters with R-hat > 1.1 (pi/theta) ---\n")
+if (nrow(bad_rhat) == 0) {
+  cat("None\n")
+} else {
+  print(bad_rhat[order(-bad_rhat$rhat), c("variable","rhat","ess_bulk","ess_tail")], row.names = FALSE)
+}
+
+# 2) pi Draws: Spaltennamen prüfen + Dichten plotten
+pi_df <- as_draws_df(fit_basis$draws("pi"))
+cat("\n--- pi columns ---\n")
+print(names(pi_df))
+
+# Dichteplots für pi[1..K]
+K <- length(grep("^pi\\[", names(pi_df)))
+if (K == 0) stop("No pi columns found in pi_df, something is off.")
+
+for (k in 1:K) {
+  col <- paste0("pi[", k, "]")
+  if (!col %in% names(pi_df)) next
+  plot(density(pi_df[[col]]), main = col)
+}
+
+# 3) Label switching Check: Chain-Mittelwerte für pi
+# Wenn Chains permutiert sind (zB Chain1: 0.7/0.2/0.1, Chain2: 0.2/0.7/0.1),
+# dann ist das Label switching.
+pi_arr <- fit_basis$draws("pi", format = "draws_array")  # iter x chain x param
+pi_chain_means <- apply(pi_arr, c(2, 3), mean)
+colnames(pi_chain_means) <- paste0("pi[", 1:ncol(pi_chain_means), "]")
+
+cat("\n--- pi chain means (chain x component) ---\n")
+print(round(pi_chain_means, 4))
+
+# 4) Optional: gleiche Idee für diagonale von theta (guter Indikator)
+# theta hat Spalten wie theta[<rater>,<true>,<given>]
+theta_df <- as_draws_df(fit_basis$draws("theta"))
+theta_cols <- names(theta_df)
+
+# Diagonaleinträge sammeln: theta[j,k,k]
+diag_cols <- character(0)
+for (j in 1:J) {
+  for (k in 1:K) {
+    diag_cols <- c(diag_cols, paste0("theta[", j, ",", k, ",", k, "]"))
+  }
+}
+diag_cols <- diag_cols[diag_cols %in% theta_cols]
+
+cat("\n--- Found theta diagonal columns ---\n")
+print(diag_cols)
+
+if (length(diag_cols) > 0) {
+  theta_diag_arr <- fit_basis$draws(diag_cols, format = "draws_array")  # iter x chain x param
+  theta_diag_chain_means <- apply(theta_diag_arr, c(2, 3), mean)
+  colnames(theta_diag_chain_means) <- diag_cols
+
+  cat("\n--- theta diagonal chain means (chain x diag entry) ---\n")
+  print(round(theta_diag_chain_means, 4))
+}
+
+# 5) Quick verdict helper (nur Heuristik)
+# Wenn pi_chain_means je Chain eine Permutation der gleichen Werte ist, dann Label switching sehr wahrscheinlich.
+cat("\n--- Heuristic verdict ---\n")
+cat("If pi chain means look like permutations across chains, you have label switching.\n")
+cat("If divergences/treedepth hits appear, you have sampler geometry issues (then adapt_delta/max_treedepth matter).\n")
+
+```
+

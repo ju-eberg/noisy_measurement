@@ -1,0 +1,785 @@
+---
+title: "KLDB Two Category Version with optional priors"
+output: pdf_document
+---
+
+```{r setup, echo=FALSE, warning=FALSE, message=FALSE}
+# Load project configuration
+source(here::here("config.R"), local = TRUE)
+
+setwd(PROJECT_ROOT)
+knitr::opts_knit$set(root.dir = PROJECT_ROOT)
+
+knitr::purl(file.path(PROJECT_ROOT, "src/data_preparation.Rmd"),
+            output = file.path(PROJECT_ROOT, "src/data_preparation.R"))
+
+source(file.path(PROJECT_ROOT, "src/data_preparation.R"),
+       local = knitr::knit_global())
+```
+
+```{r Filtering and preparing KLDB data, warning=FALSE, message=FALSE}
+# Packages
+library(data.table)
+library(dplyr)
+library(tidyr)
+library(cmdstanr)
+
+
+
+# keep only relevant columns
+kldb_data <- data_basis %>%
+  select(item_id, kldb_tool_1st, res1_kldb_1st, res2_kldb_1st)
+
+#Rename columns
+setnames(
+  data_basis,
+  old = c("kldb_tool_1st", "res1_kldb_1st", "res2_kldb_1st"),
+  new = c("kldb_tool", "kldb_human1", "kldb_human2")
+)
+
+head(data_basis)
+
+#### 1) Select only KLDB, as character
+kldb_data <- data_basis %>%
+  dplyr::select(item_id, kldb_human1, kldb_human2, kldb_tool) %>%
+  mutate(across(c(kldb_human1, kldb_human2, kldb_tool), as.character))
+
+### Remove all lines with NAs
+kldb_data <- kldb_data %>%
+  filter(!is.na(kldb_human1) & !is.na(kldb_human2) & !is.na(kldb_tool))
+
+# Keep only two categories: "7" and "8"
+kldb_data <- kldb_data %>%
+  filter(kldb_human1 == "7" | kldb_human1 == "8") %>%
+  filter(kldb_human2 == "7" | kldb_human2 == "8") %>%
+  filter(kldb_tool   == "7" | kldb_tool   == "8")
+
+# 1) Number of rows where all three classify as "7"
+count_all_7 <- kldb_data %>%
+  dplyr::filter(kldb_human1 == "7", kldb_human2 == "7", kldb_tool == "7") %>%
+  nrow()
+
+# 2) Number of rows where all three classify as "8"
+count_all_8 <- kldb_data %>%
+  dplyr::filter(kldb_human1 == "8", kldb_human2 == "8", kldb_tool == "8") %>%
+  nrow()
+
+# 3) Number of rows where at least one value is "7" and at least one value is "8"
+count_mixed_7_and_8 <- kldb_data %>%
+  dplyr::rowwise() %>%
+  dplyr::filter(
+    any(c(kldb_human1, kldb_human2, kldb_tool) == "7") &
+      any(c(kldb_human1, kldb_human2, kldb_tool) == "8")
+  ) %>%
+  nrow()
+
+# 4) Number of rows where minimum one element is neither "7" nor "8" - should be 0
+count_other <- kldb_data %>%
+  dplyr::rowwise() %>%
+  dplyr::filter(
+    any(!c(kldb_human1, kldb_human2, kldb_tool) %in% c("7", "8"))
+  ) %>%
+  nrow()
+
+# Show results
+count_all_7         #  225
+count_all_8         #  242
+count_mixed_7_and_8 #  4
+count_other         #  0 
+
+# print the observations where 7 and 8 are mixed
+kldb_data %>%
+  dplyr::rowwise() %>%
+  dplyr::filter(
+    any(c(kldb_human1, kldb_human2, kldb_tool) == "7") &
+      any(c(kldb_human1, kldb_human2, kldb_tool) == "8")
+  )
+
+# Reindex item_id (1, 2, 3,...)
+kldb_data <- kldb_data %>%
+  dplyr::mutate(item_id = dplyr::row_number())
+
+# Collect all observed classes
+kldb_levels <- kldb_data %>%
+  dplyr::select(kldb_human1, kldb_human2, kldb_tool) %>%
+  unlist(use.names = FALSE) %>%
+  unique() %>%
+  sort() %>%
+  as.character() %>%
+  as.vector()
+
+# K, number of distinct classes
+K <- length(kldb_levels)
+stopifnot(K >= 2)
+
+# Helper: map original labels to 1..K using kldb_levels for stan compatibility
+to_index <- function(v) as.integer(factor(v, levels = kldb_levels))
+
+# 1) Map original labels to 1..K
+kldb_data_idx <- kldb_data %>%
+  dplyr::mutate(
+    kldb_human1 = to_index(kldb_human1),
+    kldb_human2 = to_index(kldb_human2),
+    kldb_tool   = to_index(kldb_tool)
+  )
+
+# 2) Long format (now without NAs)
+long_data <- kldb_data_idx %>%
+  dplyr::transmute(item_id, r1 = kldb_human1, r2 = kldb_human2, r3 = kldb_tool) %>%
+  tidyr::pivot_longer(cols = starts_with("r"), names_to = "rater", values_to = "y") %>%
+  dplyr::mutate(rater_id = as.integer(factor(rater, levels = c("r1", "r2", "r3")))) %>%
+  dplyr::arrange(item_id, rater_id)
+
+# Robust 1..I indexing
+item_ids <- sort(unique(long_data$item_id))
+long_data$item_id_idx <- as.integer(factor(long_data$item_id, levels = item_ids))
+
+I <- length(item_ids) # number of items (people interviewed)
+J <- 3L # number of raters
+N <- nrow(long_data) # number of observations (I * J if no missing)
+
+cat("Items after filtering:", I, "\n")
+cat("Observations:", N, "\n")
+cat("Classes:", K, "\n")
+cat("Class levels:", paste(kldb_levels, collapse = ", "), "\n")
+```
+
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+
+# Output folder for descriptive plots of the 7 vs 8 subset (KldB)
+out_dir_desc <- "img/data_descriptive_plots/kldb/two_categories"
+dir.create(out_dir_desc, recursive = TRUE, showWarnings = FALSE)
+
+# Color scheme consistent with your other script
+agreement_palette <- c("match" = "darkblue", "mismatch" = "darkred")
+
+# Helper: pairwise agreement (counts + mismatch percent)
+pair_agreement <- function(df, a, b, label) {
+  df %>%
+    dplyr::filter(!is.na(.data[[a]]), !is.na(.data[[b]])) %>%
+    dplyr::summarise(
+      match = sum(.data[[a]] == .data[[b]]),
+      mismatch = sum(.data[[a]] != .data[[b]]),
+      total = dplyr::n(),
+      .groups = "drop"
+    ) %>%
+    dplyr::mutate(
+      mismatch_pct = ifelse(total > 0, 100 * mismatch / total, NA_real_),
+      pair = label
+    )
+}
+
+# Pairwise agreements (two-way)
+kldb_pairs <- dplyr::bind_rows(
+  pair_agreement(kldb_data, "kldb_human1", "kldb_human2", "Human 1 vs Human 2"),
+  pair_agreement(kldb_data, "kldb_human1", "kldb_tool",   "Human 1 vs Tool"),
+  pair_agreement(kldb_data, "kldb_human2", "kldb_tool",   "Human 2 vs Tool")
+)
+
+print(kldb_pairs)
+
+# Long format for plotting counts
+kldb_pairs_long <- kldb_pairs %>%
+  dplyr::select(pair, match, mismatch, total, mismatch_pct) %>%
+  tidyr::pivot_longer(cols = c(match, mismatch), names_to = "status", values_to = "count") %>%
+  dplyr::mutate(
+    status = factor(status, levels = c("mismatch", "match")),
+    match_pct = 100 - mismatch_pct,
+    label = ifelse(
+      status == "match",
+      paste0(round(match_pct, 1), "% match"),
+      paste0(round(mismatch_pct, 1), "% mismatch")
+    ),
+    pair_label = paste0(pair, "\n(n=", total, ")")
+  )
+
+# Counts plot
+p_kldb_pairs <- ggplot(kldb_pairs_long, aes(x = pair_label, y = count, fill = status)) +
+  geom_col(position = "stack") +
+  geom_text(aes(label = label), position = position_stack(vjust = 0.5), size = 3, color = "white") +
+  scale_fill_manual(values = agreement_palette, breaks = c("match", "mismatch"),
+                    labels = c("Match", "Mismatch")) +
+  labs(
+    title = "KldB (7 vs 8): Pairwise agreement",
+    x = NULL,
+    y = "Number of observations",
+    fill = NULL
+  ) +
+  theme_light(base_size = 13, base_family = "Times") +
+  theme(legend.position = "top")
+
+ggsave(file.path(out_dir_desc, "kldb_78_pairwise_agreement_counts.png"),
+       p_kldb_pairs, width = 9, height = 5, dpi = 600)
+print(p_kldb_pairs)
+
+# Percentage version
+kldb_pairs_pct <- kldb_pairs_long %>%
+  dplyr::mutate(pct = ifelse(total > 0, 100 * count / total, NA_real_))
+
+p_kldb_pairs_pct <- ggplot(kldb_pairs_pct, aes(x = pair_label, y = pct, fill = status)) +
+  geom_col(position = "stack") +
+  scale_fill_manual(values = agreement_palette, breaks = c("match", "mismatch"),
+                    labels = c("Match", "Mismatch")) +
+  labs(
+    title = "KldB (7 vs 8): Pairwise agreement",
+    x = NULL,
+    y = "Percentage",
+    fill = NULL
+  ) +
+  theme_light(base_size = 11, base_family = "Times") +
+  theme(legend.position = "none", axis.text.x = element_text(size = 12)) +
+  ylim(0, 100)
+
+ggsave(file.path(out_dir_desc, "kldb_78_pairwise_agreement_pct.png"),
+       p_kldb_pairs_pct, width = 9, height = 5, dpi = 600)
+print(p_kldb_pairs_pct)
+
+# Three-way agreement
+kldb_tri <- kldb_data %>%
+  dplyr::filter(!is.na(kldb_human1), !is.na(kldb_human2), !is.na(kldb_tool)) %>%
+  dplyr::mutate(all_three_match = (kldb_human1 == kldb_human2) & (kldb_human2 == kldb_tool)) %>%
+  dplyr::summarise(
+    match = sum(all_three_match),
+    mismatch = sum(!all_three_match),
+    total = dplyr::n(),
+    .groups = "drop"
+  ) %>%
+  dplyr::mutate(mismatch_pct = ifelse(total > 0, 100 * mismatch / total, NA_real_))
+
+print(kldb_tri)
+
+kldb_tri_long <- kldb_tri %>%
+  tidyr::pivot_longer(cols = c(match, mismatch), names_to = "status", values_to = "count") %>%
+  dplyr::mutate(
+    status = factor(status, levels = c("mismatch", "match")),
+    match_pct = 100 - mismatch_pct,
+    label = ifelse(
+      status == "match",
+      paste0(round(match_pct, 1), "% match"),
+      paste0(round(mismatch_pct, 1), "% mismatch")
+    ),
+    pct = ifelse(status == "match", match_pct, mismatch_pct),
+    status_label = factor(ifelse(status == "match", "Match", "Mismatch"),
+                          levels = c("Mismatch", "Match"))
+  )
+
+# Counts plot
+p_kldb_tri <- ggplot(kldb_tri_long, aes(x = status_label, y = count, fill = status)) +
+  geom_col() +
+  geom_text(aes(label = label), position = position_stack(vjust = 0.5), size = 3, color = "white") +
+  scale_fill_manual(values = agreement_palette, breaks = c("match", "mismatch"),
+                    labels = c("Match", "Mismatch")) +
+  labs(
+    title = paste0("KldB (7 vs 8): Three-way agreement (n=", kldb_tri$total[1], ")"),
+    x = NULL,
+    y = "Number of observations",
+    fill = NULL
+  ) +
+  theme_light(base_size = 13, base_family = "Times") +
+  theme(legend.position = "top")
+
+ggsave(file.path(out_dir_desc, "kldb_78_three_way_agreement_counts.png"),
+       p_kldb_tri, width = 7, height = 5, dpi = 600)
+print(p_kldb_tri)
+
+# Percentage plot
+p_kldb_tri_pct <- ggplot(kldb_tri_long, aes(x = status_label, y = pct, fill = status)) +
+  geom_col() +
+  scale_fill_manual(values = agreement_palette, breaks = c("match", "mismatch"),
+                    labels = c("Match", "Mismatch")) +
+  labs(
+    title = paste0("KldB (7 vs 8): Three-way agreement (n=", kldb_tri$total[1], ")"),
+    x = NULL,
+    y = "Percentage",
+    fill = NULL
+  ) +
+  theme_light(base_size = 11, base_family = "Times") +
+  theme(legend.position = "none", axis.text.x = element_text(size = 12)) +
+  ylim(0, 100)
+
+ggsave(file.path(out_dir_desc, "kldb_78_three_way_agreement_pct.png"),
+       p_kldb_tri_pct, width = 7, height = 5, dpi = 600)
+print(p_kldb_tri_pct)
+
+```
+
+
+```{r Modeling with Dawid-Skene in Stan - All 4 Models, warning=FALSE, message=FALSE}
+# Packages
+library(data.table)
+library(dplyr)
+library(tidyr)
+library(cmdstanr)
+
+
+
+# 3) Write Stan model to file
+stan_file <- "dawid_skene_kldb.stan"
+writeLines(con = stan_file, text = '
+  data {
+    int<lower=2> K;                      // number of categories
+    int<lower=1> I;                      // items
+    int<lower=1> J;                      // raters
+    int<lower=1> N;                      // number of observed ratings
+    array[N] int<lower=1, upper=I> ii;   // item index per observation
+    array[N] int<lower=1, upper=J> jj;   // rater index per observation
+    array[N] int<lower=1, upper=K> y;    // observed category per observation
+  
+    vector<lower=0>[K] alpha;            // prior for pi
+    array[K] vector<lower=0>[K] beta;    // Dirichlet priors for theta rows, vary by true class
+  }
+
+parameters {
+  simplex[K] pi;                       // prevalence over true classes
+  array[J, K] simplex[K] theta;        // confusion rows: for rater j and true class k
+}
+
+transformed parameters {
+  // log_q_z[i, k] = log p(z_i = k | pi, theta) up to a constant
+  array[I] vector[K] log_q_z;
+
+  // Initialize with log pi
+  for (i in 1:I) {
+    log_q_z[i] = log(pi);
+  }
+
+  // Accumulate per observation
+  for (n in 1:N) {
+    int i = ii[n];
+    int j = jj[n];
+    int y_n = y[n];
+    for (k in 1:K) {
+      // Add log categorical pmf of y_n under theta[j, k, :]
+      log_q_z[i, k] += categorical_lpmf(y_n | theta[j, k]);
+    }
+  }
+}
+
+model {
+  // Priors
+  pi ~ dirichlet(alpha);
+  for (j in 1:J)
+    for (k in 1:K)
+      theta[j, k] ~ dirichlet(beta[k]);
+
+  // Marginalized likelihood
+  for (i in 1:I) {
+    target += log_sum_exp(log_q_z[i]);
+  }
+}
+
+generated quantities {
+  array[I] simplex[K] q_z;
+  for (i in 1:I) {
+    vector[K] lq = log_q_z[i];
+    q_z[i] = softmax(lq);
+  }
+}
+')
+
+# Compile model once
+mod <- cmdstan_model(stan_file, cpp_options = list(stan_threads = TRUE))
+
+# Define 4 model configurations
+model_configs <- list(
+  list(
+    name = "alpha11_beta1",
+    alpha = c(1.0, 1.0),
+    beta = matrix(1.0, nrow = K, ncol = K)  # uniform: 1 everywhere
+  )
+  # list(
+  #   name = "alpha11_beta5diag",
+  #   alpha = c(1.0, 1.0),
+  #   beta = matrix(1.0, nrow = K, ncol = K) + diag(4.0, K)  # 5 on diagonal, 1 elsewhere
+  # ),
+  # list(
+  #   name = "alpha1510_beta1",
+  #   alpha = c(15.0, 10.0),
+  #   beta = matrix(1.0, nrow = K, ncol = K)
+  # ),
+  # list(
+  #   name = "alpha1510_beta5diag",
+  #   alpha = c(15.0, 10.0),
+  #   beta = matrix(1.0, nrow = K, ncol = K) + diag(4.0, K)  # 5 on diagonal, 1 elsewhere
+  # )
+)
+
+# Fit all 1 models
+fits <- list()
+for (config in model_configs) {
+  cat("\n=== Fitting model:", config$name, "===\n")
+  
+  stan_data <- list(
+    I = I,
+    J = J,
+    K = K,
+    N = N,
+    ii = as.integer(long_data$item_id_idx),
+    jj = as.integer(long_data$rater_id),
+    y  = as.integer(long_data$y),
+    alpha = config$alpha,
+    beta  = config$beta
+  )
+  
+  fit <- mod$sample(
+    data = stan_data,
+    seed = 1234,
+    chains = 4,
+    parallel_chains = 4,
+    threads_per_chain = 1,
+    iter_warmup = 1000,
+    iter_sampling = 4000,
+    refresh = 200,
+    adapt_delta = 0.99
+  )
+  
+  fits[[config$name]] <- fit
+  
+  # Check convergence
+  s <- fit$summary()
+  s$rhat <- as.numeric(s$rhat)
+  bad_rhat <- subset(s, rhat > 1.1 & grepl("^(pi|theta)\\b", variable))
+  if (nrow(bad_rhat) > 0) {
+    cat("WARNING: R-hat values above 1.1:\n")
+    print(bad_rhat[, c("variable","rhat","ess_bulk","ess_tail")])
+  } else {
+    cat("No R-hat values above 1.1\n")
+  }
+}
+```
+
+
+```{r Posterior summaries and analysis - BASIS, warning=FALSE, message=FALSE} 
+library(dplyr)
+library(posterior)
+library(ggplot2)
+library(reshape2)
+
+out_dir <- "img/model_results/kldb/two_categories"
+dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
+
+# use first fit 
+fit_basis <- fits[["alpha11_beta1"]]
+
+save_plot <- function(p, filename, width = 7, height = 5, dpi = 600) {
+  ggsave(
+    filename = file.path(out_dir, filename),
+    plot = p,
+    width = width,
+    height = height,
+    dpi = dpi
+  )
+}
+
+# ------------------------------------------------------------
+# 0) Basic diagnostics for key parameters
+# ------------------------------------------------------------
+diag_tbl <- fit_basis$summary(variables = c("pi", "theta")) %>%
+  dplyr::select(variable, rhat, ess_bulk, ess_tail)
+
+diag_bad <- diag_tbl %>%
+  dplyr::filter(is.finite(rhat), rhat > 1.01) %>%
+  dplyr::arrange(desc(rhat))
+
+diag_bad
+
+# Divergences, treedepth hits, if available (cmdstanr)
+div_info <- tryCatch(fit_basis$diagnostic_summary(), error = function(e) NULL)
+if (is.null(div_info)) {
+  div_info <- tryCatch(fit_basis$cmdstan_diagnose(), error = function(e) NULL)
+}
+div_info
+
+# ------------------------------------------------------------
+# 1) Confusion matrices (theta), posterior mean and uncertainty
+# ------------------------------------------------------------
+theta_draws_mat <- fit_basis$draws("theta", format = "draws_matrix")
+theta_mean_vec  <- colMeans(theta_draws_mat)
+
+# Expectation: theta has dimensions [J rater, K true, K given]
+theta_mean_arr <- array(
+  theta_mean_vec,
+  dim = c(J, K, K),
+  dimnames = list(
+    rater = c("human1", "human2", "tool"),
+    true  = kldb_levels,
+    given = kldb_levels
+  )
+)
+
+theta_human1_mean <- theta_mean_arr["human1", , ]
+theta_human2_mean <- theta_mean_arr["human2", , ]
+theta_tool_mean   <- theta_mean_arr["tool",   , ]
+
+theta_human1_mean
+rowSums(theta_human1_mean)
+
+theta_human2_mean
+rowSums(theta_human2_mean)
+
+theta_tool_mean
+rowSums(theta_tool_mean)
+
+plot_theta <- function(mat, title_txt) {
+  long <- reshape2::melt(mat, varnames = c("True", "Given"), value.name = "Prob")
+  ggplot(long, aes(x = Given, y = True, fill = Prob)) +
+    geom_tile(color = "white") +
+    scale_fill_gradient(low = "white", high = "darkgreen") +
+    theme_light() +
+    labs(
+      title = title_txt,
+      x = "Observed class",
+      y = "True class C_i"
+    ) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+}
+
+p_theta_h1_mean <- plot_theta(theta_human1_mean, "Confusion matrix pi^(1) (posterior mean)")
+p_theta_h2_mean <- plot_theta(theta_human2_mean, "Confusion matrix pi^(2) (posterior mean)")
+p_theta_tool_mean <- plot_theta(theta_tool_mean, "Confusion matrix pi^(3) (posterior mean)")
+
+save_plot(p_theta_h1_mean, "theta_human1_mean.png")
+save_plot(p_theta_h2_mean, "theta_human2_mean.png")
+save_plot(p_theta_tool_mean, "theta_tool_mean.png")
+
+p_theta_h1_mean
+p_theta_h2_mean
+p_theta_tool_mean
+
+# Credible intervals for all theta entries
+theta_summ <- summarise_draws(
+  as_draws_df(fit_basis$draws("theta")),
+  mean, sd,
+  ~quantile(.x, probs = c(`5%` = 0.05, `50%` = 0.50, `95%` = 0.95), na.rm = TRUE)
+)
+theta_summ
+
+# Posterior SD heatmaps for theta (uncertainty by cell)
+theta_sd_vec <- apply(theta_draws_mat, 2, sd)
+theta_sd_arr <- array(
+  theta_sd_vec,
+  dim = c(J, K, K),
+  dimnames = list(
+    rater = c("human1", "human2", "tool"),
+    true  = kldb_levels,
+    given = kldb_levels
+  )
+)
+
+p_theta_h1_sd <- plot_theta(theta_sd_arr["human1", , ], "Confusion matrix pi^(1) (posterior SD)")
+p_theta_h2_sd <- plot_theta(theta_sd_arr["human2", , ], "Confusion matrix pi^(2) (posterior SD)")
+p_theta_tool_sd <- plot_theta(theta_sd_arr["tool", , ], "Confusion matrix pi^(3) (posterior SD)")
+
+save_plot(p_theta_h1_sd, "theta_human1_sd.png")
+save_plot(p_theta_h2_sd, "theta_human2_sd.png")
+save_plot(p_theta_tool_sd, "theta_tool_sd.png")
+
+p_theta_h1_sd
+p_theta_h2_sd
+p_theta_tool_sd
+
+# ------------------------------------------------------------
+# 2) Class prevalence (pi), posterior mean and uncertainty
+# ------------------------------------------------------------
+pi_summ <- summarise_draws(
+  as_draws_df(fit_basis$draws("pi")),
+  mean, sd,
+  ~quantile(.x, probs = c(`5%` = 0.05, `50%` = 0.50, `95%` = 0.95), na.rm = TRUE)
+)
+pi_summ
+
+pi_means <- colMeans(as_draws_matrix(fit_basis$draws("pi")))
+pi_df <- data.frame(
+  class = kldb_levels,
+  prevalence = as.numeric(pi_means)
+)
+
+p_pi_bar <- ggplot(pi_df, aes(x = class, y = prevalence)) +
+  geom_bar(stat = "identity", fill = "#02626f") +
+  theme_light() +
+  labs(
+    title = "Posterior mean of class prevalence (p)",
+    x = "Class",
+    y = "Prevalence"
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+save_plot(p_pi_bar, "pi_mean_bar.png", width = 6, height = 4)
+p_pi_bar
+
+# ------------------------------------------------------------
+# 2b) Rater level scalar summaries from theta
+# ------------------------------------------------------------
+pi_mean_vec <- as.numeric(pi_means)
+names(pi_mean_vec) <- kldb_levels
+
+weighted_diag_mass <- function(mat, w) sum(diag(mat) * w)
+weighted_offdiag_mass <- function(mat, w) sum((1 - diag(mat)) * w)
+
+rater_summary <- data.frame(
+  rater = c("human1", "human2", "tool"),
+  weighted_diag_mass = c(
+    weighted_diag_mass(theta_human1_mean, pi_mean_vec),
+    weighted_diag_mass(theta_human2_mean, pi_mean_vec),
+    weighted_diag_mass(theta_tool_mean,   pi_mean_vec)
+  ),
+  weighted_offdiag_mass = c(
+    weighted_offdiag_mass(theta_human1_mean, pi_mean_vec),
+    weighted_offdiag_mass(theta_human2_mean, pi_mean_vec),
+    weighted_offdiag_mass(theta_tool_mean,   pi_mean_vec)
+  )
+)
+rater_summary
+
+p_rater_diag <- ggplot(rater_summary, aes(x = rater, y = weighted_diag_mass)) +
+  geom_bar(stat = "identity", fill = "#02626f") +
+  theme_light() +
+  labs(
+    title = "Rater summary: Weighted diagonal mass",
+    x = "Rater",
+    y = "Weighted diagonal mass"
+  )
+
+save_plot(p_rater_diag, "rater_weighted_diag_mass.png", width = 6, height = 4)
+p_rater_diag
+
+# ------------------------------------------------------------
+# 3) Posterior class probabilities per item (q_i,j = P(C_i = j | data))
+# ------------------------------------------------------------
+qz_draws_mat <- fit_basis$draws("q_z", format = "draws_matrix")
+qz_mean_vec  <- colMeans(qz_draws_mat)
+
+qz_mean <- matrix(
+  qz_mean_vec,
+  nrow = I, ncol = K,
+  dimnames = list(item = item_ids, class = kldb_levels)
+)
+
+qz_df <- as.data.frame(qz_mean)
+p_cols <- paste0("p_", kldb_levels)
+colnames(qz_df) <- p_cols
+qz_df$item_id <- item_ids
+
+# MAP label
+qz_df$map_class_idx   <- max.col(qz_df[p_cols], ties.method = "first")
+qz_df$map_class_label <- kldb_levels[qz_df$map_class_idx]
+
+# Uncertainty measures
+eps <- 1e-12
+qz_df$max_p <- apply(qz_df[p_cols], 1, max)
+
+qz_df$entropy <- -rowSums(as.matrix(qz_df[p_cols]) * log(as.matrix(qz_df[p_cols]) + eps))
+
+qz_df$margin <- apply(qz_df[p_cols], 1, function(p) {
+  ps <- sort(p, decreasing = TRUE)
+  ps[1] - ps[2]
+})
+
+# Credible set per item, smallest set reaching cumulative posterior mass >= level
+credible_set <- function(p, classes, level = 0.95) {
+  o <- order(p, decreasing = TRUE)
+  cum <- cumsum(p[o])
+  m <- which(cum >= level)[1]
+  classes[o[seq_len(m)]]
+}
+qz_df$cs95 <- apply(qz_df[p_cols], 1, function(x) credible_set(x, kldb_levels, level = 0.95))
+
+table(lengths(qz_df$cs95))
+
+# Plots of uncertainty and confidence
+p_maxp_hist <- ggplot(qz_df, aes(x = max_p)) +
+  geom_histogram(binwidth = 0.025, fill = "#333333", color = "white", size = 0.1) +
+  theme_light() +
+  labs(x = "Posterior max probability", y = "Count",
+       title = "Model confidence per item")
+
+p_entropy_hist <- ggplot(qz_df, aes(x = entropy)) +
+  geom_histogram(binwidth = 0.025, fill = "#333333", color = "white", size = 0.1) +
+  theme_light() +
+  labs(x = "Posterior entropy", y = "Count",
+       title = "Item uncertainty (entropy)")
+
+p_margin_hist <- ggplot(qz_df, aes(x = margin)) +
+  geom_histogram(binwidth = 0.025, fill = "#333333", color = "white", size = 0.1) +
+  theme_light() +
+  labs(x = "Posterior margin (top1 minus top2)", y = "Count",
+       title = "Item uncertainty (margin)")
+
+save_plot(p_maxp_hist, "qz_maxp_hist.png", width = 6, height = 4)
+save_plot(p_entropy_hist, "qz_entropy_hist.png", width = 6, height = 4)
+save_plot(p_margin_hist, "qz_margin_hist.png", width = 6, height = 4)
+
+p_maxp_hist
+p_entropy_hist
+p_margin_hist
+
+# ------------------------------------------------------------
+# 3b) MAP distribution vs pi (sanity check)
+# ------------------------------------------------------------
+map_tab <- qz_df %>%
+  count(map_class_label, name = "n_map") %>%
+  mutate(map_share = n_map / sum(n_map)) %>%
+  rename(class = map_class_label)
+
+pi_tab <- data.frame(class = kldb_levels, pi_mean = as.numeric(pi_means))
+
+map_vs_pi <- left_join(map_tab, pi_tab, by = "class")
+map_vs_pi
+
+p_map_vs_pi <- ggplot(map_vs_pi, aes(x = class)) +
+  geom_col(aes(y = map_share), fill = "#02626f") +
+  geom_point(aes(y = pi_mean), size = 2) +
+  theme_light() +
+  labs(
+    title = "MAP share (bars) vs posterior mean p (points)",
+    x = "Class",
+    y = "Share / prevalence"
+  )
+
+save_plot(p_map_vs_pi, "map_share_vs_pi.png", width = 6, height = 4)
+p_map_vs_pi
+
+# ------------------------------------------------------------
+# 4) Merge predictions with original ratings, include uncertainty
+# ------------------------------------------------------------
+ratings <- kldb_data %>%
+  dplyr::select(item_id, kldb_human1, kldb_human2, kldb_tool)
+
+predictions <- qz_df %>%
+  dplyr::select(item_id, map_class_label, all_of(p_cols), max_p, entropy, margin, cs95)
+
+ratings_with_predictions <- ratings %>%
+  dplyr::left_join(predictions, by = "item_id") %>%
+  dplyr::rename(
+    predicted_class = map_class_label,
+    rating_human1 = kldb_human1,
+    rating_human2 = kldb_human2,
+    rating_tool   = kldb_tool
+  ) %>%
+  dplyr::arrange(item_id)
+
+head(ratings_with_predictions, 30)
+
+# Most uncertain items by entropy, include posterior probabilities
+most_uncertain <- ratings_with_predictions %>%
+  dplyr::arrange(desc(entropy)) %>%
+  dplyr::select(item_id, predicted_class, entropy, margin, max_p, all_of(p_cols),
+                rating_human1, rating_human2, rating_tool)
+
+head(most_uncertain, 20)
+
+# ------------------------------------------------------------
+# 5) Observed agreement, descriptive, not model based
+# ------------------------------------------------------------
+mean(kldb_data$kldb_human1 == kldb_data$kldb_tool, na.rm = TRUE)
+mean(kldb_data$kldb_human2 == kldb_data$kldb_tool, na.rm = TRUE)
+
+kldb_data %>%
+  dplyr::count(kldb_human1, kldb_human2, kldb_tool) %>%
+  dplyr::arrange(desc(n))
+
+```
